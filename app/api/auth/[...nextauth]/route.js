@@ -21,22 +21,17 @@ export const authOptions = {
         async session ({ session }) {
             const sessionUser = await User.findOne({email: session.user.email});
             session.user.id = sessionUser._id.toString();
+            session.user.role = sessionUser.role
             return session;
         },
+
+
         async signIn({ account, profile, user, credentials }) {
             try {
                 await connectToDB();
                 // check if user already exists
                 const userExists = await User.findOne({ email: profile.email });
 
-                //check what role has user
-                const userRole = await User.findOne({ email: profile.email })
-                    .then(user => {
-                        return user ? user.role : "teacher"; // Default role if user doesn't exist
-                    });
-
-                // Store the userRole in the session
-                user.role = userRole;
 
                 // if not, create a new document and save user in MongoDB
                 if (!userExists) {
@@ -44,7 +39,7 @@ export const authOptions = {
                         email: profile.email,
                         username: profile.name.replace(" ", "").toLowerCase(),
                         image: profile.picture,
-                        role: userRole // Use the obtained userRole
+                        role: "student"
                     });
                 }
 
@@ -54,11 +49,7 @@ export const authOptions = {
                 return false;
             }
         },
-        async redirect({ url, baseUrl, user }) {
-            const userRole = user ? user.role : "teacher";
 
-            return `http://localhost:3000/user/${userRole}`;
-        }
 
     }
 }

@@ -1,28 +1,26 @@
-"use client";
+import {useSession} from "next-auth/react";
+import {getServerSession} from "next-auth";
+import {authOptions} from "./api/auth/[...nextauth]/route";
+import {redirect} from "next/navigation";
 
 
-import {  signIn,  useSession,} from "next-auth/react";
+const HomePage = async () => {
 
+    const session = await getServerSession(authOptions)
+    const userRole = session?.user.role
 
-
-const Nav = () => {
-
-
-
+    if(userRole === "student" || userRole === "teacher"){
+        redirect(`/${userRole}`)
+    }
 
     return (
-          <button
-            type="button"
-            onClick={() => {
-              signIn("google", );
-            }}
-          >
-            Sign in
-          </button>
+          <div>
+              Siema
+          </div>
 
 
     );
 
 };
 
-export default Nav;
+export default HomePage;
