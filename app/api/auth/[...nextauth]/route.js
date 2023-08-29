@@ -3,6 +3,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import User from "../../../../models/user";
 import {connectToDB} from "../../../../utils/database";
 import {redirect} from "next/navigation";
+import { useRouter } from 'next/navigation'
 
 
 
@@ -39,7 +40,7 @@ export const authOptions = {
                         email: profile.email,
                         username: profile.name.replace(" ", "").toLowerCase(),
                         image: profile.picture,
-                        role: "student"
+
                     });
                 }
 

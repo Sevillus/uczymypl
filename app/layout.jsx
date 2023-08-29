@@ -7,6 +7,7 @@ import Profile from "../components/Profile";
 import {getServerSession} from "next-auth";
 import {authOptions} from "./api/auth/[...nextauth]/route";
 import Header from "../components/Header";
+import React from "react";
 
 
 
@@ -28,8 +29,17 @@ export default async function RootLayout({ children})
     <html lang="en">
       <body className={inter.className}>
         <Provider>
-            <Profile name = {session?.user.name} />
-            {children}
+            <div className={"padding-y padding-x"}>
+                <Header
+                    name={session?.user.name}
+                />
+                <main>
+                    {children}
+                </main>
+                <footer>
+
+                </footer>
+            </div>
         </Provider>
       </body>
     </html>

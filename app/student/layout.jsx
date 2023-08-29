@@ -14,19 +14,7 @@ const Layout = async ({ children }) => {
     if (!session || session?.user.role !== "student" ) {
         redirect('/')
     }
-    return (
-        <div className={"padding-y padding-x"}>
-            <Header
-                name={session?.user.name}
-            />
-            <main>
-                {children}
-            </main>
-            <footer>
 
-            </footer>
-        </div>
-    );
 };
 
 export default Layout;
