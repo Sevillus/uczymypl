@@ -1,4 +1,3 @@
-import React from 'react';
 
 
 import {getServerSession} from "next-auth";
@@ -18,6 +17,11 @@ const Layout = async ({ children }) => {
         redirect('/')
     }
 
+    return (
+        <>
+            {children}
+        </>
+    );
 };
 
 export default Layout;

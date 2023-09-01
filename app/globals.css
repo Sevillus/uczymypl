@@ -10,7 +10,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Manrope", sans-serif;
+  overflow: hidden;
 }
+
 
 /* START: General styles */
 .max-width {
@@ -35,9 +37,24 @@
 
 .Logo{
   font-family: 'Damion', cursive;
+  width: 200px;
+  height: 50px;
+  padding-left: 10px;
   @apply text-4xl
 }
 
 .navbar__btn{
   @apply relative  duration-300 hover:scale-110
+}
+.agenda{
+  @apply w-1/2 h-8 border-2
+}
+.agenda__days{
+  @apply w-1/6 h-80 border-4
+}
+.closeBtn{
+  transition: 0.3s;
+}
+.closeBtn:hover{
+  transform: rotate(30deg);
 }

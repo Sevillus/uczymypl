@@ -1,5 +1,24 @@
 import { Schema, model, models } from 'mongoose';
 
+const StudentSchema = new Schema({
+    name: {
+        type: String,
+        required: [true, 'Name is required!'],
+    },
+    school: {
+        type: String,
+        required: [true, 'School is required!'],
+    },
+    day: {
+        type: String,
+        required: [true, 'Day is required!'],
+    },
+    time: {
+        type: String,
+        required: [true, 'time is required!'],
+    }
+});
+
 const UserSchema = new Schema({
     email: {
         type: String,
@@ -14,14 +33,16 @@ const UserSchema = new Schema({
         type: String,
     },
     role: {
-        type: String
-    }
+        type: String,
+    },
+    target: {
+        type: Number,
+    },
+    students: [StudentSchema], // Zmieniamy na pojedynczy obiekt, nie lista
 });
+
 
 
 const User = models.User || model("User", UserSchema);
 
-
-
 export default User;
-

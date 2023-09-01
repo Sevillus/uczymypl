@@ -20,6 +20,7 @@ export const authOptions = {
     },
     callbacks: {
         async session ({ session }) {
+            await connectToDB();
             const sessionUser = await User.findOne({email: session.user.email});
             session.user.id = sessionUser._id.toString();
             session.user.role = sessionUser.role
@@ -40,7 +41,6 @@ export const authOptions = {
                         email: profile.email,
                         username: profile.name.replace(" ", "").toLowerCase(),
                         image: profile.picture,
-
                     });
                 }
 
