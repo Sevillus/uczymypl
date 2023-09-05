@@ -8,15 +8,13 @@ import AddStudent from "./AddStudent";
 const Profile = (props) => {
   const { name, img } = props;
   const [showMenu, useShowMenu] = useState(false);
-  const [addUserMenu, setAddUserMenu] = useState(false)
+
 
   const clickHandler = () => {
     showMenu ? useShowMenu(false) : useShowMenu(true);
   };
 
-  const addUserMenuHandler = () =>{
-     addUserMenu? setAddUserMenu(false) : setAddUserMenu(true);
-  }
+
 
 
   if (name) {
@@ -31,7 +29,6 @@ const Profile = (props) => {
         </div>
         {showMenu && (
           <div className={"absolute flex flex-col items-start gap-3"}>
-            <button onClick={addUserMenuHandler}>Dodaj ucznia</button>
             <button>Ustawienia</button>
             <button
               type="button"
@@ -44,11 +41,7 @@ const Profile = (props) => {
             </button>
           </div>
         )}
-          {addUserMenu && (
-              <div className={"absolute w-full h-full  op start-0 z-10 flex-center"}>
-                  <AddStudent />
-              </div>
-          )}
+
 
 
       </div>
