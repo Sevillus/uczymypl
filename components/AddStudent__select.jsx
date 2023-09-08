@@ -4,7 +4,7 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 
 const AddStudentSelect = (props) => {
     const title = props.title;
-    const [option, setOption] = useState("");
+    const [option, setOption] = useState(props.default);
 
     const handleChange = (e) => {
         setOption(e.target.value);

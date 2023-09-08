@@ -7,26 +7,33 @@ import { useState } from "react";
 
 const AddStudent = (props) => {
   const school = ["Podstawowa", "Liceum", "Technikum", "Zawodowa"];
-  const days = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek"];
+  const days = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek","Sobota", "Niedziela"];
 
-  const [name, setName] = useState("");
-  const [userSchool, setUserSchool] = useState("");
-  const [day, setDay] = useState("");
-  const [userTime, setUserTime] = useState("");
+  const {student} = props
+
+  const [name, setName] = useState(student? student.name : "");
+  const [userSchool, setUserSchool] = useState(student? student.school : "");
+  const [day, setDay] = useState(student? student.day : "");
+  const [userTime, setUserTime] = useState(student? student.time : "");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const closeMenu = props.closeMenu
   const fetchStudent = props.fetchStudent
 
+  const {apiUrl, studentId} = props
+
   const makeApiCall = async (e) => {
     e.preventDefault();
 
-    await fetch("/api/add-student", {
+
+    await fetch(`${apiUrl}`, {
       method: "POST",
       body: JSON.stringify({
         name: name,
         school: userSchool,
         day: day,
         time: userTime,
+        id: studentId
       }),
       headers: {
         "Content-Type": "application/json",
@@ -37,6 +44,25 @@ const AddStudent = (props) => {
     props.closeMenu(false); // Zamknij menu
     fetchStudent(); // Pobierz i zaktualizuj listę studentów
   };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    await fetch(`${apiUrl}`, {
+      method: "POST",
+      body: JSON.stringify({
+        delete: true,
+        id: studentId
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    props.closeMenu(false);
+    fetchStudent();
+  };
+
 
   return (
     <div
@@ -50,7 +76,7 @@ const AddStudent = (props) => {
           <CloseIcon className={"closeBtn"} />
         </button>
       </div>
-      <form onSubmit={makeApiCall} className={"flex flex-col gap-10"}>
+      <form onSubmit={isDeleting ? handleDelete : makeApiCall} className={"flex flex-col gap-10"}>
         <TextField
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -60,11 +86,13 @@ const AddStudent = (props) => {
         />
         <AddStudentSelect
           title="Rodzaj szkoły"
+          default ={userSchool}
           array={school}
           onChange={(value) => setUserSchool(value)}
         />
         <AddStudentSelect
           title="Dzień zajęć"
+          default ={day}
           array={days}
           onChange={(value) => setDay(value)}
         />
@@ -76,7 +104,19 @@ const AddStudent = (props) => {
           type="time"
           variant="standard"
         />
-        <button type="submit">Dodaj</button>
+        {student? (
+            <div>
+              {isDeleting ? (
+                  <button type="submit">Usuń</button>
+              ) : (
+                  <button type="button" onClick={() => setIsDeleting(true)}>Usuń</button>
+              )}
+              <button type="submit">Zatwierdź</button>
+            </div>
+        ) : (
+            <button type="submit">Dodaj</button>
+        )}
+
       </form>
     </div>
   );

@@ -9,6 +9,7 @@ import meetingInfo from "../utils/meetingDay";
 const Agenda = () => {
     const [userStudents, setUserStudents] = useState([]);
     const [userMenu, setUserMenu] = useState(false)
+    const [sortedStudents , setSortedStudents] = useState([])
 
     const fetchStudent = async () => {
         try {
@@ -32,27 +33,36 @@ const Agenda = () => {
 
 
 
-    const updatedUserStudents = userStudents.map(student => {
-        const {nextMeetingDateConverted,hourConverted } = meetingInfo(student)
-        return {
-            ...student,
-            meetingDay: nextMeetingDateConverted,
-            meetingHour: hourConverted
-        };
-    });
 
-    const sortedStudents = updatedUserStudents.sort((studentA, studentB) => {
-        const dateA = new Date(studentA.meetingDay + ' ' + studentA.meetingHour);
-        const dateB = new Date(studentB.meetingDay + ' ' + studentB.meetingHour);
 
-        if (dateA < dateB) {
-            return -1;
-        } else if (dateA > dateB) {
-            return 1;
-        } else {
-            return 0;
-        }
-    });
+
+    useEffect(() => {
+        const sortedStudents = userStudents.map(student => {
+            const { nextMeetingDateConverted, hourConverted } = meetingInfo(student);
+            return {
+                ...student,
+                meetingDay: nextMeetingDateConverted,
+                meetingHour: hourConverted
+            };
+        }).sort((studentA, studentB) => {
+            const dateA = new Date(studentA.meetingDay + ' ' + studentA.meetingHour);
+            const dateB = new Date(studentB.meetingDay + ' ' + studentB.meetingHour);
+
+
+
+            if (dateA < dateB) {
+                return -1;
+            } else if (dateA > dateB) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        // Zaktualizuj posortowaną listę studentów
+        setSortedStudents(sortedStudents);
+    }, [userStudents]);
+
 
 
 
@@ -64,7 +74,7 @@ const Agenda = () => {
             <div className={"flex-between"}>
                 <div>
                     {sortedStudents.map((student) => (
-                        <AgendaUser student={student} key={student._id} />
+                        <AgendaUser fetchStudent={fetchStudent} student={student} key={student._id} />
                     ))}
                 </div>
                 <div>
@@ -73,9 +83,10 @@ const Agenda = () => {
             </div>
             {userMenu && (
                 <div className={"absolute w-full h-full  op start-0 z-10 flex-center"}>
-                    <AddStudent fetchStudent={fetchStudent}  closeMenu={setUserMenu}/>
+                    <AddStudent fetchStudent={fetchStudent}  apiUrl={"/api/add-student"} closeMenu={setUserMenu}/>
                 </div>
             )}
+
         </div>
     );
 };
