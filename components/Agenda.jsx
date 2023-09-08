@@ -68,21 +68,20 @@ const Agenda = () => {
 
 
     return (
-        <div className={"w-3/6 flex flex-col gap-3"}>
-            <button onClick={() => setUserMenu(true)}> Dodaj ucznia</button>
-            <h1 className={"text-lg font-semibold"}>Nadchodzące spotkania</h1>
+        <div className={"w-2/6 flex flex-col gap-3"}>
+            <div className={"flex-between"}>
+                <h1 className={"text-lg font-semibold "}>Nadchodzące spotkania</h1>
+                <button className={"border-2 py-1 px-3 rounded-xl"} onClick={() => setUserMenu(true)}> Dodaj</button>
+            </div>
             <div className={"flex-between"}>
                 <div>
                     {sortedStudents.map((student) => (
                         <AgendaUser fetchStudent={fetchStudent} student={student} key={student._id} />
                     ))}
                 </div>
-                <div>
-                    <AgendaCalendar />
-                </div>
             </div>
             {userMenu && (
-                <div className={"absolute w-full h-full  op start-0 z-10 flex-center"}>
+                <div className={"absolute w-full h-full  op top-0 z-10 flex-center"}>
                     <AddStudent fetchStudent={fetchStudent}  apiUrl={"/api/add-student"} closeMenu={setUserMenu}/>
                 </div>
             )}

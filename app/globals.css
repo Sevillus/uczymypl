@@ -52,9 +52,18 @@
 .agenda__days{
   @apply w-1/6 h-80 border-4
 }
+.agenda__dayName{
+  width: 14.40%;
+}
+.agenda__day{
+  height: 50%;
+}
 .closeBtn{
   transition: 0.3s;
 }
 .closeBtn:hover{
   transform: rotate(30deg);
+}
+.addBtn{
+  @apply border-2 py-1 px-3 rounded-xl
 }

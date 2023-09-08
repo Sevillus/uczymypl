@@ -12,7 +12,7 @@ const AddStudent = (props) => {
   const {student} = props
 
   const [name, setName] = useState(student? student.name : "");
-  const [userSchool, setUserSchool] = useState(student? student.school : "");
+  const [price, setPrice] = useState(student? student.price : 0);
   const [day, setDay] = useState(student? student.day : "");
   const [userTime, setUserTime] = useState(student? student.time : "");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -30,7 +30,7 @@ const AddStudent = (props) => {
       method: "POST",
       body: JSON.stringify({
         name: name,
-        school: userSchool,
+        price: price,
         day: day,
         time: userTime,
         id: studentId
@@ -84,11 +84,13 @@ const AddStudent = (props) => {
           label="Imię i nazwisko"
           variant="standard"
         />
-        <AddStudentSelect
-          title="Rodzaj szkoły"
-          default ={userSchool}
-          array={school}
-          onChange={(value) => setUserSchool(value)}
+        <TextField
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            id="standard-basic"
+            label="Cena zajęć"
+            variant="standard"
+            type={"number"}
         />
         <AddStudentSelect
           title="Dzień zajęć"
@@ -105,16 +107,19 @@ const AddStudent = (props) => {
           variant="standard"
         />
         {student? (
-            <div>
+            <div className={"flex-center gap-10"}>
               {isDeleting ? (
-                  <button type="submit">Usuń</button>
+                  <button className={"addBtn"} type="submit">Usuń</button>
               ) : (
-                  <button type="button" onClick={() => setIsDeleting(true)}>Usuń</button>
+                  <button className={"addBtn"} type="button" onClick={() => setIsDeleting(true)}>Usuń</button>
               )}
-              <button type="submit">Zatwierdź</button>
+              <button className={"addBtn"} type="submit">Zatwierdź</button>
             </div>
         ) : (
-            <button type="submit">Dodaj</button>
+            <div className={"flex-center"}>
+              <button className={"addBtn w-2/6"} type="submit">Dodaj</button>
+            </div>
+
         )}
 
       </form>

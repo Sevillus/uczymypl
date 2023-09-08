@@ -1,13 +1,15 @@
 
 import React from 'react'
 import Agenda from "../../components/Agenda";
+import ProgressBar from "../../components/ProgressBar";
 
 
 const Page = () => {
 
     return (
-        <div>
+        <div className={"flex-between"}>
            <Agenda />
+            <ProgressBar />
         </div>
     )
 }
