@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import AgendaUser from "./AgendaUser";
 import AgendaCalendar from "./AgendaCalendar";
 import axios from "axios";
-import AddStudent from "./AddStudent";
-import meetingInfo from "../utils/meetingDay";
+import meetingInfo from "../../utils/meetingDay";
+import AddStudent from "../AddStudent";
+
 
 const Agenda = () => {
     const [userStudents, setUserStudents] = useState([]);
@@ -48,8 +49,6 @@ const Agenda = () => {
             const dateA = new Date(studentA.meetingDay + ' ' + studentA.meetingHour);
             const dateB = new Date(studentB.meetingDay + ' ' + studentB.meetingHour);
 
-
-
             if (dateA < dateB) {
                 return -1;
             } else if (dateA > dateB) {
@@ -58,6 +57,7 @@ const Agenda = () => {
                 return 0;
             }
         });
+
 
         // Zaktualizuj posortowaną listę studentów
         setSortedStudents(sortedStudents);

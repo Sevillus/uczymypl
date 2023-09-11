@@ -6,8 +6,8 @@ export async function POST(req) {
     const session = await getServerSession(authOptions);
     const body = await req.json();
 
-    if(session){
-
+    if(session?.user){
+        console.log("Student zalogowany")
         const sessionUser = await User.findOne({ email: session?.user.email });
 
         if (!sessionUser) {

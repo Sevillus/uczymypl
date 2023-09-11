@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import meetingDay from "../utils/meetingDay";
-import AddStudent from "./AddStudent";
+import meetingDay from "../../utils/meetingDay";
+import AddStudent from "../AddStudent";
 
 
 

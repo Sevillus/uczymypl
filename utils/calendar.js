@@ -9,7 +9,7 @@ export const generateDate = (month = dayjs().month(), year = dayjs().year()) => 
 
     const arrayOfDate = [];
 
-    // Ustalamy indeks, od którego rozpocznie się kalendarz (0 - niedziela, 1 - poniedziałek, ..., 6 - sobota)
+
     let startIndex = startDay === 0 ? 6 : startDay - 1;
 
     // Wypełniamy dni przed rozpoczęciem miesiąca
@@ -32,7 +32,7 @@ export const generateDate = (month = dayjs().month(), year = dayjs().year()) => 
     }
 
     // Uzupełniamy resztę kalendarza
-    const remainingDays = 35 - arrayOfDate.length;
+    const remainingDays = 42 - arrayOfDate.length;
     for (let i = 1; i <= remainingDays; i++) {
         const nextMonthDate = lastDateOfMonth.add(i, "day");
         arrayOfDate.push({

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Agenda from "../../components/Agenda";
+import Agenda from "../../components/Agenda/Agenda";
 import ProgressBar from "../../components/ProgressBar";
 
 

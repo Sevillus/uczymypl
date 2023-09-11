@@ -42,6 +42,9 @@
   padding-left: 10px;
   @apply text-4xl
 }
+.h__full{
+ height: 100%;
+}
 
 .navbar__btn{
   @apply relative  duration-300 hover:scale-110
