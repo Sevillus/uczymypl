@@ -16,6 +16,9 @@ const StudentSchema = new Schema({
     time: {
         type: String,
         required: [true, 'time is required!'],
+    },
+    nextMeeting: {
+        type: Date,
     }
 });
 

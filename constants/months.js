@@ -12,3 +12,12 @@ export const months = [
     "Listopad",
     "Grudzień"
 ]
+export const daysOfWeek = {
+    niedziela: 0,
+    poniedziałek: 1,
+    wtorek: 2,
+    środa: 3,
+    czwartek: 4,
+    piątek: 5,
+    sobota: 6
+};

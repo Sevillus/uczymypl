@@ -20,11 +20,15 @@ export const authOptions = {
     },
     callbacks: {
         async session ({ session }) {
-            const sessionUser = await User.findOne({email: session.user.email});
-            session.user.id = sessionUser._id.toString();
-            session.user.role = sessionUser.role
-            session.user.students = sessionUser?.students
-            return session;
+            try{
+                const sessionUser = await User.findOne({email: session.user.email});
+                session.user.id = sessionUser._id.toString();
+                session.user.role = sessionUser.role
+                session.user.students = sessionUser?.students
+                return session;
+            }catch (error) {
+                console.log(error)
+            }
         },
 
 

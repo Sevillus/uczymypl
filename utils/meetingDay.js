@@ -1,4 +1,4 @@
-const meetingInfo = (student) => {
+const meetingInfo = (day, time) => {
     // Mapowanie dni tygodnia na ich numer w JavaScript (0 - niedziela, 1 - poniedziałek, ...)
     const daysOfWeek = {
         niedziela: 0,
@@ -14,8 +14,8 @@ const meetingInfo = (student) => {
     const today = new Date();
 
 // Dzień i godzina spotkania
-    const meetingDay = daysOfWeek[student.day.toLowerCase()];
-    const [meetingHour, meetingMinute] = student.time.split(':').map(Number);
+    const meetingDay = daysOfWeek[day.toLowerCase()];
+    const [meetingHour, meetingMinute] = time.split(':').map(Number);
 
 
 //
@@ -35,10 +35,8 @@ const meetingInfo = (student) => {
     const hourConverted = nextMeetingDate.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit', hour12: false })
 
 
-    return {
-        nextMeetingDateConverted,
-        hourConverted
-    };
+    return  nextMeetingDate;
 };
 
 export default meetingInfo;
+

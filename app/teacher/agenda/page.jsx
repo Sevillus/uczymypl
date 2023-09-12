@@ -5,6 +5,7 @@ import AgendaDays from "../../../components/Agenda/AgendaDays";
 import AgendaDate from "../../../components/Agenda/AgendaDate";
 import dayjs from "dayjs";
 import axios from "axios";
+import {daysOfWeek} from "../../../constants/months";
 
 
 const Page = () => {
@@ -27,23 +28,14 @@ const Page = () => {
             console.log(e);
         }
     };
-    console.log(userStudents)
 
     useEffect(() => {
         fetchStudent();
     }, []); // Uruchamiamy tylko raz po zamontowaniu komponentu
 
-    const daysOfWeek = {
-        niedziela: 0,
-        poniedziałek: 1,
-        wtorek: 2,
-        środa: 3,
-        czwartek: 4,
-        piątek: 5,
-        sobota: 6
-    };
 
 
+    console.log(currentDate.format("MMM D YYYY") )
     return (
         <div className={"flex items-start overflow-hidden gap-2"}>
             <div className={"border-2 w-9/12 rounded-lg "}>

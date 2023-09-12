@@ -1,6 +1,8 @@
 import User from "../../../models/user";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
+import meetingInfo from "../../../utils/meetingDay";
+import {sortByDate} from "../../../utils/sortByDate";
 
 export async function POST(req) {
     const session = await getServerSession(authOptions);
@@ -17,18 +19,16 @@ export async function POST(req) {
             price: body.price,
             day: body.day,
             time: body.time,
+            nextMeeting: meetingInfo(body.day, body.time)
         };
+        console.log(typeof(meetingInfo(body.day, body.time)))
+
         if (body) {
-            // Inicjujemy tablicę students, jeśli jest undefined
-
-            console.log(newStudent)
-            // Tworzymy nowego ucznia na podstawie danych z ciała żądania
+            sessionUser.students.push(newStudent)
 
 
-            // Dodajemy ucznia do listy uczniów w obiekcie sessionUser
-            sessionUser.students.push(newStudent);
+            sortByDate(sessionUser.students)
 
-            // Zapisujemy zaktualizowanego użytkownika w bazie danych
             await sessionUser.save();
 
             console.log("User students updated:", sessionUser);

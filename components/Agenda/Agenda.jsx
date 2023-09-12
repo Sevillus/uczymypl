@@ -14,13 +14,8 @@ const Agenda = () => {
 
     const fetchStudent = async () => {
         try {
-            console.log("Pobieranie danych");
             const res = await axios.get("http://localhost:3000/api/getUserData");
-            const userData = res.data;
-            // Zaktualizuj stan userStudents
-            console.log("Przed setUserStudents", userStudents);
-            setUserStudents(userData);
-            console.log("Po setUserStudents", userData); // Użyj zmiennej userData
+            setUserStudents(res.data);
         } catch (e) {
             console.log(e);
         }
@@ -28,7 +23,6 @@ const Agenda = () => {
 
 
     useEffect(() => {
-        console.log("Component mounted");
         fetchStudent();
     }, []); // Uruchamiamy tylko raz po zamontowaniu komponentu
 
@@ -37,31 +31,6 @@ const Agenda = () => {
 
 
 
-    useEffect(() => {
-        const sortedStudents = userStudents.map(student => {
-            const { nextMeetingDateConverted, hourConverted } = meetingInfo(student);
-            return {
-                ...student,
-                meetingDay: nextMeetingDateConverted,
-                meetingHour: hourConverted
-            };
-        }).sort((studentA, studentB) => {
-            const dateA = new Date(studentA.meetingDay + ' ' + studentA.meetingHour);
-            const dateB = new Date(studentB.meetingDay + ' ' + studentB.meetingHour);
-
-            if (dateA < dateB) {
-                return -1;
-            } else if (dateA > dateB) {
-                return 1;
-            } else {
-                return 0;
-            }
-        });
-
-
-        // Zaktualizuj posortowaną listę studentów
-        setSortedStudents(sortedStudents);
-    }, [userStudents]);
 
 
 
@@ -75,7 +44,7 @@ const Agenda = () => {
             </div>
             <div className={"flex-between"}>
                 <div>
-                    {sortedStudents.map((student) => (
+                    {userStudents.map((student) => (
                         <AgendaUser fetchStudent={fetchStudent} student={student} key={student._id} />
                     ))}
                 </div>

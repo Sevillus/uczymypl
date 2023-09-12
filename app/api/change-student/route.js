@@ -1,6 +1,8 @@
 import User from "../../../models/user";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
+import meetingInfo from "../../../utils/meetingDay";
+import {sortByDate} from "../../../utils/sortByDate";
 
 export async function POST(req) {
     const session = await getServerSession(authOptions);
@@ -23,7 +25,11 @@ export async function POST(req) {
             student.price = body.price
             student.day = body.day
             student.time = body.time
+            student.nextMeeting = meetingInfo(body.day, body.time)
 
+            sortByDate(sessionUser.students)
+
+            console.log(`User has changed ${sessionUser.students}`)
             await sessionUser.save();
 
 

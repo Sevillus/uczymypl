@@ -1,6 +1,8 @@
 import React from 'react'
 import {generateDate} from "../../utils/calendar";
 import cn from "../../utils/cn";
+import convertDate from "../../utils/convertDate";
+import dayjs from "dayjs";
 
 const AgendaDate = (props) => {
     const { today, selectedDay, setSelectedDay, students } = props
@@ -16,7 +18,8 @@ const AgendaDate = (props) => {
         sobota: 6
     };
 
-    const studentsThisDay = (date) => students.filter(student => daysOfWeek[student.day.toLowerCase()] === date.day() ? "jest" : "")
+
+
 
     return (
         <div className={"w-full h-full  grid grid-cols-7 "}>
@@ -33,16 +36,24 @@ const AgendaDate = (props) => {
                             {date.date()}
                         </p>
                         <div className={"flex flex-col overflow-hidden"}>
-                            {studentsThisDay(date).map(( student, index) => (
-                                <div key={index} className={"flex justify-start gap-2 border-b border-b px-2 py-1 min-h-2 overflow-hidden"}>
-                                   <span className={"text-xs  "}>
-                                       {student.time}
-                                   </span>
-                                    <span className={"text-xs"}>
-                                        {student.name.split(' ')[0]}
-                                   </span>
-                                </div>
-                            ))}
+                            {
+                                students.filter(student => {
+                                    if (dayjs(student.nextMeeting).format("MMM D YYYY") ===
+                                        date.format("MMM D YYYY") ){
+                                        return student
+                                    }
+                                })
+                                    .map(( student, index) => (
+                                    <div key={index} className={"flex justify-start gap-2 border-b border-b px-2 py-1 min-h-2 overflow-hidden"}>
+                                       <span className={"text-xs  "}>
+                                           {student.time}
+                                       </span>
+                                        <span className={"text-xs"}>
+                                            {student.name.split(' ')[0]}
+                                       </span>
+                                    </div>
+                                ))
+                            }
                         </div>
 
                     </div>
