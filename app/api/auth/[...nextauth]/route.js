@@ -45,6 +45,7 @@ export const authOptions = {
                         email: profile.email,
                         username: profile.name.replace(" ", "").toLowerCase(),
                         image: profile.picture,
+                        meetingHistory: [[]]
                     });
                 }
 

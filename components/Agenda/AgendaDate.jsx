@@ -25,7 +25,7 @@ const AgendaDate = (props) => {
         <div className={"w-full h-full  grid grid-cols-7 "}>
             {generateDate(month).map(({ date, currentMonth, today }, index) => {
                 return (
-                    <div className={"flex justify-between border-2 p-1 h-24 cursor-pointer"} key={index} onClick={() => setSelectedDay(date)}>
+                    <div className={"flex justify-between border-2 p-1 h-24 lg:h-16 cursor-pointer"} key={index} onClick={() => setSelectedDay(date)}>
                         <p className={cn(currentMonth?"":"text-gray-400", today
                             ? "bg-red-600 text-white font-semibold border border-current rounded-full w-8 h-8 flex-center"
                             : "",selectedDay

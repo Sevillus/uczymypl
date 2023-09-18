@@ -67,6 +67,27 @@
 .closeBtn:hover{
   transform: rotate(30deg);
 }
+
 .addBtn{
   @apply border-2 py-1 px-3 rounded-xl
+}
+circle{
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 30px;
+  stroke-dasharray: 900;
+
+  transition: stroke-dashoffset 1s linear;
+}
+
+
+.outer{
+  box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15), -6px -6px 10px -1px rgba(255,255,255,0.7);
+}
+.inner{
+  box-shadow: inset 4px 4px 10px -1px rgba(0,0,0,0.2),
+  inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+  -0.5px -0.5px 0 rgba(255, 255, 255, 1),
+  1px 1px 0 rgba(0, 0, 0, 0.15),
+  0 12px 10px -10px rgba(0, 0, 0, 0.05) ;
 }

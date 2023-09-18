@@ -23,7 +23,7 @@ const Page = () => {
             const res = await axios.get("http://localhost:3000/api/getUserData");
             const userData = res.data;
 
-            setUserStudents(userData);
+            setUserStudents(userData.students);
         } catch (e) {
             console.log(e);
         }
@@ -34,11 +34,9 @@ const Page = () => {
     }, []); // Uruchamiamy tylko raz po zamontowaniu komponentu
 
 
-
-    console.log(currentDate.format("MMM D YYYY") )
     return (
         <div className={"flex items-start overflow-hidden gap-2"}>
-            <div className={"border-2 w-9/12 rounded-lg "}>
+            <div className={"border-2 w-9/12 lg:w-10/12 rounded-lg "}>
                 <AgendaHeader today={today} setToday={setToday} />
                 <AgendaDays />
                 <AgendaDate students={userStudents}  today={today} selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>

@@ -22,6 +22,13 @@ const StudentSchema = new Schema({
     }
 });
 
+const monthsSchema = new Schema( {
+    month: {
+        type: String,
+    },
+    meetings: [StudentSchema],
+})
+
 const UserSchema = new Schema({
     email: {
         type: String,
@@ -41,7 +48,8 @@ const UserSchema = new Schema({
     target: {
         type: Number,
     },
-    students: [StudentSchema], // Zmieniamy na pojedynczy obiekt, nie lista
+    students: [StudentSchema],
+    meetingHistory: [monthsSchema]
 });
 
 
