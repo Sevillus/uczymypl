@@ -22,11 +22,12 @@ const StudentSchema = new Schema({
     }
 });
 
-const monthsSchema = new Schema( {
+const MonthsSchema = new Schema( {
     month: {
         type: String,
     },
-    meetings: [StudentSchema],
+    allMeetings: [StudentSchema],
+    lastMeetings: [StudentSchema],
 })
 
 const UserSchema = new Schema({
@@ -49,7 +50,7 @@ const UserSchema = new Schema({
         type: Number,
     },
     students: [StudentSchema],
-    meetingHistory: [monthsSchema]
+    meetingHistory: [MonthsSchema]
 });
 
 

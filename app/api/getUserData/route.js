@@ -24,7 +24,8 @@ export async function GET(req, res) {
       if (!sessionUser.meetingHistory[currentMonthIndex]) {
         sessionUser.meetingHistory[currentMonthIndex] = {
           month: dayjs().format("MMM"),
-          meetings: [],
+          lastMeetings: [],
+          allMeetings: []
         };
       }
 
@@ -34,7 +35,7 @@ export async function GET(req, res) {
             "MMM D YYYY H m",
           ) <= dayjs().format("MMM D YYYY H m")
         ) {
-          sessionUser.meetingHistory[currentMonthIndex].meetings.push(student);
+          sessionUser.meetingHistory[currentMonthIndex].lastMeetings.push(student);
         }
 
         student.nextMeeting = meetingInfo(student.day, student.time);
