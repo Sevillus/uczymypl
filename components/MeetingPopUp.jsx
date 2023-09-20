@@ -6,7 +6,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import ClearIcon from "@mui/icons-material/Clear";
 import fetchStudent from "../utils/fetchStudent";
 
-const MeetingPopUp = ({ user }) => {
+const MeetingPopUp = ({ user , setMeetingHistory}) => {
   const { data: session, status } = useSession();
   const [lastMeetings, setLastMeetings] = useState([]);
 
@@ -14,6 +14,7 @@ const MeetingPopUp = ({ user }) => {
     if (user && user.meetingHistory) {
       const currentMonthLastMeetings = user.meetingHistory[dayjs().month()].lastMeetings;
       setLastMeetings(currentMonthLastMeetings);
+      setMeetingHistory(user.meetingHistory[dayjs().month()].allMeetings)
     }
   }, [user]);
 
@@ -29,16 +30,17 @@ const MeetingPopUp = ({ user }) => {
       },
     });
     setLastMeetings(prevLastMeetings => prevLastMeetings.filter(prevStudent => prevStudent._id !== student._id));
+    setMeetingHistory(prev => [...prev.reverse(), student])
   };
 
 
 
   if(lastMeetings.length !== 0){
   return (
-    <div className={"w-2/6 absolute flex-center right-0"}>
+    <div className={"w-full h-full absolute flex-center top-0 right-0 backgroundShadow"}>
       <div
         className={
-          "py-6 padding-x border-2 w-full h-5/6 bg-white z-10 drop-shadow-xl flex flex-col gap-4  "
+          "py-6 padding-x border-2 w-2/6 h-5/6 bg-white z-10 drop-shadow-xl flex flex-col gap-4 z-30  "
         }
       >
         <h1>Cześć {session?.user.name.split(" ")[0]} !</h1>

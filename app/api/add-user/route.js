@@ -19,7 +19,6 @@ export async function POST(req) {
             sessionUser.role = body.role;
             sessionUser.target = Number(body.target);
             await sessionUser.save();
-            console.log("User role updated:", sessionUser);
             return new Response("Role added to user", { status: 200 });
         } else {
             return new Response("Role is missing in request body", { status: 400 });

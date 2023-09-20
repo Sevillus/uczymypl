@@ -7,16 +7,20 @@ import meetingInfo from "../../utils/meetingDay";
 import AddStudent from "../AddStudent";
 import MeetingPopUp from "../MeetingPopUp";
 
-const Agenda = () => {
+const Agenda = ({setMeetingHistory, setUserTarget}) => {
   const [userStudents, setUserStudents] = useState([]);
   const [userMenu, setUserMenu] = useState(false);
   const [user, setUser] = useState(null)
+
+
+
 
   const fetchStudent = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/getUserData");
       setUserStudents(res.data.students);
       setUser(res.data)
+      setUserTarget(res.data.target)
     } catch (e) {
       console.log(e);
     }
@@ -58,7 +62,7 @@ const Agenda = () => {
           />
         </div>
       )}
-      <MeetingPopUp user={user}/>
+      <MeetingPopUp user={user} setMeetingHistory={setMeetingHistory}/>
 
     </div>
   );

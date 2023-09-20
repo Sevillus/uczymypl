@@ -1,9 +1,17 @@
-"use client"
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+function ProgressBar({ earnedThisMonth, userTarget}) {
+    const circleRef = useRef(null);
+
+    const percent = (earnedThisMonth / userTarget) ;
+
+        if (circleRef.current) {
+            circleRef.current.style.strokeDashoffset = `${900-900*percent}`;
+        }
 
 
-function ProgressBar() {
-    const [p, setP] = useState(60); // Wartość procentowa
+
+
     return (
         <div className={"w-96 h-96 flex-center"}>
             <div className={"w-80 h-80  rounded-full flex-center drop-shadow-xl outer"} >
@@ -15,18 +23,18 @@ function ProgressBar() {
                         </linearGradient>
                     </defs>
                     <circle
+                        ref={circleRef} // Przypisz referencję do elementu circle
                         cx="250"
                         cy="250"
                         r="144"
                         strokeLinecap="round"
-                        strokeDashoffset={"250"}
                     />
                 </svg>
                 <div className={"w-64 h-64 rounded-full absolute inner"}/>
                 <div className={"flex flex-col items-center"}>
                     <span className={"text-xs"}>W tym miesiącu zarobiłeś:</span>
-                    <p className={"text-3xl"}>3090 zł</p>
-                    <span className={"text-xs"}>Pozostało 1000 zł</span>
+                    <p className={"text-3xl"}>{earnedThisMonth}zł</p>
+                    <span className={"text-xs"}>Pozostało {userTarget - earnedThisMonth} zł</span>
                 </div>
             </div>
         </div>
