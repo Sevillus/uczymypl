@@ -7,8 +7,8 @@ const AgendaDays = () => {
 
     return (
         <div className={"w-full  flex-between"}>
-            {days.map( day => (
-                <AgendaDay day={day} />
+            {days.map( (day , index) => (
+                <AgendaDay day={day} key={index} />
             ))}
 
         </div>
