@@ -7,8 +7,8 @@ import meetingInfo from "../../utils/meetingDay";
 import AddStudent from "../AddStudent";
 import MeetingPopUp from "../MeetingPopUp";
 
-const Agenda = ({ setMeetingHistory, setUserTarget }) => {
-  const [userStudents, setUserStudents] = useState([]);
+const Agenda = ({ setMeetingHistory, setUserTarget, setUserStudents, userStudents }) => {
+
   const [userMenu, setUserMenu] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -28,7 +28,7 @@ const Agenda = ({ setMeetingHistory, setUserTarget }) => {
   }, []); // Uruchamiamy tylko raz po zamontowaniu komponentu
 
   return (
-    <div className={"w-2/6   lg:w-5/12 flex flex-col gap-3 "}>
+    <div className={"w-4/12 flex flex-col gap-3 "}>
       <div className={"flex-between"}>
         <h1 className={"text-lg font-semibold "}>Nadchodzące spotkania</h1>
         <button

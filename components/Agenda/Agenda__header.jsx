@@ -12,7 +12,7 @@ const AgendaHeader = ( props ) => {
 
     return (
         <div className={"w-full h-14 lg:h-12 border-b-[2px] bg-slate-100 flex-between padding-y padding-x"}>
-            <div className={"flex-between w-3/12 gap-2"}>
+            <div className={"flex-between gap-2"}>
                 <button>
                     <KeyboardArrowLeftIcon onClick={ () => today > 0 ? setToday(today - 1) : setToday(11)}/>
                 </button>
@@ -21,9 +21,7 @@ const AgendaHeader = ( props ) => {
                     <KeyboardArrowRightIcon onClick={ () => today < 11 ? setToday(today + 1) : setToday(0)}/>
                 </button>
             </div>
-            <button >
-                <AddCircleOutlineIcon />
-            </button>
+
         </div>
     )
 }

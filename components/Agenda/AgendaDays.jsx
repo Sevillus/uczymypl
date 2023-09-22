@@ -2,7 +2,7 @@ import AgendaDay from "./AgendaDay";
 import {generateDate} from "../../utils/calendar";
 
 const AgendaDays = () => {
-    const days = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"]
+    const days = ["Pon", "Wt", "Śr", "Czw", "Pi", "Sob", "Nie"]
 
 
     return (
