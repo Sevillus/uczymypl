@@ -13,12 +13,6 @@ const Calendar = ({userStudents}) => {
     const [today, setToday] = useState(currentDate.month())
     const [selectedDay, setSelectedDay] = useState(currentDate)
 
-
-
-
-
-
-    console.log()
     return (
         <div >
             <div className={"border rounded-lg "}>

@@ -24,7 +24,9 @@ export async function POST(req) {
     } else {
         meetingHistory.lastMeetings = meetingHistory.lastMeetings.filter(
             (student) => student._id != body.student._id,
+
         );
+        console.log("usunięto")
         await sessionUser.save();
         return new Response("Meeting added to history", { status: 200 });
     }

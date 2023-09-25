@@ -5,8 +5,8 @@ import convertDate from "../../utils/convertDate";
 import dayjs from "dayjs";
 
 const AgendaDate = (props) => {
-  const { today, selectedDay, setSelectedDay, students } = props;
-  const month = today;
+  const {selectedDay, setSelectedDay, students } = props;
+  const month = props.today
 
   const daysOfWeek = {
     niedziela: 0,
@@ -23,48 +23,27 @@ const AgendaDate = (props) => {
       {generateDate(month).map(({ date, currentMonth, today }, index) => {
         return (
           <div
-            className={
-              "flex w-14 justify-between border-2 p-1 h-10  cursor-pointer"
-            }
+            className={"flex-center w-14 border-2 p-1 h-10  cursor-pointer"}
             key={index}
             onClick={() => setSelectedDay(date)}
           >
             <p
-              className={cn("text-sm",
+              className={cn(
+                "text-sm p-3 w-6 h-6 flex-center",
                 currentMonth ? "" : "text-gray-400",
-                today ? "text-red-600 font-semibold  rounded-full  flex-center": "",
+                today &&
+                  selectedDay.toDate().toDateString() !==
+                    date.toDate().toDateString()
+                  ? "text__main-color font-semibold border rounded-full  border-current"
+                  : "",
                 selectedDay.toDate().toDateString() ===
                   date.toDate().toDateString()
-                  ? "font-semibold   flex-center"
+                  ? "bg__main-color text-white border rounded-full "
                   : "",
               )}
             >
               {date.date()}
             </p>
-            {/*<div className={"flex flex-col overflow-hidden"}>*/}
-            {/*  {students*/}
-            {/*    .filter((student) => {*/}
-            {/*      if (*/}
-            {/*        dayjs(student.nextMeeting).format("MMM D YYYY") ===*/}
-            {/*        date.format("MMM D YYYY")*/}
-            {/*      ) {*/}
-            {/*        return student;*/}
-            {/*      }*/}
-            {/*    })*/}
-            {/*    .map((student, index) => (*/}
-            {/*      <div*/}
-            {/*        key={index}*/}
-            {/*        className={*/}
-            {/*          "flex justify-start gap-2 border-b border-b px-2 py-1 min-h-2 overflow-hidden"*/}
-            {/*        }*/}
-            {/*      >*/}
-            {/*        <span className={"text-xs  "}>{student.time}</span>*/}
-            {/*        <span className={"text-xs"}>*/}
-            {/*          {student.name.split(" ")[0]}*/}
-            {/*        </span>*/}
-            {/*      </div>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
           </div>
         );
       })}

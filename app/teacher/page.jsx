@@ -19,7 +19,6 @@ const Page = () => {
     const [userTarget, setUserTarget] = useState(0)
     const [userStudents, setUserStudents] = useState([]);
 
-
     return (
         <div className={"flex justify-between"}>
             <Agenda setMeetingHistory={setMeetingHistory} setUserTarget={setUserTarget} userStudents={userStudents} setUserStudents={setUserStudents}/>

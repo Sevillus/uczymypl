@@ -18,7 +18,12 @@
 .max-width {
   @apply max-w-[1440px] mx-auto;
 }
-
+.text__main-color{
+color: rgb(0, 123, 255)
+}
+.bg__main-color{
+  background: rgba(0, 123, 255, 0.75);
+}
 .padding-x {
   @apply sm:px-16 px-6;
 }

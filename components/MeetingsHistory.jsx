@@ -3,7 +3,7 @@ import convertDate from "../utils/convertDate";
 import dayjs from "dayjs";
 
 const MeetingsHistory = ({ meetingHistory , setEarnedThisMonth}) => {
-  let prevDay = null; // Zmienna do śledzenia poprzedniego dnia
+  let prevDay = null;
 
   let earned = 0
   meetingHistory.map(student => {
@@ -14,7 +14,7 @@ const MeetingsHistory = ({ meetingHistory , setEarnedThisMonth}) => {
 
   return (
     <div className={"w-full h-72 border-2 overflow-y-scroll "}>
-      {meetingHistory.reverse().map((student, index) => {
+      {meetingHistory.slice().reverse().map((student, index) => {
         const isSameDay = dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
         prevDay = student.nextMeeting;
 

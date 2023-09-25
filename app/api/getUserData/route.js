@@ -28,12 +28,11 @@ export async function GET(req, res) {
           allMeetings: []
         };
       }
-
+  //dodawanie ucznia do last history
       sessionUser.students.map((student, index) => {
         if (
-          dayjs(sessionUser.students[index].nextMeeting).format(
-            "MMM D YYYY H m",
-          ) <= dayjs().format("MMM D YYYY H m")
+            dayjs(sessionUser.students[index].nextMeeting)
+            <= dayjs()
         ) {
           sessionUser.meetingHistory[currentMonthIndex].lastMeetings.push(student);
         }
