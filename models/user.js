@@ -19,6 +19,9 @@ const StudentSchema = new Schema({
     },
     nextMeeting: {
         type: Date,
+    },
+    isPaid: {
+        type: Boolean
     }
 });
 

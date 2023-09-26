@@ -3,10 +3,6 @@ import Agenda from "../../components/Agenda/Agenda";
 import ProgressBar from "../../components/ProgressBar";
 import MeetingsHistory from "../../components/MeetingsHistory";
 import React, {useState} from "react";
-import AgendaHeader from "../../components/Agenda/Agenda__header";
-import AgendaDays from "../../components/Agenda/AgendaDays";
-import AgendaDate from "../../components/Agenda/AgendaDate";
-import dayjs from "dayjs";
 import Calendar from "../../components/Calendar";
 
 

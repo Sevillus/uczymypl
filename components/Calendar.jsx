@@ -21,8 +21,8 @@ const Calendar = ({userStudents}) => {
                 <AgendaDate students={userStudents}  today={today} selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>
             </div>
             <div className={" "}>
-                <div className={"flex flex-col border-l-2 border-current"}>
-                    <h1 className={"text-lg"}>Spotkania na {selectedDay.format('DD/MM/YYYY')}</h1>
+                <div className={"flex flex-col border-t-2 mt-6 border-current"}>
+                    <h1 className={"text-lg mt-2"}>Spotkania na {selectedDay.format('DD/MM/YYYY')}</h1>
                     {userStudents.map((student, index) => (
                         <div key={index}>
                             { daysOfWeek[student.day.toLowerCase()] === selectedDay.day() ? `${student.name} o ${student.time}` : ""

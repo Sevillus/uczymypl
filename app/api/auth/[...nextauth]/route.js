@@ -2,9 +2,6 @@ import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import User from "../../../../models/user";
 import {connectToDB} from "../../../../utils/database";
-import {redirect} from "next/navigation";
-import { useRouter } from 'next/navigation'
-
 
 
 export const authOptions = {
@@ -37,6 +34,8 @@ export const authOptions = {
                 await connectToDB();
                 // check if user already exists
                 const userExists = await User.findOne({ email: profile.email });
+
+
 
 
                 // if not, create a new document and save user in MongoDB
