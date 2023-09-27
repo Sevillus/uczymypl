@@ -1,22 +1,10 @@
 import React from "react";
 import { generateDate } from "../../utils/calendar";
 import cn from "../../utils/cn";
-import convertDate from "../../utils/convertDate";
-import dayjs from "dayjs";
 
 const AgendaDate = (props) => {
   const {selectedDay, setSelectedDay, students } = props;
   const month = props.today
-
-  const daysOfWeek = {
-    niedziela: 0,
-    poniedziałek: 1,
-    wtorek: 2,
-    środa: 3,
-    czwartek: 4,
-    piątek: 5,
-    sobota: 6,
-  };
 
   return (
     <div className={"w-full h-full  grid grid-cols-7 "}>

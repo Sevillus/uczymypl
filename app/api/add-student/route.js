@@ -19,7 +19,8 @@ export async function POST(req) {
             price: body.price,
             day: body.day,
             time: body.time,
-            nextMeeting: meetingInfo(body.day, body.time)
+            nextMeeting: meetingInfo(body.day, body.time),
+            isPaid: false
         };
         console.log(typeof(meetingInfo(body.day, body.time)))
 

@@ -18,7 +18,7 @@ export async function POST(req) {
     }
 
     if (body && !body.delete ) {
-      // Dodajemy ucznia do listy uczniów w obiekcie sessionUser
+      // changing student
       const student = sessionUser.students.find(
         (student) => student._id == body.id,
       );
@@ -34,7 +34,8 @@ export async function POST(req) {
       await sessionUser.save();
 
       return new Response("Student added to user", { status: 200 });
-    } else if (body && body.delete) {
+    }//deleting student
+    else if (body && body.delete) {
       const studentIndex = sessionUser.students.findIndex(
         (student) => student._id == body.id,
       );

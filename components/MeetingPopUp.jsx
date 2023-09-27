@@ -33,7 +33,6 @@ const MeetingPopUp = ({ user , setMeetingHistory}) => {
     setMeetingHistory(prev => [...prev.reverse(), student])
   };
 
-  console.log(lastMeetings)
 
   if(lastMeetings.length !== 0){
   return (
