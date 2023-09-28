@@ -21,7 +21,7 @@ const Page = () => {
             <Calendar userStudents={userStudents}/>
             <div className={"h-full"}>
                 <ProgressBar earnedThisMonth={earnedThisMonth} userTarget={userTarget}/>
-                <MeetingsHistory meetingHistory={meetingHistory} setEarnedThisMonth={setEarnedThisMonth}/>
+                <MeetingsHistory meetingHistory={meetingHistory} setMeetingHistory={setMeetingHistory} setEarnedThisMonth={setEarnedThisMonth}/>
             </div>
         </div>
     )

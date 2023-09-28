@@ -7,22 +7,28 @@ const MeetingHistoryInfo = ({
   student,
   meetingHistory,
   setEarnedThisMonth,
-  setPaymentInfo
+  paymentInfo,
+  setPaymentInfo,
+    filtr
 }) => {
+
   const [payment, setPayment] = useState(student.isPaid);
-  const [earned, setEarned] = useState(0);
+
+
 
 
 
   useEffect(() => {
     let counter = 0;
+    const unPaid = meetingHistory.filter(student => student.isPaid === false)
+    setPaymentInfo(unPaid)
+    filtr? meetingHistory.forEach(student => student.isPaid = false) :""
     meetingHistory.forEach((student) => {
       if(student.isPaid) {
         counter = counter + student.price
-        setPaymentInfo(prev => [...prev, 1])
       }
     });
-    setEarned(counter);
+
     setEarnedThisMonth(counter);
   }, [meetingHistory, setEarnedThisMonth]);
 
@@ -31,13 +37,14 @@ const MeetingHistoryInfo = ({
 
     let updatedEarned = 0;
     if (!payment) {
-      updatedEarned = earned + student.price;
-      setPaymentInfo(prev =>[...prev,1])
+      const studentIndex = paymentInfo.findIndex(student => student._id == student._id)
+      setPaymentInfo(prev => prev.length === 1 ? [] : prev.slice(studentIndex - 1));
+      setEarnedThisMonth(prev => prev + student.price)
     } else {
-      updatedEarned = earned - student.price;
+      setPaymentInfo(prev => [...prev, student])
+      setEarnedThisMonth(prev => prev - student.price)
     }
-    setEarned(updatedEarned);
-    setEarnedThisMonth(updatedEarned);
+
     await fetch(`api/meeting-history`, {
       method: "POST",
       body: JSON.stringify({
