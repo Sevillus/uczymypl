@@ -9,23 +9,20 @@ const MeetingHistoryInfo = ({
   setEarnedThisMonth,
   paymentInfo,
   setPaymentInfo,
-    filtr
+  filtr,
+                              setFiltr
 }) => {
-
   const [payment, setPayment] = useState(student.isPaid);
 
-
-
-
+  console.log(filtr);
 
   useEffect(() => {
     let counter = 0;
-    const unPaid = meetingHistory.filter(student => student.isPaid === false)
-    setPaymentInfo(unPaid)
-    filtr? meetingHistory.forEach(student => student.isPaid = false) :""
+    const unPaid = meetingHistory.filter((student) => student.isPaid === false);
+    setPaymentInfo(unPaid);
     meetingHistory.forEach((student) => {
-      if(student.isPaid) {
-        counter = counter + student.price
+      if (student.isPaid) {
+        counter = counter + student.price;
       }
     });
 
@@ -37,14 +34,21 @@ const MeetingHistoryInfo = ({
 
     let updatedEarned = 0;
     if (!payment) {
-      const studentIndex = paymentInfo.findIndex(student => student._id == student._id)
-      setPaymentInfo(prev => prev.length === 1 ? [] : prev.slice(studentIndex - 1));
-      setEarnedThisMonth(prev => prev + student.price)
+      const studentIndex = paymentInfo.findIndex(
+        (student) => student._id == student._id,
+      );
+      setPaymentInfo((prev) =>
+        prev.length === 1 ? [] : prev.slice(studentIndex - 1),
+      );
+      setEarnedThisMonth((prev) => prev + student.price);
     } else {
-      setPaymentInfo(prev => [...prev, student])
-      setEarnedThisMonth(prev => prev - student.price)
+      setPaymentInfo((prev) => [...prev, student]);
+      setEarnedThisMonth((prev) => prev - student.price);
     }
-
+    if(paymentInfo.length === 1){
+      setFiltr(false)
+      console.log("elo")
+    }
     await fetch(`api/meeting-history`, {
       method: "POST",
       body: JSON.stringify({
@@ -57,7 +61,7 @@ const MeetingHistoryInfo = ({
     });
   };
 
-  return (
+  return !filtr ? (
     <div className={"flex-between px-4"}>
       <p>{student.name}</p>
       <div className={"flex gap-4"}>
@@ -77,6 +81,28 @@ const MeetingHistoryInfo = ({
         )}
       </div>
     </div>
+  ) : !payment ? (
+    <div className={"flex-between px-4"}>
+      <p>{student.name}</p>
+      <div className={"flex gap-4"}>
+        <p className={payment ? "text-green-600" : "text-rose-600"}>
+          {student.price},00zł
+        </p>
+        {payment ? (
+          <ClearIcon
+            className={"w-4"}
+            onClick={() => addPayment(student, false)}
+          />
+        ) : (
+          <DoneIcon
+            className={"w-4"}
+            onClick={() => addPayment(student, true)}
+          />
+        )}
+      </div>
+    </div>
+  ) : (
+    ""
   );
 };
 export default MeetingHistoryInfo;
