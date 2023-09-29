@@ -5,6 +5,8 @@ import dayjs from "dayjs";
 import MeetingHistoryInfo from "./meetingHistoryInfo";
 import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
 import CloseIcon from "@mui/icons-material/Close";
+import Link from "next/link";
+import GeneratePdfButton from "./GeneratePdfButton";
 
 const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
   let prevDay = null;
@@ -14,7 +16,6 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
   const filtrHandler = (option) => {
     setFiltr(option);
   };
-
 
 
   return (
@@ -76,7 +77,9 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
               </div>
             );
           })}
+          <GeneratePdfButton meetingHistory = {meetingHistory}/>
       </div>
+
     </div>
   );
 };
