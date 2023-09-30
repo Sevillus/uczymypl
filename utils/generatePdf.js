@@ -31,7 +31,7 @@ const generatePDF = async (meetingHistory) => {
     const tableY = page.getHeight() - 50;
 
     // Rysuj tabelę
-    drawTable(page, table, tableX, tableY, columnWidths);
+    // drawTable(page, table, tableX, tableY, columnWidths);
 
     const pdfBytes = await pdfDoc.save();
     return pdfBytes;
