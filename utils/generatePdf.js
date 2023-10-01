@@ -40,16 +40,16 @@ const generatePDF = async (meetingHistory) => {
 function drawTable(page, table, x, y, columnWidths) {
     const tableHeight = table.rows.length * 20; // Wysokość tabeli
     const tableWidth = columnWidths.reduce((a, b) => a + b, 0); // Szerokość tabeli
-
-    // Rysuj ramkę tabeli
-    page.drawRectangle({
-        x,
-        y,
-        width: tableWidth,
-        height: tableHeight,
-        borderColor: rgb(0, 0, 0),
-        borderWidth: 1,
-    });
+    //
+    // // Rysuj ramkę tabeli
+    // page.drawRectangle({
+    //     x,
+    //     y,
+    //     width: tableWidth,
+    //     height: tableHeight,
+    //     borderColor: rgb(0, 0, 0),
+    //     borderWidth: 1,
+    // });
 
     // Rysuj nagłówki kolumn
     for (let i = 0; i < table.headers.length; i++) {
