@@ -1,46 +1,34 @@
 "use client"
 import { useState } from 'react';
+import {jsPDF} from "jspdf";
+import autoTable from 'jspdf-autotable'
+import dayjs from "dayjs";
 
 const GeneratePdfButton = ({ meetingHistory }) => {
     const [loading, setLoading] = useState(false);
 
     const handleGeneratePdf = async () => {
         try {
-            setLoading(true);
-
-            const response = await fetch('/api/generate-pdf', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    meetingHistory: meetingHistory,
-                }),
+            console.log(meetingHistory)
+            const doc = jsPDF();
+            autoTable(doc, {
+                head: [["Data", "Imie i Nazwisko", "Kwota", "Status"]],
+                body: meetingHistory.map(({nextMeeting, name, price, isPaid}) => {
+                    let status = ""
+                    isPaid ? status = "Oplacone" : status = "Brak platności"
+                    return [dayjs(nextMeeting).format("DD-MM-YYYY"), name, price, status]
+                })
             });
-
-            if (response.ok) {
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'meeting_history.pdf';
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-            } else {
-                console.error('Błąd podczas wysyłania danych do API');
-            }
+            doc.save("a4.pdf");
         } catch (error) {
             console.error('Wystąpił błąd: ' + error.message);
         } finally {
             setLoading(false);
         }
     };
-
     return (
         <button onClick={handleGeneratePdf} disabled={loading}>
-            {loading ? 'Generowanie...' : 'Generuj PDF'}
+            Generuj PDF
         </button>
     );
 };
