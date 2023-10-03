@@ -1,12 +1,11 @@
 "use client";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { TextField } from "@mui/material";
+import {FormControlLabel, Switch, TextField} from "@mui/material";
 import AddStudentSelect from "./AddStudent__select";
 import { useState } from "react";
 
 const AddStudent = (props) => {
-  const school = ["Podstawowa", "Liceum", "Technikum", "Zawodowa"];
   const days = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek","Sobota", "Niedziela"];
 
   const {student} = props
@@ -15,6 +14,8 @@ const AddStudent = (props) => {
   const [price, setPrice] = useState(student? student.price : 0);
   const [day, setDay] = useState(student? student.day : "");
   const [userTime, setUserTime] = useState(student? student.time : "");
+  const [duration, setDuration] = useState(student? student.duration : "")
+  const [cyclical, setCyclical] = useState(student? student.cyclical : true)
   const [isDeleting, setIsDeleting] = useState(false);
 
   const closeMenu = props.closeMenu
@@ -33,16 +34,16 @@ const AddStudent = (props) => {
         price: price,
         day: day,
         time: userTime,
+        duration: duration,
+        cyclical: cyclical,
         id: studentId
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
-
-    // Po dodaniu studenta, ponownie pobierz listę studentów
-    props.closeMenu(false); // Zamknij menu
-    fetchStudent(); // Pobierz i zaktualizuj listę studentów
+    props.closeMenu(false);
+    fetchStudent();
   };
 
   const handleDelete = async (e) => {
@@ -91,6 +92,20 @@ const AddStudent = (props) => {
             label="Cena zajęć"
             variant="standard"
             type={"number"}
+        />
+        <TextField
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+            id="standard-basic"
+            label="Czas trwania (min)"
+            variant="standard"
+            type={"number"}
+        />
+        <FormControlLabel
+            control={<Switch defaultChecked />}
+            label="Zajęcia cykliczne"
+            checked={cyclical}
+            onChange={() => setCyclical(prev => !prev)}
         />
         <AddStudentSelect
           title="Dzień zajęć"

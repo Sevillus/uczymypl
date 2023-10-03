@@ -10,7 +10,7 @@ const MeetingHistoryInfo = ({
   paymentInfo,
   setPaymentInfo,
   filtr,
-                              setFiltr
+  setFiltr,
 }) => {
   const [payment, setPayment] = useState(student.isPaid);
 
@@ -45,9 +45,9 @@ const MeetingHistoryInfo = ({
       setPaymentInfo((prev) => [...prev, student]);
       setEarnedThisMonth((prev) => prev - student.price);
     }
-    if(paymentInfo.length === 1){
-      setFiltr(false)
-      console.log("elo")
+    if (paymentInfo.length === 1) {
+      setFiltr(false);
+      console.log("elo");
     }
     await fetch(`api/meeting-history`, {
       method: "POST",

@@ -21,17 +21,16 @@ export async function POST(req) {
     );
     await sessionUser.save();
     return new Response("Meeting added to history", { status: 200 });
-  }else if(body.id){
-    const studentIndex = meetingHistory.allMeetings.reverse().findIndex((student) => student._id == body.id);
+  } else if (body.id) {
+    const studentIndex = meetingHistory.allMeetings
+      .findIndex((student) => student._id == body.id);
     meetingHistory.allMeetings[studentIndex].isPaid = body.isPaid;
     await sessionUser.save();
     return new Response("Student has paid", { status: 200 });
-  }
-  else {
+  } else {
     meetingHistory.lastMeetings = meetingHistory.lastMeetings.filter(
       (student) => student._id != body.student._id,
     );
-    console.log("usunięto");
     await sessionUser.save();
     return new Response("Meeting added to history", { status: 200 });
   }

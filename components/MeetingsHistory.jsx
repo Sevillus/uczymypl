@@ -19,22 +19,21 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
 
 
   return (
-    <div>
-      <div className={"flex-between"}>
+    <div className={"flex flex-col items-center gap-2"}>
+      <div className={"w-full flex-between"}>
         <h1 className={"mb-2 text-lg font-semibold"}>Historia płatności</h1>
         {paymentInfo.length ? (
           <div>
             {!filtr ? (
               <div
-                className={"flex gap-2 text-rose-600 "}
+                className={"text-rose-600 cursor-pointer"}
                 onClick={() => filtrHandler(true)}
               >
-                <ReportGmailerrorredIcon />
                 <p>Brak płatności!</p>
               </div>
             ) : (
               <div
-                className={"flex gap-2 "}
+                className={"flex gap-2  cursor-pointer"}
                 onClick={() => filtrHandler(false)}
               >
                 <p>Wyłącz filtr</p>
@@ -46,10 +45,9 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
           ""
         )}
       </div>
-      <div className={"w-full h-72 border-2 overflow-y-scroll "}>
+      <div className={"w-full h-64 border-2 overflow-y-scroll "}>
         {meetingHistory
           .slice()
-          .reverse()
           .map((student, index) => {
             const isSameDay =
               dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
@@ -77,9 +75,9 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
               </div>
             );
           })}
-          <GeneratePdfButton meetingHistory = {meetingHistory}/>
-      </div>
 
+      </div>
+        <GeneratePdfButton meetingHistory = {meetingHistory}/>
     </div>
   );
 };

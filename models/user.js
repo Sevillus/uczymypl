@@ -17,6 +17,15 @@ const StudentSchema = new Schema({
         type: String,
         required: [true, 'time is required!'],
     },
+    cyclical : {
+        type: Boolean,
+        required: [true]
+    },
+    duration: {
+        type: Number,
+        required: true
+    }
+    ,
     nextMeeting: {
         type: Date,
     },

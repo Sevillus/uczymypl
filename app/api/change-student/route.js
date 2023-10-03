@@ -18,7 +18,7 @@ export async function POST(req) {
     }
 
     if (body && !body.delete ) {
-      // changing student
+
       const student = sessionUser.students.find(
         (student) => student._id == body.id,
       );
@@ -27,10 +27,9 @@ export async function POST(req) {
       student.day = body.day;
       student.time = body.time;
       student.nextMeeting = meetingInfo(body.day, body.time);
-
+      student.duration = body.duration, student.cyclical = body.cyclical,
       sortByDate(sessionUser.students);
 
-      console.log(`User has changed ${sessionUser.students}`);
       await sessionUser.save();
 
       return new Response("Student added to user", { status: 200 });

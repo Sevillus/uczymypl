@@ -7,8 +7,12 @@ import meetingInfo from "../../utils/meetingDay";
 import AddStudent from "../AddStudent";
 import MeetingPopUp from "../MeetingPopUp";
 
-const Agenda = ({ setMeetingHistory, setUserTarget, setUserStudents, userStudents }) => {
-
+const Agenda = ({
+  setMeetingHistory,
+  setUserTarget,
+  setUserStudents,
+  userStudents,
+}) => {
   const [userMenu, setUserMenu] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -32,8 +36,8 @@ const Agenda = ({ setMeetingHistory, setUserTarget, setUserStudents, userStudent
       <div className={"flex-between"}>
         <h1 className={"text-lg font-semibold "}>Nadchodzące spotkania</h1>
         <button
-            className={"border-2 py-1 px-3 rounded-xl"}
-            onClick={() => setUserMenu(true)}
+          className={"border-2 py-1 px-3 rounded-xl"}
+          onClick={() => setUserMenu(true)}
         >
           {" "}
           Dodaj
@@ -41,7 +45,6 @@ const Agenda = ({ setMeetingHistory, setUserTarget, setUserStudents, userStudent
       </div>
 
       <div className={"h-4/6 overflow-y-scroll border-b-2"}>
-
         <div className={"flex-between"}>
           <div>
             {userStudents.map((student) => (
@@ -64,7 +67,6 @@ const Agenda = ({ setMeetingHistory, setUserTarget, setUserStudents, userStudent
         )}
         <MeetingPopUp user={user} setMeetingHistory={setMeetingHistory} />
       </div>
-
     </div>
   );
 };

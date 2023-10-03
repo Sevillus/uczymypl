@@ -8,10 +8,8 @@ import meetingInfo from "../../../utils/meetingDay";
 import { sortByDate } from "../../../utils/sortByDate";
 
 export async function GET(req, res) {
-  // Nawiąż połączenie z bazą danych
   await connectToDB();
 
-  // Pobierz aktualną sesję użytkownika
   const session = await getServerSession(authOptions);
 
   try {
@@ -25,16 +23,15 @@ export async function GET(req, res) {
         sessionUser.meetingHistory[currentMonthIndex] = {
           month: dayjs().format("MMM"),
           lastMeetings: [],
-          allMeetings: []
+          allMeetings: [],
         };
       }
-  //dodawanie ucznia do last history
+      //dodawanie ucznia do last history
       sessionUser.students.map((student, index) => {
-        if (
-            dayjs(sessionUser.students[index].nextMeeting)
-            <= dayjs()
-        ) {
+        if (dayjs(sessionUser.students[index].nextMeeting) <= dayjs()) {
           sessionUser.meetingHistory[currentMonthIndex].lastMeetings.push(student);
+          //usuwanie studenta gdy nie ma zaznaczonych zajęć cyklicznych
+          !student.cyclical ? sessionUser.students.splice(index, 1) : ""
         }
 
         student.nextMeeting = meetingInfo(student.day, student.time);

@@ -1,42 +1,42 @@
 const meetingInfo = (day, time) => {
-    // Mapowanie dni tygodnia na ich numer w JavaScript (0 - niedziela, 1 - poniedziałek, ...)
-    const daysOfWeek = {
-        niedziela: 0,
-        poniedziałek: 1,
-        wtorek: 2,
-        środa: 3,
-        czwartek: 4,
-        piątek: 5,
-        sobota: 6
-    };
 
-// Aktualna data
-    const today = new Date();
+  const daysOfWeek = {
+    niedziela: 0,
+    poniedziałek: 1,
+    wtorek: 2,
+    środa: 3,
+    czwartek: 4,
+    piątek: 5,
+    sobota: 6,
+  };
 
-// Dzień i godzina spotkania
-    const meetingDay = daysOfWeek[day.toLowerCase()];
-    const [meetingHour, meetingMinute] = time.split(':').map(Number);
+  const today = new Date();
 
+  const meetingDay = daysOfWeek[day.toLowerCase()];
+  const [meetingHour, meetingMinute] = time.split(":").map(Number);
 
-//
-// // Tworzenie daty kolejnego spotkania
-    let nextMeetingDate = new Date(today);
-    nextMeetingDate.setDate(today.getDate() + ((meetingDay + 7 - today.getDay()) % 7));
-    nextMeetingDate.setHours(meetingHour, meetingMinute, 0, 0);
+  let nextMeetingDate = new Date(today);
+  nextMeetingDate.setDate(
+    today.getDate() + ((meetingDay + 7 - today.getDay()) % 7),
+  );
+  nextMeetingDate.setHours(meetingHour, meetingMinute, 0, 0);
 
+  if (nextMeetingDate <= today) {
+    nextMeetingDate.setDate(nextMeetingDate.getDate() + 7);
+  }
 
-// Sprawdzanie, czy kolejne spotkanie jest w tej samej tygodni
-    if (nextMeetingDate <= today) {
-        nextMeetingDate.setDate(nextMeetingDate.getDate() + 7);
-    }
+  const nextMeetingDateConverted = nextMeetingDate.toLocaleDateString("pl-PL", {
+    month: "numeric",
+    day: "numeric",
+    weekday: "long",
+  });
+  const hourConverted = nextMeetingDate.toLocaleTimeString("pl-PL", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
 
-// Teraz 'nextMeetingDate' zawiera datę kolejnego spotkania
-    const nextMeetingDateConverted= nextMeetingDate.toLocaleDateString('pl-PL', { month: 'numeric', day: 'numeric', weekday: 'long' })
-    const hourConverted = nextMeetingDate.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit', hour12: false })
-
-
-    return  nextMeetingDate;
+  return nextMeetingDate;
 };
 
 export default meetingInfo;
-
