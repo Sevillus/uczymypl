@@ -34,7 +34,7 @@ const Agenda = ({
   return (
     <div className={"w-4/12 flex flex-col gap-3 "}>
       <div className={"flex-between"}>
-        <h1 className={"text-lg font-semibold "}>Nadchodzące spotkania</h1>
+        <h1 className={"title"}>Nadchodzące spotkania</h1>
         <button
           className={"border-2 py-1 px-3 rounded-xl"}
           onClick={() => setUserMenu(true)}

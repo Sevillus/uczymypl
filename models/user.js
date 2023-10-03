@@ -33,6 +33,12 @@ const StudentSchema = new Schema({
         type: Boolean
     }
 });
+const ScheduleSchema = new Schema ({
+    dayName : {
+        type: String
+    },
+    studentsThisDay : [StudentSchema]
+})
 
 const MonthsSchema = new Schema( {
     month: {
@@ -62,6 +68,7 @@ const UserSchema = new Schema({
         type: Number,
     },
     students: [StudentSchema],
+    schedule: [ScheduleSchema],
     meetingHistory: [MonthsSchema]
 });
 

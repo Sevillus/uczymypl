@@ -4,9 +4,9 @@ import Link from "next/link";
 const Navbar = () => {
     return (
         <div className={"flex gap-7"}>
-            <Link href={"/teacher/agenda"} className={"navbar__btn"}>Terminarz</Link>
+            <Link href={"/teacher/schedule"} className={"navbar__btn"}>Plan zajęc</Link>
             <Link href={"/user/students"} className={"navbar__btn"}>Uczniowie</Link>
-            <Link href={"/user/materials"} className={"navbar__btn"}>Materiały</Link>
+            <Link href={"/user/students"} className={"navbar__btn"}>Historia</Link>
         </div>
     )
 }

@@ -21,7 +21,7 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
   return (
     <div className={"flex flex-col items-center gap-2"}>
       <div className={"w-full flex-between"}>
-        <h1 className={"mb-2 text-lg font-semibold"}>Historia płatności</h1>
+        <h1 className={"title"}>Historia płatności</h1>
         {paymentInfo.length ? (
           <div>
             {!filtr ? (

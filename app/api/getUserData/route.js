@@ -6,6 +6,7 @@ import { authOptions } from "../auth/[...nextauth]/route";
 import dayjs from "dayjs";
 import meetingInfo from "../../../utils/meetingDay";
 import { sortByDate } from "../../../utils/sortByDate";
+import {daysOfWeek} from "../../../constants/months";
 
 export async function GET(req, res) {
   await connectToDB();
@@ -26,15 +27,16 @@ export async function GET(req, res) {
           allMeetings: [],
         };
       }
-      //dodawanie ucznia do last history
+
       sessionUser.students.map((student, index) => {
+        //dodawanie ucznia do last history
         if (dayjs(sessionUser.students[index].nextMeeting) <= dayjs()) {
           sessionUser.meetingHistory[currentMonthIndex].lastMeetings.push(student);
           //usuwanie studenta gdy nie ma zaznaczonych zajęć cyklicznych
           !student.cyclical ? sessionUser.students.splice(index, 1) : ""
         }
-
         student.nextMeeting = meetingInfo(student.day, student.time);
+        student.schedule[daysOfWeek.`${student.day.toLowerCase()}`]
       });
       sortByDate(sessionUser.students);
 

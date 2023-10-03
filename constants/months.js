@@ -13,11 +13,12 @@ export const months = [
     "Grudzień"
 ]
 export const daysOfWeek = {
-    niedziela: 0,
-    poniedziałek: 1,
-    wtorek: 2,
-    środa: 3,
-    czwartek: 4,
-    piątek: 5,
-    sobota: 6
+    niedziela: 6,
+    poniedziałek: 0,
+    wtorek: 1,
+    środa: 2,
+    czwartek: 3,
+    piątek: 4,
+    sobota: 5
 };
+export const daysOfWeekNames = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"]

@@ -39,6 +39,7 @@ export const authOptions = {
             username: profile.name.replace(" ", "").toLowerCase(),
             image: profile.picture,
             meetingHistory: [[]],
+            schedule: [[]]
           });
         }
 
