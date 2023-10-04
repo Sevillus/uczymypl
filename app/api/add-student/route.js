@@ -5,7 +5,7 @@ import meetingInfo from "../../../utils/meetingDay";
 import { sortByDate } from "../../../utils/sortByDate";
 import dayjs from "dayjs";
 
-export async function POST(req) {
+export async function POST(req, res) {
   const session = await getServerSession(authOptions);
   const body = await req.json();
   if (session?.user) {
@@ -34,8 +34,15 @@ export async function POST(req) {
 
       return formattedTime;
     };
-
-
+    let er = []
+    const studentsThisDay = sessionUser.students.filter(student =>  student.day === body.day )
+    studentsThisDay.map(student => {
+        if((student.time < body.time && body.time < student.duration ) || (formatTime(body) > student.time) ) {
+          er.push(student)
+          // return new Response("błąd", { status: 403 });
+        }
+    })
+    console.log(er)
 
     const newStudent = {
       name: body.name,
@@ -49,13 +56,18 @@ export async function POST(req) {
     };
 
     if (body) {
-      sessionUser.students.push(newStudent);
-      sortByDate(sessionUser.students);
+      if( er.length === 0){
+        sessionUser.students.push(newStudent);
+        sortByDate(sessionUser.students);
 
-      await sessionUser.save();
+        await sessionUser.save();
 
 
-      return new Response("Student added to user", { status: 200 });
+        return new Response("Student added to user", { status: 200 });
+      }else{
+        return new Response("siema", { status: 403 });
+      }
+
     } else {
       return new Response("Invalid or missing student data in request body", {
         status: 400,

@@ -14,7 +14,7 @@ const AddStudent = (props) => {
   const [price, setPrice] = useState(student? student.price : 0);
   const [day, setDay] = useState(student? student.day : "");
   const [userTime, setUserTime] = useState(student? student.time : "");
-  const [duration, setDuration] = useState(student? student.duration : "")
+  const [duration, setDuration] = useState( 60)
   const [cyclical, setCyclical] = useState(student? student.cyclical : true)
   const [isDeleting, setIsDeleting] = useState(false);
 

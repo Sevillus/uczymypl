@@ -47,7 +47,8 @@ export async function GET(req, res) {
         sessionUser.schedule.map(day => {
           if (day.dayName.toLowerCase() === studentDay ) {
             // Sprawdź, czy student o danym ID nie istnieje w studentsThisDay
-            const existingStudent = day.studentsThisDay.find(student => student.id === student.id);
+            const existingStudent = day.studentsThisDay.find(existingStudent => existingStudent.id == student.id);
+
 
             // Jeśli nie istnieje, dodaj go do studentsThisDay
             if (!existingStudent) {

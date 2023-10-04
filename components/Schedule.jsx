@@ -27,19 +27,18 @@ const Schedule = () => {
   return (
     <div className={"flex-center"}>
       <div className={"flex-between w-10/12"}>
-          {user?.schedule?.map((day, index) => (
-              <div key={index}>
-                  <h1 className="title">{day.dayName}</h1>
-                  <div>
-                      {day.studentsThisDay.map((student, studentIndex) => (
-                          <div key={studentIndex} >
-                            {student.time} - {student.duration}
-                            {student.name}
-                          </div>
-                      ))}
-                  </div>
+        {user?.schedule?.map((day, index) => (
+            <div key={index}>
+              <h1 className="title">{day.dayName}</h1>
+              <div>
+                {day.studentsThisDay.map((student, studentIndex) => (
+                    <div key={studentIndex}>
+                      {student.time} - {student.duration} {student.name}
+                    </div>
+                ))}
               </div>
-          ))}
+            </div>
+        ))}
       </div>
     </div>
   );
