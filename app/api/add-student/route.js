@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 import meetingInfo from "../../../utils/meetingDay";
 import { sortByDate } from "../../../utils/sortByDate";
+import dayjs from "dayjs";
 
 export async function POST(req) {
   const session = await getServerSession(authOptions);
@@ -13,12 +14,35 @@ export async function POST(req) {
     if (!sessionUser) {
       return new Response("User not found", { status: 404 });
     }
+
+    const formatTime = (student) => {
+      const [studentHour, studentMinute] = student.time.split(':').map(Number);
+      const durationMinutes = student.duration; // Czas trwania w minutach
+
+      // Oblicz godzinę i minutę wynikową
+      let newHour = studentHour;
+      let newMinute = studentMinute + durationMinutes;
+
+      // Sprawdź, czy trzeba uwzględnić dodatkową godzinę
+      if (newMinute >= 60) {
+        newHour += Math.floor(newMinute / 60);
+        newMinute %= 60;
+      }
+
+      // Sformatuj wynik
+      const formattedTime = dayjs().hour(newHour).minute(newMinute).format('HH:mm');
+
+      return formattedTime;
+    };
+
+
+
     const newStudent = {
       name: body.name,
       price: body.price,
       day: body.day,
       time: body.time,
-      duration: body.duration,
+      duration: formatTime(body),
       cyclical: body.cyclical,
       nextMeeting: meetingInfo(body.day, body.time),
       isPaid: false,
@@ -26,7 +50,6 @@ export async function POST(req) {
 
     if (body) {
       sessionUser.students.push(newStudent);
-
       sortByDate(sessionUser.students);
 
       await sessionUser.save();

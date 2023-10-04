@@ -6,7 +6,7 @@ import { authOptions } from "../auth/[...nextauth]/route";
 import dayjs from "dayjs";
 import meetingInfo from "../../../utils/meetingDay";
 import { sortByDate } from "../../../utils/sortByDate";
-import {daysOfWeek} from "../../../constants/months";
+import {daysOfWeek, daysOfWeekNames} from "../../../constants/months";
 
 export async function GET(req, res) {
   await connectToDB();
@@ -28,16 +28,35 @@ export async function GET(req, res) {
         };
       }
 
+
+        sessionUser.schedule = daysOfWeekNames.map(dayName => ({
+          dayName: dayName,
+          studentsThisDay: []
+        }));
+
       sessionUser.students.map((student, index) => {
         //dodawanie ucznia do last history
         if (dayjs(sessionUser.students[index].nextMeeting) <= dayjs()) {
           sessionUser.meetingHistory[currentMonthIndex].lastMeetings.push(student);
-          //usuwanie studenta gdy nie ma zaznaczonych zajęć cyklicznych
+          //usuwanie studenta, gdy nie ma zaznaczonych zajęć cyklicznych
           !student.cyclical ? sessionUser.students.splice(index, 1) : ""
         }
         student.nextMeeting = meetingInfo(student.day, student.time);
-        student.schedule[daysOfWeek.`${student.day.toLowerCase()}`]
+        const studentDay = student.day.toLowerCase()
+
+        sessionUser.schedule.map(day => {
+          if (day.dayName.toLowerCase() === studentDay ) {
+            // Sprawdź, czy student o danym ID nie istnieje w studentsThisDay
+            const existingStudent = day.studentsThisDay.find(student => student.id === student.id);
+
+            // Jeśli nie istnieje, dodaj go do studentsThisDay
+            if (!existingStudent) {
+              day.studentsThisDay.push(student);
+            }
+          }
+        });
       });
+
       sortByDate(sessionUser.students);
 
       await sessionUser.save();

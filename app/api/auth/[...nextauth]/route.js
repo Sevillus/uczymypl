@@ -32,7 +32,7 @@ export const authOptions = {
         // check if user already exists
         const userExists = await User.findOne({ email: profile.email });
 
-        // if not, create a new document and save user in MongoDB
+
         if (!userExists) {
           await User.create({
             email: profile.email,
@@ -42,6 +42,7 @@ export const authOptions = {
             schedule: [[]]
           });
         }
+
 
         return true;
       } catch (error) {
