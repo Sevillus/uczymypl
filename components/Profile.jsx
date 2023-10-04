@@ -44,7 +44,7 @@ const Profile = (props) => {
             <button
                 type="button"
                 onClick={() => {
-                    signIn("google", { callbackUrl: `/` });
+                    signIn("google", { callbackUrl: `/teacher` });
                 }}
             >
                 Zaloguj się
