@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const NewAccount = () => {
   const [selectedRole, setSelectedRole] = useState("");
-  const [target, useTarget] = useState();
+  const [target, setTarget] = useState();
 
   const handleRoleChange = (e) => {
     setSelectedRole(e.target.value);
@@ -24,7 +24,7 @@ const NewAccount = () => {
   return (
     <div>
       <h1>Podaj swoją rolę</h1>
-      <form onSubmit={makeApiCall}>
+      <form onSubmit={() =>makeApiCall}>
         <label>
           <input
             type="radio"
@@ -54,7 +54,7 @@ const NewAccount = () => {
               inputMode="numeric"
               min="0"
               value={target}
-              onChange={(e) => useTarget(e.target.value)}
+              onChange={(e) => setTarget(e.target.value)}
             />
           </div>
         )}
