@@ -10,10 +10,10 @@ const HomePage = async () => {
     const userRole = session?.user.role
 
     if(userRole === "student" || userRole === "teacher"){
-        redirect(`/${userRole}`)
+
     }
     if(session && !userRole){
-        redirect('/createaccount')
+
     }
 
 

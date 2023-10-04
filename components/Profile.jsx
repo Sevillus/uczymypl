@@ -29,7 +29,7 @@ const Profile = (props) => {
                         <button
                             type="button"
                             onClick={() => {
-                                signOut({ callbackUrl: "http://localhost:3000" });
+                                signOut({ callbackUrl: "/" });
                             }}
                             className="outline_btn "
                         >
