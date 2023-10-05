@@ -1,7 +1,8 @@
 import React from 'react'
-import Logo from "@/components/Logo";
-import Navbar from "@/components/Navbar";
-import Profile from "@/components/Profile";
+import Logo from "./Logo";
+import Navbar from "./Navbar";
+import Profile from "./Profile";
+
 
 const Header = (props) => {
     const {name, img} = props
