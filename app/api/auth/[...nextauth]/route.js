@@ -14,23 +14,10 @@ export const authOptions = {
     signIn: "/signin",
   },
   callbacks: {
-    async session({ session }) {
-      try {
-        const sessionUser = await User.findOne({ email: session.user.email });
-        session.user.id = sessionUser._id.toString();
-        session.user.role = sessionUser.role;
-        session.user.students = sessionUser?.students;
-        return session;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-
     async signIn({ account, profile, user, credentials }) {
       try {
         await connectToDB();
         const userExists = await User.findOne({ email: profile.email });
-
 
         if (!userExists) {
           await User.create({
@@ -38,7 +25,7 @@ export const authOptions = {
             username: profile.name.replace(" ", "").toLowerCase(),
             image: profile.picture,
             meetingHistory: [[]],
-            schedule: [[]]
+            schedule: [[]],
           });
         }
 

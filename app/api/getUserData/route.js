@@ -9,12 +9,11 @@ import { sortByDate } from "../../../utils/sortByDate";
 import {daysOfWeek, daysOfWeekNames} from "../../../constants/months";
 
 export async function GET(req, res) {
-  await connectToDB();
 
   const session = await getServerSession(authOptions);
 
   try {
-    if (req.method === "GET" && session?.user) {
+    if (req.method === "GET" ) {
       // Pobierz dane użytkownika na podstawie sesji
       const sessionUser = await User.findOne({ email: session?.user.email });
 
