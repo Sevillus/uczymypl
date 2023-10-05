@@ -10,7 +10,7 @@ const Schedule = () => {
 
   const fetchStudent = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/getUserData");
+      const res = await axios.get("/api/getUserData");
       setUser(res.data);
     } catch (e) {
       console.log(e);

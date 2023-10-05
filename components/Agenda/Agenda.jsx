@@ -18,7 +18,7 @@ const Agenda = ({
 
   const fetchStudent = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/getUserData");
+      const res = await axios.get("/api/getUserData");
       setUserStudents(res.data.students);
       setUser(res.data);
       setUserTarget(res.data.target);
