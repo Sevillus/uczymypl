@@ -9,7 +9,7 @@ import { sortByDate } from "../../../utils/sortByDate";
 import {daysOfWeek, daysOfWeekNames} from "../../../constants/months";
 
 export async function GET(req, res) {
-  await connectToDB();
+
 
   const session = await getServerSession(authOptions);
 
