@@ -9,29 +9,29 @@ import fetchStudent from "../utils/fetchStudent";
 const MeetingPopUp = ({ user , setMeetingHistory}) => {
   const { data: session, status } = useSession();
   const [lastMeetings, setLastMeetings] = useState([]);
-
-  useEffect(() => {
-    if (user && user.meetingHistory) {
-      const currentMonthLastMeetings = user.meetingHistory[dayjs().month()].lastMeetings;
-      setLastMeetings(currentMonthLastMeetings);
-      setMeetingHistory(user.meetingHistory[dayjs().month()].allMeetings)
-    }
-  }, [user]);
-
-  const confirmHandler = async (student, option) => {
-    await fetch(`api/meeting-history`, {
-      method: "POST",
-      body: JSON.stringify({
-        addToHistory: option,
-        student: student
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    setLastMeetings(prevLastMeetings => prevLastMeetings.filter(prevStudent => prevStudent._id !== student._id));
-    setMeetingHistory(prev => [...prev.reverse(), student])
-  };
+  //
+  // useEffect(() => {
+  //   if (user && user.meetingHistory) {
+  //     const currentMonthLastMeetings = user.meetingHistory[dayjs().month()].lastMeetings;
+  //     setLastMeetings(currentMonthLastMeetings);
+  //     setMeetingHistory(user.meetingHistory[dayjs().month()].allMeetings)
+  //   }
+  // }, [user]);
+  //
+  // const confirmHandler = async (student, option) => {
+  //   await fetch(`api/meeting-history`, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       addToHistory: option,
+  //       student: student
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   setLastMeetings(prevLastMeetings => prevLastMeetings.filter(prevStudent => prevStudent._id !== student._id));
+  //   setMeetingHistory(prev => [...prev.reverse(), student])
+  // };
 
 
   if(lastMeetings.length !== 0){
