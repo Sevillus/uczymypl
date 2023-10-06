@@ -1,6 +1,5 @@
-import dayjs from 'dayjs';
-import 'dayjs/locale/pl';
 const meetingInfo = (day, time) => {
+
   const daysOfWeek = {
     niedziela: 0,
     poniedziałek: 1,
@@ -10,23 +9,24 @@ const meetingInfo = (day, time) => {
     piątek: 5,
     sobota: 6,
   };
-  dayjs.locale('pl');
-  const today = dayjs();
+
+  const today = new Date();
 
   const meetingDay = daysOfWeek[day.toLowerCase()];
   const [meetingHour, meetingMinute] = time.split(":").map(Number);
 
-  let nextMeetingDate = today;
-  nextMeetingDate = nextMeetingDate.set('day', meetingDay);
+  let nextMeetingDate = new Date(today);
+  nextMeetingDate.setDate(
+    today.getDate() + ((meetingDay + 7 - today.getDay()) % 7),
+  );
+  nextMeetingDate.setHours(meetingHour, meetingMinute, 0, 0);
 
-  if (nextMeetingDate < today) {
-    nextMeetingDate = nextMeetingDate.add(7, 'day');
+  if (nextMeetingDate <= today) {
+    nextMeetingDate.setDate(nextMeetingDate.getDate() + 7);
   }
 
-  nextMeetingDate = nextMeetingDate.set('hour', meetingHour+2) ;
-  nextMeetingDate = nextMeetingDate.set('minute', meetingMinute);
-  console.log(nextMeetingDate.toDate())
-  return nextMeetingDate.toDate();
+
+  return nextMeetingDate;
 };
 
 export default meetingInfo;
