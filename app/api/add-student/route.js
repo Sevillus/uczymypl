@@ -35,7 +35,7 @@ export async function POST(req, res) {
       time: body.time,
       duration: formatTime(body),
       cyclical: body.cyclical,
-      nextMeeting: meetingInfo(body.day, body.time),
+      nextMeeting: dayjs(meetingInfo(body.day, body.time)),
       isPaid: false,
     };
 
