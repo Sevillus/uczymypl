@@ -8,18 +8,18 @@ const Schedule = () => {
   const [user, setUser] = useState("");
   const [studentsThisDay, setStudentThisDay] = useState([]);
 
-  // const fetchStudent = async () => {
-  //   try {
-  //     const res = await axios.get("/api/getUserData");
-  //     setUser(res.data);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-  //
-  // useEffect(() => {
-  //   fetchStudent();
-  // }, []);
+  const fetchStudent = async () => {
+    try {
+      const res = await axios.get("/api/getUserData");
+      setUser(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchStudent();
+  }, []);
 
 
 

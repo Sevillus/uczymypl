@@ -28,7 +28,6 @@ const Agenda = ({
   };
 
   useEffect(() => {
-    console.log("DZiała")
     fetchStudent();
   }, []); // Uruchamiamy tylko raz po zamontowaniu komponentu
 

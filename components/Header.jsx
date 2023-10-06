@@ -4,8 +4,9 @@ import Navbar from "./Navbar";
 import Profile from "./Profile";
 
 
-const Header = (props) => {
-    const {name, img} = props
+const Header = ({session}) => {
+    const name = session?.user.name
+    const img = session?.user.image
     return (
         <header className={"w-full flex-between mb-10"}>
             <Logo />

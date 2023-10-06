@@ -31,8 +31,7 @@ export default async function RootLayout({ children})
         <Provider>
             <div className={"padding-y padding-x"}>
                 <Header
-                    name={session?.user.name}
-                    img={session?.user.image}
+                    session = {session}
                 />
                 <main>
                     {children}

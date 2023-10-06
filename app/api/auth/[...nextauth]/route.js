@@ -14,6 +14,12 @@ export const authOptions = {
     signIn: "/signin",
   },
   callbacks: {
+    async jwt({ token, user, session}) {
+      return token;
+    },
+    async session({session, token, user}){
+      return session;
+    },
     async signIn({ account, profile, user, credentials }) {
       try {
         await connectToDB();
