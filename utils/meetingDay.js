@@ -1,5 +1,6 @@
+import dayjs from 'dayjs';
+import 'dayjs/locale/pl';
 const meetingInfo = (day, time) => {
-
   const daysOfWeek = {
     niedziela: 0,
     poniedziałek: 1,
@@ -9,34 +10,23 @@ const meetingInfo = (day, time) => {
     piątek: 5,
     sobota: 6,
   };
-
-  const today = new Date();
+  dayjs.locale('pl');
+  const today = dayjs();
 
   const meetingDay = daysOfWeek[day.toLowerCase()];
   const [meetingHour, meetingMinute] = time.split(":").map(Number);
 
-  let nextMeetingDate = new Date(today);
-  nextMeetingDate.setDate(
-    today.getDate() + ((meetingDay + 7 - today.getDay()) % 7),
-  );
-  nextMeetingDate.setHours(meetingHour, meetingMinute, 0, 0);
+  let nextMeetingDate = today;
+  nextMeetingDate = nextMeetingDate.set('day', meetingDay);
 
-  if (nextMeetingDate <= today) {
-    nextMeetingDate.setDate(nextMeetingDate.getDate() + 7);
+  if (nextMeetingDate < today) {
+    nextMeetingDate = nextMeetingDate.add(7, 'day');
   }
 
-  const nextMeetingDateConverted = nextMeetingDate.toLocaleDateString("pl-PL", {
-    month: "numeric",
-    day: "numeric",
-    weekday: "long",
-  });
-  const hourConverted = nextMeetingDate.toLocaleTimeString("pl-PL", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
-
-  return nextMeetingDate;
+  nextMeetingDate = nextMeetingDate.set('hour', meetingHour+2) ;
+  nextMeetingDate = nextMeetingDate.set('minute', meetingMinute);
+  console.log(nextMeetingDate.toDate())
+  return nextMeetingDate.toDate();
 };
 
 export default meetingInfo;

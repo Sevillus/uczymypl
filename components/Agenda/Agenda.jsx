@@ -34,6 +34,8 @@ const Agenda = ({
 
   return (
     <div className={"w-4/12 flex flex-col gap-3 "}>
+      <p>{dayjs().hour()}</p>
+      <p>{user?.students[0].nextMeeting}</p>
       <div className={"flex-between"}>
         <h1 className={"title"}>Nadchodzące spotkania</h1>
         <button
