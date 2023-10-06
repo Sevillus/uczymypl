@@ -8,6 +8,7 @@ import convertDate from "../../utils/convertDate";
 
 const AgendaUser = (props) => {
   const student = props.student;
+  console.log(student)
   const [isActive, setIsActive] = useState(false);
 
   const handleSettingsClick = () => {
@@ -23,7 +24,7 @@ const AgendaUser = (props) => {
             <CalendarMonthIcon />
             <span>
               {convertDate(student.nextMeeting).dayConverted} o{" "}
-              {convertDate(student.nextMeeting).hourConverted}{" "}
+              {student.time}
             </span>
           </div>
         </div>

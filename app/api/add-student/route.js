@@ -24,7 +24,7 @@ export async function POST(req, res) {
       let newHour = studentHour;
       let newMinute = studentMinute + durationMinutes;
 
-      // Sprawdź, czy trzeba uwzględnić dodatkową godzinę
+
       if (newMinute >= 60) {
         newHour += Math.floor(newMinute / 60);
         newMinute %= 60;
