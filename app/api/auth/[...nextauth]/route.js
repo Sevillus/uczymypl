@@ -13,7 +13,6 @@ export const authOptions = {
   pages: {
     signIn: "/signin",
   },
-
   callbacks: {
     async session({session, token, user}){
 

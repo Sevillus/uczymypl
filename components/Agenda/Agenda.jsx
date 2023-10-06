@@ -6,6 +6,7 @@ import axios from "axios";
 import meetingInfo from "../../utils/meetingDay";
 import AddStudent from "../AddStudent";
 import MeetingPopUp from "../MeetingPopUp";
+import dayjs from "dayjs";
 
 const Agenda = ({
   setMeetingHistory,
@@ -33,6 +34,7 @@ const Agenda = ({
 
   return (
     <div className={"w-4/12 flex flex-col gap-3 "}>
+      {dayjs().hour()}
       <div className={"flex-between"}>
         <h1 className={"title"}>Nadchodzące spotkania</h1>
         <button
