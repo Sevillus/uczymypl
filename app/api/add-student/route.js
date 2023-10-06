@@ -40,7 +40,7 @@ export async function POST(req, res) {
     };
 
     if (body) {
-      if( er.length === 0){
+      // if( er.length === 0){
         sessionUser.students.push(newStudent);
         sortByDate(sessionUser.students);
 
@@ -48,9 +48,9 @@ export async function POST(req, res) {
 
 
         return new Response("Student added to user", { status: 200 });
-      }else{
-        return new Response("siema", { status: 403 });
-      }
+      // }else{
+      //   return new Response("siema", { status: 403 });
+      // }
 
     } else {
       return new Response("Invalid or missing student data in request body", {
