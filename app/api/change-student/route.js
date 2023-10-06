@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 import meetingInfo from "../../../utils/meetingDay";
 import { sortByDate } from "../../../utils/sortByDate";
+import {formatTime} from "../../../utils/formatDurationTime";
 
 export async function POST(req) {
   const session = await getServerSession(authOptions);
@@ -27,7 +28,8 @@ export async function POST(req) {
       student.day = body.day;
       student.time = body.time;
       student.nextMeeting = meetingInfo(body.day, body.time);
-      student.duration = body.duration, student.cyclical = body.cyclical,
+      student.duration= formatTime(body),
+      student.cyclical = body.cyclical,
       sortByDate(sessionUser.students);
 
       await sessionUser.save();

@@ -11,7 +11,7 @@ const AddStudent = (props) => {
   const {student} = props
 
   const [name, setName] = useState(student? student.name : "");
-  const [price, setPrice] = useState(student? student.price : 0);
+  const [price, setPrice] = useState(student? student.price : 70);
   const [day, setDay] = useState(student? student.day : "");
   const [userTime, setUserTime] = useState(student? student.time : "");
   const [duration, setDuration] = useState( 60)
