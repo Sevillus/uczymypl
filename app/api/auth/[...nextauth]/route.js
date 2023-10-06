@@ -13,12 +13,18 @@ export const authOptions = {
   pages: {
     signIn: "/signin",
   },
+
   callbacks: {
-    async jwt({ token, user, session}) {
-      return token;
-    },
     async session({session, token, user}){
-      return session;
+
+      try {
+        const { isConnected } = await connectToDB();
+        session.isConnectedToDB = isConnected
+        return session;
+      } catch (error) {
+        console.error("Błąd sprawdzania połączenia z bazą danych:", error);
+        return session;
+      }
     },
     async signIn({ account, profile, user, credentials }) {
       try {
