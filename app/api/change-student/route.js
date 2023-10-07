@@ -27,7 +27,7 @@ export async function POST(req) {
       student.price = body.price;
       student.day = body.day;
       student.time = body.time;
-      student.nextMeeting = meetingInfo(body.day, body.time);
+      student.nextMeeting = body.nextMeeting,
       student.duration= formatTime(body),
       student.cyclical = body.cyclical,
       sortByDate(sessionUser.students);

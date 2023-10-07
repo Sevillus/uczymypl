@@ -5,6 +5,7 @@ import meetingInfo from "../../../utils/meetingDay";
 import { sortByDate } from "../../../utils/sortByDate";
 import dayjs from "dayjs";
 import {formatTime} from "../../../utils/formatDurationTime";
+import {utcToZonedTime} from "date-fns-tz";
 
 export async function POST(req, res) {
   const session = await getServerSession(authOptions);
@@ -35,7 +36,7 @@ export async function POST(req, res) {
       time: body.time,
       duration: formatTime(body),
       cyclical: body.cyclical,
-      nextMeeting: dayjs(meetingInfo(body.day, body.time)),
+      nextMeeting: body.nextMeeting,
       isPaid: false,
     };
 

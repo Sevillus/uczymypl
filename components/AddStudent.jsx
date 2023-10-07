@@ -4,6 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import {FormControlLabel, Switch, TextField} from "@mui/material";
 import AddStudentSelect from "./AddStudent__select";
 import { useState } from "react";
+import meetingInfo from "../utils/meetingDay";
 
 const AddStudent = (props) => {
   const days = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek","Sobota", "Niedziela"];
@@ -34,6 +35,7 @@ const AddStudent = (props) => {
         price: price,
         day: day,
         time: userTime,
+        nextMeeting: meetingInfo(day, userTime),
         duration: duration,
         cyclical: cyclical,
         id: studentId
