@@ -1,13 +1,6 @@
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 function meetingInfo(day, time) {
-  const timeZone='Europe/Warsaw'
-  dayjs.tz.setDefault(timeZone);
+
 
   const daysOfWeek = {
     niedziela: 0,
@@ -19,19 +12,22 @@ function meetingInfo(day, time) {
     sobota: 6,
   };
 
-  const today = dayjs();
+  const today = new Date();
 
   const meetingDay = daysOfWeek[day.toLowerCase()];
   const [meetingHour, meetingMinute] = time.split(":").map(Number);
 
-  let nextMeetingDate = today.clone();
-  nextMeetingDate = nextMeetingDate.day(meetingDay);
+  let nextMeetingDate = new Date(today);
+  nextMeetingDate.setDate(
+      today.getDate() + ((meetingDay + 7 - today.getDay()) % 7),
+  );
+  nextMeetingDate.setHours(meetingHour, meetingMinute, 0, 0);
 
-  if (nextMeetingDate.isBefore(today, 'minute')) {
-    nextMeetingDate = nextMeetingDate.add(1, 'week');
+  if (nextMeetingDate <= today) {
+    nextMeetingDate.setDate(nextMeetingDate.getDate() + 7);
   }
 
-  nextMeetingDate = nextMeetingDate.hour(meetingHour).minute(meetingMinute).second(0).millisecond(0);
-
   return nextMeetingDate;
-}export default meetingInfo;
+};
+
+export default meetingInfo;

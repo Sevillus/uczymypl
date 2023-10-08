@@ -11,6 +11,7 @@
   box-sizing: border-box;
   font-family: "Manrope", sans-serif;
   overflow: hidden;
+
 }
 
 
@@ -20,6 +21,9 @@
 }
 .text__main-color{
 color: rgb(0, 123, 255)
+}
+.btn{
+  @apply border-2 bg-blue-500 text-slate-100 py-2 px-3 rounded-2xl  hover:bg-blue-600 ease-in-out duration-300
 }
 .bg__main-color{
   background: rgba(0, 123, 255, 0.75);
@@ -48,8 +52,8 @@ color: rgb(0, 123, 255)
   @apply text-4xl
 }
 .title{
-  font-family: 'Amatic SC', cursive;
-  @apply text-xl
+
+  @apply text-2xl font-medium
 }
 .h__full{
  height: 100%;

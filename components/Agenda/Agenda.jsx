@@ -33,32 +33,23 @@ const Agenda = ({
   }, []); // Uruchamiamy tylko raz po zamontowaniu komponentu
 
   return (
-    <div className={"w-4/12 flex flex-col gap-3 "}>
-      <p>{dayjs().hour()}</p>
-      <p>{dayjs(user?.students[0].nextMeeting).hour()}</p>
+    <div className={"w-4/12  h-screen flex flex-col gap-3 "}>
       <div className={"flex-between"}>
         <h1 className={"title"}>Nadchodzące spotkania</h1>
-        <button
-          className={"border-2 py-1 px-3 rounded-xl"}
-          onClick={() => setUserMenu(true)}
-        >
+        <button className={"btn"} onClick={() => setUserMenu(true)}>
           {" "}
-          Dodaj
+          Dodaj Ucznia
         </button>
       </div>
+      <div className={"flex flex-col gap-3 p-2 overflow-y-auto h-fit  "}>
+        {userStudents.map((student) => (
+          <AgendaUser
+            fetchStudent={fetchStudent}
+            student={student}
+            key={student._id}
+          />
+        ))}
 
-      <div className={"h-4/6 overflow-y-scroll border-b-2"}>
-        <div className={"flex-between"}>
-          <div>
-            {userStudents.map((student) => (
-              <AgendaUser
-                fetchStudent={fetchStudent}
-                student={student}
-                key={student._id}
-              />
-            ))}
-          </div>
-        </div>
         {userMenu && (
           <div className={"absolute w-full h-full  op top-0 z-10 flex-center"}>
             <AddStudent

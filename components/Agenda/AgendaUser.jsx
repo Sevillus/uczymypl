@@ -5,10 +5,11 @@ import meetingDay from "../../utils/meetingDay";
 import AddStudent from "../AddStudent";
 import convertMeetingDate from "../../utils/meetingDay";
 import convertDate from "../../utils/convertDate";
+import dayjs from "dayjs";
 
 const AgendaUser = (props) => {
   const student = props.student;
-  console.log(student)
+  console.log(student);
   const [isActive, setIsActive] = useState(false);
 
   const handleSettingsClick = () => {
@@ -16,22 +17,22 @@ const AgendaUser = (props) => {
   };
 
   return (
-    <div>
-      <div className={"padding-x padding-y  flex-between gap-20 border-b-2"}>
-        <div>
-          <h2 className={"text-md font-semibold"}>{student.name}</h2>
-          <div className={"flex gap-2"}>
-            <CalendarMonthIcon />
-            <span>
-              {convertDate(student.nextMeeting).dayConverted} o{" "}
-              {student.time}
-            </span>
-          </div>
-        </div>
-        <button>
-          <MoreHorizIcon onClick={handleSettingsClick} />
-        </button>
+    <div className={"flex-between w-full p-4  shadow-md rounded-lg"}>
+      <div>
+        <h2 className={"text-xl font-semibold"}>{student.name}</h2>
+        <span>{convertDate(student.nextMeeting).dayConverted} o{" "}
+            {student.time}</span>
       </div>
+        <div className={"flex-between w-4/12"}>
+            <div className={"flex flex-col text-lg w-10/12"}>
+               <p className={" font-semibold"}>{student.day}</p>
+               <p>{student.time} - {student.duration} </p>
+            </div>
+            <button>
+                <MoreHorizIcon onClick={handleSettingsClick} />
+            </button>
+        </div>
+
       {isActive && (
         <div className={"absolute w-full h-full  op top-0 z-10 flex-center"}>
           <AddStudent
