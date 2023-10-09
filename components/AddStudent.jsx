@@ -70,7 +70,7 @@ const AddStudent = (props) => {
   return (
     <div
       className={
-        "py-6 padding-x border-2 w-2/6 h-5/6 bg-white z-10 drop-shadow-xl flex flex-col gap-4"
+        "py-6 padding-x border-2 w-10/12 lg:w-2/6 h-5/6 bg-white z-10 drop-shadow-xl flex flex-col gap-4"
       }
     >
       <div className={"flex-between"}>
@@ -134,7 +134,7 @@ const AddStudent = (props) => {
             </div>
         ) : (
             <div className={"flex-center"}>
-              <button className={"addBtn w-2/6"} type="submit">Dodaj</button>
+              <button className={"btn w-2/6"} type="submit">Dodaj</button>
             </div>
 
         )}

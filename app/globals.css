@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Damion&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,22 +10,20 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Manrope", sans-serif;
-  overflow: hidden;
 
 }
-
 
 /* START: General styles */
 .max-width {
   @apply max-w-[1440px] mx-auto;
 }
-.text__main-color{
-color: rgb(0, 123, 255)
+.text__main-color {
+  color: rgb(0, 123, 255);
 }
-.btn{
-  @apply border-2 bg-blue-500 text-slate-100 py-2 px-3 rounded-2xl  hover:bg-blue-600 ease-in-out duration-300
+.btn {
+  @apply border-2 bg-blue-500 text-slate-100 p-2 lg:py-2 lg:px-3 rounded-2xl  hover:bg-blue-600 ease-in-out duration-300;
 }
-.bg__main-color{
+.bg__main-color {
   background: rgba(0, 123, 255, 0.75);
 }
 .padding-x {
@@ -44,47 +42,46 @@ color: rgb(0, 123, 255)
   @apply flex justify-between items-center;
 }
 
-.Logo{
-  font-family: 'Damion', cursive;
+.Logo {
+  font-family: "Damion", cursive;
   width: 200px;
   height: 50px;
   padding-left: 10px;
-  @apply text-4xl
+  @apply text-4xl;
 }
-.title{
+.title {
+  @apply font-medium text-2xl lg:text-3xl;
+}
+.h__full {
+  height: 100%;
+}
 
-  @apply text-2xl font-medium
+.navbar__btn {
+  @apply relative  duration-300 hover:scale-110;
 }
-.h__full{
- height: 100%;
+.agenda {
+  @apply w-1/2 h-8 border-2;
 }
-
-.navbar__btn{
-  @apply relative  duration-300 hover:scale-110
+.agenda__days {
+  @apply w-1/6 h-80 border-4;
 }
-.agenda{
-  @apply w-1/2 h-8 border-2
+.agenda__dayName {
+  width: 14.4%;
 }
-.agenda__days{
-  @apply w-1/6 h-80 border-4
-}
-.agenda__dayName{
-  width: 14.40%;
-}
-.agenda__day{
+.agenda__day {
   height: 50%;
 }
-.closeBtn{
+.closeBtn {
   transition: 0.3s;
 }
-.closeBtn:hover{
+.closeBtn:hover {
   transform: rotate(30deg);
 }
 
-.addBtn{
-  @apply border-2 py-1 px-3 rounded-xl
+.addBtn {
+  @apply border-2 py-1 px-3 rounded-xl;
 }
-circle{
+circle {
   fill: none;
   stroke: url(#GradientColor);
   stroke-width: 30px;
@@ -93,34 +90,36 @@ circle{
   transition: stroke-dashoffset 1s linear;
 }
 
-
-
-.outer{
-  box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15), -6px -6px 10px -1px rgba(255,255,255,0.7);
+.outer {
+  box-shadow:
+    6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+    -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
 }
-.inner{
-  box-shadow: inset 4px 4px 10px -1px rgba(0,0,0,0.2),
-  inset -4px -4px 6px -1px rgba(255,255,255,0.7),
-  -0.5px -0.5px 0 rgba(255, 255, 255, 1),
-  1px 1px 0 rgba(0, 0, 0, 0.15),
-  0 12px 10px -10px rgba(0, 0, 0, 0.05) ;
+.inner {
+  box-shadow:
+    inset 4px 4px 10px -1px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0 rgba(255, 255, 255, 1),
+    1px 1px 0 rgba(0, 0, 0, 0.15),
+    0 12px 10px -10px rgba(0, 0, 0, 0.05);
 }
-.backgroundShadow{
-  background: rgba(0,0,0,0.25);
+.backgroundShadow {
+  background: rgba(0, 0, 0, 0.25);
 }
-
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
-
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 123, 255, 0.54);
   border-radius: 6px;
+  @apply bg-blue-500;
 }
-
 
 ::-webkit-scrollbar-track {
   background-color: #f1f1f1; /* Kolor tła */
+}
+
+.addStudent {
+  @apply absolute w-full h-full right-0 top-0 z-10 flex-center;
 }

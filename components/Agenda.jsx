@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import AgendaUser from "./AgendaUser";
 import AgendaCalendar from "./AgendaCalendar";
 import axios from "axios";
-import meetingInfo from "../../utils/meetingDay";
-import AddStudent from "../AddStudent";
-import MeetingPopUp from "../MeetingPopUp";
+import meetingInfo from "../utils/meetingDay";
+import AddStudent from "./AddStudent";
+import MeetingPopUp from "./MeetingPopUp";
 import dayjs from "dayjs";
 
 const Agenda = ({
@@ -33,25 +33,29 @@ const Agenda = ({
   }, []); // Uruchamiamy tylko raz po zamontowaniu komponentu
 
   return (
-    <div className={"w-4/12  h-screen flex flex-col gap-3 "}>
+    <div className={"lg:w-4/12 w-full  h-screen flex flex-col gap-6 h-full "}>
       <div className={"flex-between"}>
-        <h1 className={"title"}>Nadchodzące spotkania</h1>
-        <button className={"btn"} onClick={() => setUserMenu(true)}>
+        <h1 className={"title p-2"}>Harmonogram spotkań</h1>
+        <button className={"btn lg:mr-4"} onClick={() => setUserMenu(true)}>
           {" "}
-          Dodaj Ucznia
+          Dodaj
         </button>
       </div>
-      <div className={"flex flex-col gap-3 p-2 overflow-y-auto h-fit  "}>
-        {userStudents.map((student) => (
-          <AgendaUser
-            fetchStudent={fetchStudent}
-            student={student}
-            key={student._id}
-          />
-        ))}
+      <div className={"flex flex-col gap-3 p-2"}>
+        <div
+          className={"overflow-y-scroll h-[550px] lg:h-[700px] p-2 lg:p-4  "}
+        >
+          {userStudents.map((student) => (
+            <AgendaUser
+              fetchStudent={fetchStudent}
+              student={student}
+              key={student._id}
+            />
+          ))}
+        </div>
 
         {userMenu && (
-          <div className={"absolute w-full h-full  op top-0 z-10 flex-center"}>
+          <div className={"addStudent"}>
             <AddStudent
               fetchStudent={fetchStudent}
               apiUrl={"/api/add-student"}

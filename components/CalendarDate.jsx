@@ -1,8 +1,8 @@
 import React from "react";
-import { generateDate } from "../../utils/calendar";
-import cn from "../../utils/cn";
+import { generateDate } from "../utils/calendar";
+import cn from "../utils/cn";
 
-const AgendaDate = (props) => {
+const CalendarDate = (props) => {
   const {selectedDay, setSelectedDay, students } = props;
   const month = props.today
 
@@ -11,7 +11,7 @@ const AgendaDate = (props) => {
       {generateDate(month).map(({ date, currentMonth, today }, index) => {
         return (
           <div
-            className={"flex-center w-14 border-2 p-1 h-10  cursor-pointer"}
+            className={"flex-center w-12 lg:w-16 h-10 lg:h-12 border-2  cursor-pointer"}
             key={index}
             onClick={() => setSelectedDay(date)}
           >
@@ -38,4 +38,4 @@ const AgendaDate = (props) => {
     </div>
   );
 };
-export default AgendaDate;
+export default CalendarDate;

@@ -1,5 +1,5 @@
 "use client"
-import Agenda from "../../components/Agenda/Agenda";
+import Agenda from "../../components/Agenda";
 import ProgressBar from "../../components/ProgressBar";
 import MeetingsHistory from "../../components/MeetingsHistory";
 import React, {useState} from "react";
@@ -16,13 +16,13 @@ const Page = () => {
     const [userStudents, setUserStudents] = useState([]);
 
     return (
-        <div className={"flex justify-between"}>
+        <div className={"flex flex-col lg:flex-row  lg:justify-between "}>
             <Agenda setMeetingHistory={setMeetingHistory} setUserTarget={setUserTarget} userStudents={userStudents} setUserStudents={setUserStudents}/>
-            {/*<Calendar userStudents={userStudents}/>*/}
-            {/*<div className={"h-full"}>*/}
-            {/*    <ProgressBar earnedThisMonth={earnedThisMonth} userTarget={userTarget}/>*/}
-            {/*    <MeetingsHistory meetingHistory={meetingHistory} setMeetingHistory={setMeetingHistory} setEarnedThisMonth={setEarnedThisMonth}/>*/}
-            {/*</div>*/}
+            <Calendar userStudents={userStudents}/>
+            <div className={"h-full"}>
+                <ProgressBar earnedThisMonth={earnedThisMonth} userTarget={userTarget}/>
+                <MeetingsHistory meetingHistory={meetingHistory} setMeetingHistory={setMeetingHistory} setEarnedThisMonth={setEarnedThisMonth}/>
+            </div>
         </div>
     )
 }

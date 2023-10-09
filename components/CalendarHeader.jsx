@@ -4,14 +4,14 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import dayjs from "dayjs";
-import {months} from "../../constants/months";
+import {months} from "../constants/months";
 
-const AgendaHeader = ( props ) => {
+const CalendarHeader = ( props ) => {
     const {today, setToday} = props
 
 
     return (
-        <div className={"w-full h-14 lg:h-12 border-b-[2px] bg-slate-100 flex-between padding-y padding-x"}>
+        <div className={"w-full h-14 lg:h-12 border-b-[2px] rounded-t-lg bg-blue-500 text-white flex-between padding-y padding-x"}>
             <div className={"flex-between gap-2"}>
                 <button>
                     <KeyboardArrowLeftIcon onClick={ () => today > 0 ? setToday(today - 1) : setToday(11)}/>
@@ -25,4 +25,4 @@ const AgendaHeader = ( props ) => {
         </div>
     )
 }
-export default AgendaHeader
+export default CalendarHeader

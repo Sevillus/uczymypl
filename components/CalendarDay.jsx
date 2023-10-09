@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AgendaDay = (props) => {
+const CalendarDay = (props) => {
     const { day } = props
 
     return (
@@ -12,4 +12,4 @@ const AgendaDay = (props) => {
 
     )
 }
-export default AgendaDay
+export default CalendarDay
