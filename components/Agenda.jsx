@@ -33,18 +33,16 @@ const Agenda = ({
   }, []); // Uruchamiamy tylko raz po zamontowaniu komponentu
 
   return (
-    <div className={"lg:w-4/12 w-full  h-screen flex flex-col gap-6 h-full "}>
+    <div className={"lg:w-4/12 w-full  flex flex-col   "}>
       <div className={"flex-between"}>
         <h1 className={"title p-2"}>Harmonogram spotkań</h1>
-        <button className={"btn lg:mr-4"} onClick={() => setUserMenu(true)}>
+        <button className={"btn "} onClick={() => setUserMenu(true)}>
           {" "}
           Dodaj
         </button>
       </div>
-      <div className={"flex flex-col gap-3 p-2 bg-slate-50"}>
-        <div
-          className={"overflow-y-scroll h-[550px] lg:h-[700px] p-2 lg:p-4  "}
-        >
+      <div className={" h-full bg-slate-50"}>
+        <div className={"overflow-y-scroll h-[750px] flex flex-col gap-4 p-4"}>
           {userStudents.map((student) => (
             <AgendaUser
               fetchStudent={fetchStudent}

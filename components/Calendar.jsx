@@ -14,7 +14,7 @@ const Calendar = ({ userStudents }) => {
   const [selectedDay, setSelectedDay] = useState(currentDate);
 
   return (
-    <div className={"flex  "}>
+    <div className={"w-full flex justify-between "}>
       <div className={"shadow-lg rounded-lg border h-fit bg-slate-50"}>
         <CalendarHeader today={today} setToday={setToday} />
         <CalendarDays />

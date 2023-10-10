@@ -16,7 +16,7 @@ const AgendaUser = (props) => {
   };
 
   return (
-    <div className={"flex-between w-full p-4  mt-6 shadow-md rounded-lg"}>
+    <div className={"flex-between w-full p-4  shadow-md rounded-lg"}>
       <div>
         <h2 className={"text-xl font-semibold  "}>{student.name}</h2>
         <div>
