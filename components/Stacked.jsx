@@ -14,7 +14,7 @@ const Stacked = ({ earned, meetingHistory }) => {
     ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
     const today = dayjs();
-    const daysInMonth = today.daysInMonth();
+    const lastDayOfMonth = dayjs().date()
     const [dataPoints, setDataPoints] = useState([]);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Stacked = ({ earned, meetingHistory }) => {
             const earningsByDay = [];
             let totalEarnings = 0;
 
-            for (let i = 1; i <= daysInMonth; i++) {
+            for (let i = 1; i <= lastDayOfMonth; i++) {
                 const date = today.date(i);
 
                 // Tutaj oblicz zarobki na ten dzień i zastąp 0 odpowiednią wartością
@@ -45,9 +45,9 @@ const Stacked = ({ earned, meetingHistory }) => {
 
         const earningsData = calculateEarnings();
         setDataPoints(earningsData);
-    }, [daysInMonth, today, meetingHistory,earned]);
+    }, [lastDayOfMonth, today, meetingHistory, earned]);
 
-    const labels = Array.from({ length: daysInMonth }, (_, i) =>
+    const labels = Array.from({ length: lastDayOfMonth }, (_, i) =>
         today.date(i + 1).format('D.M')
     );
 
@@ -89,7 +89,7 @@ const Stacked = ({ earned, meetingHistory }) => {
     return (
         <div className="w-full flex flex-col gap-10">
             <h1 className="text-xl">Zarobek w bieżącym miesiącu</h1>
-            <div className="chart-container" style={{ height: '500px' }}>
+            <div className="chart-container" >
                 <Line data={data} options={options} />
             </div>
         </div>
