@@ -29,10 +29,11 @@ export default async function RootLayout({ children})
     <html lang="en">
       <body className={inter.className}>
         <Provider>
-            <div className={"padding-y padding-x bg-gray-50 w-full lg:h-screen lg:overflow-hidden"}>
-                <Header
-                    session = {session}
-                />
+            <Header
+                session = {session}
+            />
+            <div className={" padding-x bg-gray-100 pt-28 w-full lg:h-screen lg:overflow-hidden"}>
+
                 <main>
                     {children}
                 </main>

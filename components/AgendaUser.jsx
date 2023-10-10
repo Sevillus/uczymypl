@@ -20,7 +20,7 @@ const AgendaUser = (props) => {
       <div>
         <h2 className={"text-xl font-semibold  "}>{student.name}</h2>
         <div>
-          <span>
+          <span className={"text-slate-400"}>
             {convertDate(student.nextMeeting).dayConverted} o {student.time}
           </span>
           <span className={"lg:hidden"}> - {student.duration}</span>
@@ -29,7 +29,7 @@ const AgendaUser = (props) => {
       <div className={"flex-between lg:w-4/12"}>
         <div className={"flex flex-col text-lg w-10/12  hidden lg:block"}>
           <p className={" font-semibold"}>{student.day}</p>
-          <p>
+          <p className={"text-slate-400"}>
             {student.time} - {student.duration}{" "}
           </p>
         </div>

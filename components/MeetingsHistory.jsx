@@ -17,11 +17,10 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
     setFiltr(option);
   };
 
-
   return (
-    <div className={"flex flex-col items-center gap-2"}>
+    <div className={"flex flex-col items-center gap-2 w-10/12 "}>
       <div className={"w-full flex-between"}>
-        <h1 className={"title"}>Historia płatności</h1>
+        <h1 className={"text-xl"}>Historia płatności</h1>
         {paymentInfo.length ? (
           <div>
             {!filtr ? (
@@ -45,39 +44,36 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
           ""
         )}
       </div>
-      <div className={"w-full h-64 border-2 overflow-y-scroll "}>
-        {meetingHistory
-          .slice()
-          .map((student, index) => {
-            const isSameDay =
-              dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
-            prevDay = student.nextMeeting;
+      <div className={"w-full h-80 border-2 overflow-y-scroll bg-slate-50"}>
+        {meetingHistory.slice().reverse().map((student, index) => {
+          const isSameDay =
+            dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
+          prevDay = student.nextMeeting;
 
-            return (
-              <div key={index} className={"flex gap-2 flex-col p-2"}>
-                {isSameDay && (
-                  <div className={"border-b-2"}>
-                    <p className={"font-medium"}>
-                      {convertDate(student.nextMeeting).dayConverted}
-                    </p>
-                  </div>
-                )}
-                <MeetingHistoryInfo
-                  student={student}
-                  key={index}
-                  meetingHistory={meetingHistory}
-                  setEarnedThisMonth={setEarnedThisMonth}
-                  setPaymentInfo={setPaymentInfo}
-                  paymentInfo={paymentInfo}
-                  filtr={filtr}
-                  setFiltr={setFiltr}
-                />
-              </div>
-            );
-          })}
-
+          return (
+            <div key={index} className={"flex gap-2 flex-col p-2"}>
+              {isSameDay && (
+                <div className={"border-b-2"}>
+                  <p className={"font-medium"}>
+                    {convertDate(student.nextMeeting).dayConverted}
+                  </p>
+                </div>
+              )}
+              <MeetingHistoryInfo
+                student={student}
+                key={index}
+                meetingHistory={meetingHistory}
+                setEarnedThisMonth={setEarnedThisMonth}
+                setPaymentInfo={setPaymentInfo}
+                paymentInfo={paymentInfo}
+                filtr={filtr}
+                setFiltr={setFiltr}
+              />
+            </div>
+          );
+        })}
       </div>
-        <GeneratePdfButton meetingHistory = {meetingHistory}/>
+      <GeneratePdfButton meetingHistory={meetingHistory} />
     </div>
   );
 };

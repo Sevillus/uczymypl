@@ -62,7 +62,7 @@ const MeetingHistoryInfo = ({
   };
 
   return !filtr ? (
-    <div className={"flex-between px-4"}>
+    <div className={"flex-between px-4 "}>
       <p>{student.name}</p>
       <div className={"flex gap-4"}>
         <p className={payment ? "text-green-600" : "text-rose-600"}>

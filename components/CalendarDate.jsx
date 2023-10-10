@@ -11,7 +11,7 @@ const CalendarDate = (props) => {
       {generateDate(month).map(({ date, currentMonth, today }, index) => {
         return (
           <div
-            className={"flex-center w-12 lg:w-16 h-10 lg:h-12 border-2  cursor-pointer"}
+            className={"flex-center w-12 lg:w-16 h-10 lg:h-12  border-2  cursor-pointer"}
             key={index}
             onClick={() => setSelectedDay(date)}
           >

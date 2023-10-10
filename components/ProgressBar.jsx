@@ -13,8 +13,8 @@ function ProgressBar({ earnedThisMonth, userTarget}) {
 
 
     return (
-        <div className={"w-96 h-96 flex-center"}>
-            <div className={"w-80 h-80  rounded-full flex-center drop-shadow-xl outer"} >
+        <div className={"w-96 h-96 flex-center "}>
+            <div className={"w-80 h-80  rounded-full flex-center drop-shadow-xl outer bg-slate-50"} >
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500px" height="500px" className={"absolute"}>
                     <defs>
                         <linearGradient id="GradientColor">

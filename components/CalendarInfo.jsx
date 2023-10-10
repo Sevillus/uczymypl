@@ -5,7 +5,7 @@ const CalendarInfo = ({ selectedDay, userStudents }) => {
     return (
         <div
             className={
-                "flex flex-col max-h-80  ml-4 p-2 h-fit border-current"
+                "flex flex-col max-h-80 w-36 ml-4 p-2 h-fit border-current"
             }
         >
             <div>

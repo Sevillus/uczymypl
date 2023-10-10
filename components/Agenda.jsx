@@ -41,7 +41,7 @@ const Agenda = ({
           Dodaj
         </button>
       </div>
-      <div className={"flex flex-col gap-3 p-2"}>
+      <div className={"flex flex-col gap-3 p-2 bg-slate-50"}>
         <div
           className={"overflow-y-scroll h-[550px] lg:h-[700px] p-2 lg:p-4  "}
         >

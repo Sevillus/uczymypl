@@ -4,6 +4,7 @@ import ProgressBar from "../../components/ProgressBar";
 import MeetingsHistory from "../../components/MeetingsHistory";
 import React, {useState} from "react";
 import Calendar from "../../components/Calendar";
+import Stacked from "../../components/Stacked";
 
 
 
@@ -17,11 +18,14 @@ const Page = () => {
 
     return (
         <div className={"flex flex-col lg:flex-row  lg:justify-between "}>
-            <Agenda setMeetingHistory={setMeetingHistory} setUserTarget={setUserTarget} userStudents={userStudents} setUserStudents={setUserStudents}/>
-            <Calendar userStudents={userStudents}/>
-            <div className={"h-full"}>
-                <ProgressBar earnedThisMonth={earnedThisMonth} userTarget={userTarget}/>
+            <Agenda  setMeetingHistory={setMeetingHistory} setUserTarget={setUserTarget} userStudents={userStudents} setUserStudents={setUserStudents}/>
+            <div className={"flex flex-col justify gap-10"}>
+                <Calendar  userStudents={userStudents}/>
                 <MeetingsHistory meetingHistory={meetingHistory} setMeetingHistory={setMeetingHistory} setEarnedThisMonth={setEarnedThisMonth}/>
+            </div>
+            <div className={"h-full flex flex-col justify-center items-center gap-10 "}>
+                <ProgressBar earnedThisMonth={earnedThisMonth} userTarget={userTarget}/>
+                <Stacked />
             </div>
         </div>
     )
