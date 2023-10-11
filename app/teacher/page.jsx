@@ -20,13 +20,13 @@ const Page = () => {
         userStudents={userStudents}
         setUserStudents={setUserStudents}
       />
-      <div className={"flex flex-col justify-between gap-10 w-4/12"}>
+      <div className={"flex flex-col justify-between gap-10 lg:w-4/12"}>
         <Stacked earned={earnedThisMonth} meetingHistory={meetingHistory}/>
         <Calendar userStudents={userStudents} />
       </div>
       <div
         className={
-          "flex flex-col justify-between   w-3/12"
+          "flex flex-col justify-between   lg:w-3/12"
         }
       >
         <ProgressBar

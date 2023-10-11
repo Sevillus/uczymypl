@@ -29,7 +29,7 @@ export default async function RootLayout({ children})
     <html lang="en">
       <body className={inter.className}>
         <Provider>
-            <div className={" bg-gray-100  w-full  h-screen overflow-hidden"}>
+            <div className={" bg-gray-100  w-full  lg:h-screen lg:overflow-hidden overflow-hidden"}>
                 <Header
                     session = {session}
                 />
