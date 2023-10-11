@@ -18,7 +18,7 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
   };
 
   return (
-    <div className={"flex flex-col items-center gap-2 w-10/12 z-50 "}>
+    <div className={"flex flex-col items-center gap-2 w-full z-50 "} style={{height:"40vh"}}>
       <div className={"w-full flex-between"}>
         <h1 className={"text-xl"}>Historia płatności</h1>
         {paymentInfo.length ? (
@@ -44,8 +44,8 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth }) => {
           ""
         )}
       </div>
-      <div className={"w-full h-80 border-2 overflow-y-scroll bg-slate-50 p-2 "}>
-        {meetingHistory.slice().reverse().map((student, index) => {
+      <div className={"  w-full border-2 overflow-y-scroll bg-slate-50 p-2 "}>
+        {meetingHistory.slice().map((student, index) => {
           const isSameDay =
             dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
           prevDay = student.nextMeeting;

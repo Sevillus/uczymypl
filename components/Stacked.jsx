@@ -1,4 +1,4 @@
-"use client"
+
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import dayjs from 'dayjs';
@@ -10,22 +10,20 @@ import {
     PointElement,
 } from 'chart.js';
 
-const Stacked = ({ earned, meetingHistory }) => {
+const Stacked = ({meetingHistory }) => {
     ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
     const today = dayjs();
     const lastDayOfMonth = dayjs().date()
-    const [dataPoints, setDataPoints] = useState([]);
 
-    useEffect(() => {
-        const calculateEarnings = () => {
+
             const earningsByDay = [];
             let totalEarnings = 0;
 
             for (let i = 1; i <= lastDayOfMonth; i++) {
                 const date = today.date(i);
 
-                // Tutaj oblicz zarobki na ten dzień i zastąp 0 odpowiednią wartością
+
                 let earnings = 0;
                 meetingHistory.forEach((student) => {
                     if (
@@ -40,12 +38,11 @@ const Stacked = ({ earned, meetingHistory }) => {
                 earningsByDay.push(totalEarnings);
             }
 
-            return earningsByDay;
-        };
 
-        const earningsData = calculateEarnings();
-        setDataPoints(earningsData);
-    }, [lastDayOfMonth, today, meetingHistory, earned]);
+
+
+
+
 
     const labels = Array.from({ length: lastDayOfMonth }, (_, i) =>
         today.date(i + 1).format('D.M')
@@ -55,7 +52,7 @@ const Stacked = ({ earned, meetingHistory }) => {
         labels,
         datasets: [
             {
-                data: dataPoints,
+                data: earningsByDay,
                 backgroundColor: 'transparent',
                 borderColor: 'rgb(59 130 246)',
                 pointBorderColor: 'transparent',
@@ -66,6 +63,7 @@ const Stacked = ({ earned, meetingHistory }) => {
     };
 
     const options = {
+        maintainAspectRatio: false,
         plugins: {
             legend: false,
         },
@@ -81,16 +79,17 @@ const Stacked = ({ earned, meetingHistory }) => {
                 },
                 ticks: {
                     stepSize: 500,
+                    callbacks: (value) => value +' zł'
                 },
             },
         },
     };
 
     return (
-        <div className="w-full flex flex-col gap-10">
+        <div className="w-full flex flex-col gap-10 h-5/12" >
             <h1 className="text-xl">Zarobek w bieżącym miesiącu</h1>
-            <div className="chart-container" >
-                <Line data={data} options={options} />
+            <div className="chart-container h-full" >
+                <Line data={data} options={options}  />
             </div>
         </div>
     );

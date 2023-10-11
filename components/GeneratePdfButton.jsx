@@ -28,7 +28,7 @@ const GeneratePdfButton = ({ meetingHistory }) => {
         }
     };
     return (
-        <button className={"border-2 rounded-lg p-1 px-2 flex gap-4"} onClick={handleGeneratePdf} disabled={loading}>
+        <button className={"border-2 rounded-lg p-1 px-2 flex gap-4 bg-white"} onClick={handleGeneratePdf} disabled={loading}>
             <DownloadOutlinedIcon />
             Generuj PDF
         </button>

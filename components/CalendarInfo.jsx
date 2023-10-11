@@ -5,7 +5,7 @@ const CalendarInfo = ({ selectedDay, userStudents }) => {
     return (
         <div
             className={
-                "flex flex-col max-h-80 w-4/12 p-2 h-fit border-current"
+                "flex flex-col max-h-64 w-4/12 p-2 h-fit border-current"
             }
         >
             <div className={"border-b-2"}>
@@ -20,7 +20,7 @@ const CalendarInfo = ({ selectedDay, userStudents }) => {
                         {daysOfWeek[student.day.toLowerCase()] === selectedDay.day() ? (
                             <div className={"p-2"}>
                                 <p className={"font-medium"}>{student.name.split(' ')[0]}</p>
-                                <p>
+                                <p className={"text-sm text-slate-500"}>
                                     {student.time} - {student.duration}
                                 </p>
                             </div>

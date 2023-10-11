@@ -29,7 +29,7 @@ const AgendaUser = (props) => {
       <div className={"flex-between lg:w-4/12"}>
         <div className={"flex flex-col text-lg w-10/12  hidden lg:block"}>
           <p className={" font-semibold"}>{student.day}</p>
-          <p className={"text-slate-400"}>
+          <p className={"text-slate-400 text-sm"}>
             {student.time} - {student.duration}{" "}
           </p>
         </div>

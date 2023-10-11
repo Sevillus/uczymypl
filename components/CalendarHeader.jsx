@@ -11,7 +11,7 @@ const CalendarHeader = ( props ) => {
 
 
     return (
-        <div className={"w-full h-14  border-b-[2px] rounded-t-lg bg-blue-500 text-white flex-between padding-y padding-x"}>
+        <div className={"w-full h-10  border-b-[2px] rounded-t-lg bg-blue-500 text-white flex-between padding-y padding-x"}>
             <div className={"flex-between gap-2"}>
                 <button>
                     <KeyboardArrowLeftIcon onClick={ () => today > 0 ? setToday(today - 1) : setToday(11)}/>

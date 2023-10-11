@@ -41,8 +41,8 @@ const Agenda = ({
           Dodaj
         </button>
       </div>
-      <div className={" h-full bg-slate-50"}>
-        <div className={"overflow-y-scroll h-[750px] flex flex-col gap-4 p-4"}>
+      <div className={"  bg-slate-50"} style={{height:"70vh"}}>
+        <div className={"overflow-y-scroll h-full flex flex-col gap-4 p-4 "} >
           {userStudents.map((student) => (
             <AgendaUser
               fetchStudent={fetchStudent}

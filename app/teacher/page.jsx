@@ -13,7 +13,7 @@ const Page = () => {
   const [userStudents, setUserStudents] = useState([]);
 
   return (
-    <div className={"flex flex-col lg:flex-row  lg:justify-between "} style={{height:"800px"}}>
+    <div className={"flex flex-col lg:flex-row  lg:justify-between py-4"} >
       <Agenda
         setMeetingHistory={setMeetingHistory}
         setUserTarget={setUserTarget}
@@ -26,7 +26,7 @@ const Page = () => {
       </div>
       <div
         className={
-          "h-full flex flex-col justify-between items-center gap-10 w-3/12"
+          "flex flex-col justify-between   w-3/12"
         }
       >
         <ProgressBar
