@@ -32,7 +32,7 @@ const MeetingHistoryInfo = ({
   const addPayment = async (student, isPaid) => {
     setPayment((prev) => !prev);
 
-    let updatedEarned = 0;
+
     if (!payment) {
       const studentIndex = paymentInfo.findIndex(
         (student) => student._id == student._id,

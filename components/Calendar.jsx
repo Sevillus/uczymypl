@@ -8,7 +8,7 @@ import { daysOfWeek } from "../constants/months";
 import CalendarHeader from "./CalendarHeader";
 import CalendarInfo from "./CalendarInfo";
 
-const Calendar = ({ userStudents }) => {
+const Calendar = ({ userStudents ,isLoading }) => {
   const currentDate = dayjs();
   const [today, setToday] = useState(currentDate.month());
   const [selectedDay, setSelectedDay] = useState(currentDate);
@@ -25,7 +25,7 @@ const Calendar = ({ userStudents }) => {
           setSelectedDay={setSelectedDay}
         />
       </div>
-      <CalendarInfo selectedDay={selectedDay} userStudents={userStudents}/>
+      <CalendarInfo selectedDay={selectedDay} userStudents={userStudents} isLoading={isLoading}/>
     </div>
   );
 };

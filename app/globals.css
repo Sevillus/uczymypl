@@ -20,7 +20,7 @@
   color: rgb(0, 123, 255);
 }
 .btn {
-  @apply border-2 bg-blue-500 text-slate-100 p-2 lg:py-2 lg:px-3 rounded-2xl  hover:bg-blue-600 ease-in-out duration-300;
+  @apply border-2 bg-blue-500 text-slate-100 p-2  lg:px-3 rounded-2xl  hover:bg-blue-600 ease-in-out duration-300;
 }
 .bg__main-color {
   background: rgba(0, 123, 255, 0.75);
@@ -49,7 +49,7 @@
   @apply text-4xl;
 }
 .title {
-  @apply font-medium text-2xl lg:text-3xl;
+  @apply font-medium text-xl lg:text-2xl;
 }
 .h__full {
   height: 100%;

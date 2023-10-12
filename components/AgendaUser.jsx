@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -9,13 +10,14 @@ import dayjs from "dayjs";
 
 const AgendaUser = (props) => {
   const student = props.student;
+  const isLoading = props.loading;
   const [isActive, setIsActive] = useState(false);
 
   const handleSettingsClick = () => {
     setIsActive(!isActive);
   };
 
-  return (
+  return !isLoading ? ( // Wyrażenie warunkowe, czy dane są załadowane
     <div className={"flex-between w-full p-4  shadow-md rounded-lg"}>
       <div>
         <h2 className={"text-xl font-semibold  "}>{student.name}</h2>
@@ -23,9 +25,13 @@ const AgendaUser = (props) => {
           <span className={"text-slate-400"}>
             {convertDate(student.nextMeeting).dayConverted} o {student.time}
           </span>
-          <span className={"lg:hidden"}> - {student.duration}</span>
+          <span className={"lg:hidden text-slate-400"}>
+            {" "}
+            - {student.duration}
+          </span>
         </div>
       </div>
+
       <div className={"flex-between lg:w-4/12"}>
         <div className={"flex flex-col text-lg w-10/12  hidden lg:block"}>
           <p className={" font-semibold"}>{student.day}</p>
@@ -50,7 +56,20 @@ const AgendaUser = (props) => {
         </div>
       )}
     </div>
-  );
+  ) : (
+    <div className={"flex-between w-full p-4  shadow-md rounded-lg"}>
+      <div>
+        <p className={"bg-slate-300 h-8 w-48 rounded-md mb-2"}></p>
+          <p className={"bg-slate-200 h-4 w-40 rounded-md"}></p>
+      </div>
+      <div className={"flex-between lg:w-4/12"}>
+        <div>
+          <p className={"bg-slate-300 h-8 w-32 rounded-md mb-2"}></p>
+          <p className={"bg-slate-200 h-4 w-24 rounded-md"}></p>
+        </div>
+      </div>
+    </div>
+  ); // Jeśli dane są w trakcie ładowania, możesz zwrócić null lub pusty element JSX
 };
 
 export default AgendaUser;

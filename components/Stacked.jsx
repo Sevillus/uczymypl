@@ -1,4 +1,4 @@
-
+"use client"
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import dayjs from 'dayjs';
@@ -10,19 +10,21 @@ import {
     PointElement,
 } from 'chart.js';
 
-const Stacked = ({meetingHistory }) => {
+const Stacked = ({ meetingHistory, }) => {
     ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
     const today = dayjs();
-    const lastDayOfMonth = dayjs().date()
+    const lastDayOfMonth = dayjs().date();
 
+    const [earningsByDay, setEarningsByDay] = useState([]);
 
-            const earningsByDay = [];
+    useEffect(() => {
+        const calculateEarningsByDay = () => {
+            const newEarningsByDay = [];
             let totalEarnings = 0;
 
             for (let i = 1; i <= lastDayOfMonth; i++) {
                 const date = today.date(i);
-
 
                 let earnings = 0;
                 meetingHistory.forEach((student) => {
@@ -35,14 +37,14 @@ const Stacked = ({meetingHistory }) => {
                 });
 
                 totalEarnings += earnings;
-                earningsByDay.push(totalEarnings);
+                newEarningsByDay.push(totalEarnings);
             }
 
-
-
-
-
-
+            setEarningsByDay(newEarningsByDay);
+        };
+        console.log("historia się zmieniła")
+        calculateEarningsByDay();
+    }, [meetingHistory]);
 
     const labels = Array.from({ length: lastDayOfMonth }, (_, i) =>
         today.date(i + 1).format('D.M')
@@ -79,17 +81,17 @@ const Stacked = ({meetingHistory }) => {
                 },
                 ticks: {
                     stepSize: 500,
-                    callbacks: (value) => value +' zł'
+                    callbacks: (value) => value + ' zł',
                 },
             },
         },
     };
 
     return (
-        <div className="w-full flex flex-col gap-10 h-6/12" >
-            <h1 className="text-xl">Zarobek w bieżącym miesiącu</h1>
-            <div className="chart-container h-full" >
-                <Line data={data} options={options}  height={"250px"}/>
+        <div className="w-full flex flex-col gap-10 h-6/12 mt-10">
+            <h1 className="title">Zarobek w bieżącym miesiącu</h1>
+            <div className="chart-container h-full">
+                <Line data={data} options={options} height={"250px"} />
             </div>
         </div>
     );

@@ -29,7 +29,7 @@ export default async function RootLayout({ children})
     <html lang="en">
       <body className={inter.className}>
         <Provider>
-            <div className={" bg-gray-100  w-full  lg:h-screen lg:overflow-hidden overflow-hidden"}>
+            <div className={" bg-gray-100  w-full flex flex-col justify-between lg:h-screen lg:overflow-hidden overflow-hidden"}>
                 <Header
                     session = {session}
                 />
@@ -37,10 +37,11 @@ export default async function RootLayout({ children})
                     <main>
                         {children}
                     </main>
-                    <footer>
 
-                    </footer>
                 </div>
+                <footer className={"bg-slate-200  flex-center padding-y padding-x text-center" }>
+                    <p className={"text-slate-500"}>Właścicelem strony jest Uczymypl. Wszelkie zapytania prosimy kierować na adres uczymypl@kontakt.pl</p>
+                </footer>
             </div>
         </Provider>
       </body>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {daysOfWeek} from "../constants/months";
 
-const CalendarInfo = ({ selectedDay, userStudents }) => {
+const CalendarInfo = ({ selectedDay, userStudents, isLoading }) => {
     return (
         <div
             className={
@@ -15,20 +15,33 @@ const CalendarInfo = ({ selectedDay, userStudents }) => {
                 </h2>
             </div>
             <div className={"flex overflow-x-auto lg:overflow-y-auto w-full lg:flex-col h-20 lg:h-full border-b-2"}>
-                {userStudents.map((student, index) => (
-                    <div key={index}>
-                        {daysOfWeek[student.day.toLowerCase()] === selectedDay.day() ? (
-                            <div className={"p-2  "}>
-                                <p className={"font-medium"}>{student.name.split(' ')[0]}</p>
-                                <p className={"text-sm text-slate-500 w-24"}>
-                                    {student.time} - {student.duration}
-                                </p>
+                {
+                        isLoading ?
+                         [1, 2, 3, 4].map((key) => (
+                            <div key={key} className={"p-2  flex flex-col gap-2 "}>
+                                <p className={"bg-slate-300 h-4 w-10 rounded-md"} />
+                                <p className={" bg-slate-200 h-4 w-24 rounded-md"} />
                             </div>
-                        ) : (
-                            ""
-                        )}
-                    </div>
-                ))}
+                        )) : userStudents.map((student, index) => (
+                                <div key={index}>
+                                    {daysOfWeek[student.day.toLowerCase()] === selectedDay.day() ? (
+                                        <div className={"p-2"}>
+                                            <p className={"font-medium"}>{student.name.split(' ')[0]}</p>
+                                            <p className={"text-sm text-slate-500 w-24"}>
+                                                {student.time} - {student.duration}
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
+                                </div>
+                            ))
+
+
+                }
+
+
+
             </div>
         </div>
     )
