@@ -49,7 +49,7 @@ const Agenda = ({
           {isLoading ? ( // Sprawdź, czy dane są w trakcie ładowania
               <div className={"overflow-y-scroll h-full flex flex-col gap-4 p-4"}>
                 {[1,2,3,4,5,6,7].map((key) => (
-                    <AgendaUser
+                    <AgendaUser key={key}
                         loading={isLoading}
                     />
                 ))}
