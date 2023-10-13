@@ -88,8 +88,8 @@ const Stacked = ({ meetingHistory, }) => {
     };
 
     return (
-        <div className="w-full flex flex-col gap-10 h-6/12 mt-10">
-            <h1 className="title">Zarobek w bieżącym miesiącu</h1>
+        <div className="w-full flex flex-col gap-10 h-6/12 ">
+            <h1 className="title-h1">Zarobek w bieżącym miesiącu</h1>
             <div className="chart-container h-full">
                 <Line data={data} options={options} height={"250px"} />
             </div>

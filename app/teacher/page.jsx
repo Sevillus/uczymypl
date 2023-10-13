@@ -23,14 +23,13 @@ const Page = () => {
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       />
-      <div className={"flex flex-col justify-between gap-10 lg:w-4/12 hidden lg:flex"}>
+      <div className={"flex flex-col justify-between lg:w-4/12 hidden lg:flex"}>
         <Stacked earned={earnedThisMonth} meetingHistory={meetingHistory}/>
         <Calendar userStudents={userStudents} isLoading={isLoading}/>
       </div>
-        <div className={"flex flex-col justify-between gap-10 lg:w-4/12 lg:hidden"}>
+        <div className={"flex flex-col justify-between gap-10 w-full  lg:hidden"}>
             <Calendar userStudents={userStudents} isLoading={isLoading}/>
             <Stacked earned={earnedThisMonth} meetingHistory={meetingHistory}/>
-
         </div>
       <div
         className={

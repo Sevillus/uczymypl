@@ -1,43 +1,39 @@
 "use client";
 import React, { useState } from "react";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import meetingDay from "../utils/meetingDay";
 import AddStudent from "./AddStudent";
-import convertMeetingDate from "../utils/meetingDay";
 import convertDate from "../utils/convertDate";
-import dayjs from "dayjs";
 
+// each element rendered in the Agenda, contains information about meeting
 const AgendaUser = (props) => {
   const student = props.student;
   const isLoading = props.loading;
   const [isActive, setIsActive] = useState(false);
 
+  // change user info menu
   const handleSettingsClick = () => {
     setIsActive(!isActive);
   };
 
-  return !isLoading ? ( // Wyrażenie warunkowe, czy dane są załadowane
-    <div className={"flex-between w-full p-4  shadow-md rounded-lg"}>
+  return !isLoading ? (
+    // rendered element while page is loaded
+    <div className={"agendaUser__box"}>
       <div>
-        <h2 className={"text-xl font-semibold  "}>{student.name}</h2>
+        <h2 className={"title-h2"}>{student.name}</h2>
         <div>
-          <span className={"text-slate-400"}>
+          <span className={"span"}>
             {convertDate(student.nextMeeting).dayConverted} o {student.time}
           </span>
-          <span className={"lg:hidden text-slate-400"}>
-            {" "}
-            - {student.duration}
-          </span>
+          <span className={"span lg:hidden"}> - {student.duration}</span>
         </div>
       </div>
-
       <div className={"flex-between lg:w-4/12"}>
-        <div className={"flex flex-col text-lg w-10/12  hidden lg:block"}>
-          <p className={" font-semibold"}>{student.day}</p>
-          <p className={"text-slate-400 text-sm"}>
+          {/*displaying only on large devices*/}
+        <div className={"flex flex-col hidden lg:flex"}>
+          <h2 className={"title-h2"}>{student.day}</h2>
+          <span className={"span"}>
             {student.time} - {student.duration}{" "}
-          </p>
+          </span>
         </div>
         <button>
           <MoreHorizIcon onClick={handleSettingsClick} />
@@ -45,6 +41,7 @@ const AgendaUser = (props) => {
       </div>
 
       {isActive && (
+        // change user info menu
         <div className={"addStudent"}>
           <AddStudent
             fetchStudent={props.fetchStudent}
@@ -57,19 +54,20 @@ const AgendaUser = (props) => {
       )}
     </div>
   ) : (
-    <div className={"flex-between w-full p-4  shadow-md rounded-lg"}>
+    //rendered element while page is loading
+    <div className={"agendaUser__box"}>
       <div>
-        <p className={"bg-slate-300 h-8 w-48 rounded-md mb-2"}></p>
-          <p className={"bg-slate-200 h-4 w-40 rounded-md"}></p>
+        <p className={"loading-slate-300 w-48"}></p>
+        <p className={"loading-slate-200 w-40"}></p>
       </div>
-      <div className={"flex-between lg:w-4/12"}>
+      <div className={"flex flex-col hidden lg:flex lg:w-4/12"}>
         <div>
-          <p className={"bg-slate-300 h-8 w-32 rounded-md mb-2"}></p>
-          <p className={"bg-slate-200 h-4 w-24 rounded-md"}></p>
+          <p className={"loading-slate-300 w-20"}></p>
+          <p className={"loading-slate-200 w-28"}></p>
         </div>
       </div>
     </div>
-  ); // Jeśli dane są w trakcie ładowania, możesz zwrócić null lub pusty element JSX
+  );
 };
 
 export default AgendaUser;

@@ -13,18 +13,27 @@
 }
 
 /* START: General styles */
-.max-width {
-  @apply max-w-[1440px] mx-auto;
+.title-h1 {
+  @apply font-medium text-xl lg:text-2xl p-2;
 }
-.text__main-color {
-  color: rgb(0, 123, 255);
+.title-h2 {
+  @apply  text-lg font-semibold;
 }
+.span {
+  @apply text-slate-400 text-sm lg:text-base
+}
+
 .btn {
   @apply border-2 bg-blue-500 text-slate-100 p-2  lg:px-3 rounded-2xl  hover:bg-blue-600 ease-in-out duration-300;
 }
-.bg__main-color {
-  background: rgba(0, 123, 255, 0.75);
+
+.loading-slate-300{
+  @apply bg-slate-300 h-8  rounded-md mb-2
 }
+.loading-slate-200{
+  @apply bg-slate-200 h-4  rounded-md
+}
+
 .padding-x {
   @apply sm:px-16 px-6;
 }
@@ -40,6 +49,9 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+.flex-column{
+  @apply flex flex-col
+}
 
 .Logo {
   font-family: "Damion", cursive;
@@ -48,28 +60,9 @@
   padding-left: 10px;
   @apply text-4xl;
 }
-.title {
-  @apply font-medium text-xl lg:text-2xl;
-}
-.h__full {
-  height: 100%;
-}
 
-.navbar__btn {
-  @apply relative  duration-300 hover:scale-110;
-}
-.agenda {
-  @apply w-1/2 h-8 border-2;
-}
-.agenda__days {
-  @apply w-1/6 h-80 border-4;
-}
-.agenda__dayName {
-  width: 14.4%;
-}
-.agenda__day {
-  height: 50%;
-}
+
+
 .closeBtn {
   transition: 0.3s;
 }
@@ -83,6 +76,7 @@
 circle {
   fill: none;
   stroke: url(#GradientColor);
+  stroke-width: 25px;
   stroke-dasharray: 900;
   stroke-dashoffset: 900;
   transition: stroke-dashoffset 1s linear;
@@ -107,6 +101,7 @@ circle {
 
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -120,4 +115,70 @@ circle {
 
 .addStudent {
   @apply absolute w-full h-full right-0 top-0 z-10 flex-center;
+}
+
+
+/*Agenda styles*/
+.agenda{
+  height: 60vh;
+  @apply bg-slate-50 mt-4
+}
+.agenda__title{
+  @apply flex-between
+}
+.agenda__container{
+  @apply flex-column h-full gap-4 p-4 overflow-y-scroll
+}
+.agendaUser__box{
+  @apply flex-between w-full p-4  shadow-md rounded-lg
+}
+
+/*Calendar styles*/
+.calendar{
+  @apply w-full flex lg:justify-between flex-col lg:flex-row  h-3/6
+}
+.calendar__container{
+  @apply shadow-lg rounded-lg border h-fit bg-slate-50 lg:w-9/12
+}
+.calendarHeader{
+  @apply w-full h-10  border-b-[2px] rounded-t-lg bg-blue-500 text-white flex-between padding-y padding-x
+}
+.calendarDayName{
+  width: 14.4%;
+  @apply bg-blue-100 text-sm
+}
+.calendarDates{
+  @apply w-full h-full  grid grid-cols-7
+}
+.calendarDate__box{
+  @apply flex-center w-full min-[1900px]:h-12  h-8 border-2  cursor-pointer
+}
+.calendarDate{
+  @apply text-sm p-3 w-6 h-6 flex-center
+}
+.calendarDate__today{
+  @apply bg-blue-500 text-white border rounded-full
+}
+.calendarDate__selected{
+  @apply font-semibold border rounded-full  border-current
+}
+.calendarInfo{
+  @apply flex-column h-fit max-h-64 lg:w-3/12 p-2 border-current
+}
+.calendarInfo__container{
+  @apply flex overflow-x-auto  overflow-y-hidden lg:overflow-y-auto w-full lg:flex-col h-20 lg:h-full border-b-2
+}
+.calendarInfo__box{
+  @apply w-32 h-16 p-2 border-r-2 lg:border-none lg:w-full
+}
+
+
+/*RWD*/
+@media (min-width: 1900px) {
+  .agenda{
+    height: 70vh;
+  }
+}
+@media (min-width: 1536px) {
+
 }
