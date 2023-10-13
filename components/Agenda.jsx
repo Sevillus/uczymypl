@@ -37,7 +37,7 @@ const Agenda = ({
   }, []);
 
   return (
-      <div className={"lg:w-4/12 w-full  flex flex-col justify-between "}>
+      <div className={"lg:w-4/12 w-full  flex flex-col  "}>
         <div className={"flex-between my-6"}>
           <h1 className={"title p-2 "}>Harmonogram spotkań</h1>
           <button className={"btn "} onClick={() => setUserMenu(true)}>

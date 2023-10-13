@@ -83,7 +83,6 @@
 circle {
   fill: none;
   stroke: url(#GradientColor);
-  stroke-width: 30px;
   stroke-dasharray: 900;
   stroke-dashoffset: 900;
   transition: stroke-dashoffset 1s linear;
