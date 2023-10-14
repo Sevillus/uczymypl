@@ -10,7 +10,7 @@ import {
     PointElement,
 } from 'chart.js';
 
-const Stacked = ({ meetingHistory, }) => {
+const Chart = ({ meetingHistory, }) => {
     ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
     const today = dayjs();
@@ -88,7 +88,7 @@ const Stacked = ({ meetingHistory, }) => {
     };
 
     return (
-        <div className="w-full flex flex-col gap-10 h-6/12 ">
+        <div className="chart">
             <h1 className="title-h1">Zarobek w bieżącym miesiącu</h1>
             <div className="chart-container h-full">
                 <Line data={data} options={options} height={"250px"} />
@@ -97,4 +97,4 @@ const Stacked = ({ meetingHistory, }) => {
     );
 };
 
-export default Stacked;
+export default Chart;

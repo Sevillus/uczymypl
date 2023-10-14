@@ -1,11 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import convertDate from "../utils/convertDate";
 import dayjs from "dayjs";
 import MeetingHistoryInfo from "./meetingHistoryInfo";
-import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
 import CloseIcon from "@mui/icons-material/Close";
-import Link from "next/link";
 import GeneratePdfButton from "./GeneratePdfButton";
 
 const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
@@ -18,17 +16,14 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
   };
 
   return (
-    <div
-      className={"flex flex-col items-center gap-2 w-full z-50 "}
-      style={{ height: "40vh" }}
-    >
+    <div className={"meetingHistory"} style={{ height: "40vh" }}>
       <div className={"w-full flex-between"}>
         <h1 className={"title"}>Historia płatności</h1>
         {paymentInfo.length ? (
           <div>
             {!filtr ? (
               <div
-                className={"text-rose-600 cursor-pointer"}
+                className={"meetingHistory__alertBtn"}
                 onClick={() => filtrHandler(true)}
               >
                 <p>Brak płatności!</p>
@@ -47,55 +42,53 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
           ""
         )}
       </div>
-      <div
-        className={" h-full w-full border-2 overflow-y-scroll bg-slate-50 p-2 "}
-      >
-        {isLoading?(
-                <div className="p-2">
-                  <div className="w-full h-8 border-b-2">
-                    <div className="w-32 h-6 bg-slate-300 p-2 rounded-md" />
-                  </div>
-                  <div className={"flex flex-col "} >
-                    {
-                      [1, 2, 3, 4, 5].map((key) => (
-                          <div key={key} className={"flex flex-between  w-full px-2 h-12"}>
-                            <div className={"h-6 w-40 bg-slate-200 rounded-md"} />
-                            <div className={"h-6 w-14 bg-slate-100 rounded-md"} />
-                          </div>
-                      ))
-                    }
-                  </div>
-
-                </div>
-
-            ):
-            meetingHistory.slice().map((student, index) => {
-          const isSameDay =
-            dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
-          prevDay = student.nextMeeting;
-
-          return (
-            <div key={index} className={"flex gap-2 flex-col p-2"}>
-              {isSameDay && (
-                <div className={"border-b-2"}>
-                  <p className={"font-medium"}>
-                    {convertDate(student.nextMeeting).dayConverted}
-                  </p>
-                </div>
-              )}
-              <MeetingHistoryInfo
-                student={student}
-                key={index}
-                meetingHistory={meetingHistory}
-                setEarnedThisMonth={setEarnedThisMonth}
-                setPaymentInfo={setPaymentInfo}
-                paymentInfo={paymentInfo}
-                filtr={filtr}
-                setFiltr={setFiltr}
-              />
+      <div className={"meetingHistory__container"}>
+        {isLoading ? (
+          <div className="p-2">
+            <div className="w-full h-8 border-b-2 ">
+              <div className="loading-slate-300 w-32 h-6" />
             </div>
-          );
-        })}
+            <div className={"flex-column"}>
+              {[1, 2, 3, 4, 5].map((key) => (
+                <div
+                  key={key}
+                  className={"flex flex-between  w-full px-2 h-12"}
+                >
+                  <div className={"loading-slate-200 w-40"} />
+                  <div className={"loading-slate-200 w-14"} />
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          meetingHistory.slice().map((student, index) => {
+            const isSameDay =
+              dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
+            prevDay = student.nextMeeting;
+
+            return (
+              <div key={index} className={"meetingHistory__box"}>
+                {isSameDay && (
+                  <div className={"border-b-2"}>
+                    <p className={"font-medium"}>
+                      {convertDate(student.nextMeeting).dayConverted}
+                    </p>
+                  </div>
+                )}
+                <MeetingHistoryInfo
+                  student={student}
+                  key={index}
+                  meetingHistory={meetingHistory}
+                  setEarnedThisMonth={setEarnedThisMonth}
+                  setPaymentInfo={setPaymentInfo}
+                  paymentInfo={paymentInfo}
+                  filtr={filtr}
+                  setFiltr={setFiltr}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
       <GeneratePdfButton meetingHistory={meetingHistory} />
     </div>

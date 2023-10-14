@@ -4,17 +4,19 @@ import ProgressBar from "../../components/ProgressBar";
 import MeetingsHistory from "../../components/MeetingsHistory";
 import React, { useState } from "react";
 import Calendar from "../../components/Calendar";
-import Stacked from "../../components/Stacked";
+import Chart from "../../components/Chart";
 
 const Page = () => {
   const [meetingHistory, setMeetingHistory] = useState([]);
   const [earnedThisMonth, setEarnedThisMonth] = useState(0);
   const [userTarget, setUserTarget] = useState(0);
   const [userStudents, setUserStudents] = useState([]);
-    const [isLoading, setIsLoading] = useState(true); // Dodaj stan do śledzenia ładowania danych
+  const [isLoading, setIsLoading] = useState(true); // Dodaj stan do śledzenia ładowania danych
 
   return (
-    <div className={"flex flex-col gap-10 lg:flex-row  lg:justify-between p-2 "} >
+    <div
+      className={"dashboard__container "}
+    >
       <Agenda
         setMeetingHistory={setMeetingHistory}
         setUserTarget={setUserTarget}
@@ -23,25 +25,20 @@ const Page = () => {
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       />
-      <div className={"flex flex-col justify-between lg:w-4/12 hidden lg:flex"}>
-        <Stacked earned={earnedThisMonth} meetingHistory={meetingHistory}/>
-        <Calendar userStudents={userStudents} isLoading={isLoading}/>
+      <div className={"flex-column justify-between lg:w-4/12 hidden lg:flex"}>
+        <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
+        <Calendar userStudents={userStudents} isLoading={isLoading} />
       </div>
-        <div className={"flex flex-col justify-between gap-10 w-full  lg:hidden"}>
-            <Calendar userStudents={userStudents} isLoading={isLoading}/>
-            <Stacked earned={earnedThisMonth} meetingHistory={meetingHistory}/>
-        </div>
-      <div
-        className={
-          "flex flex-col gap-10 lg:justify-between   lg:w-3/12"
-        }
-      >
+      <div className={"flex-column justify-between  w-full  lg:hidden"}>
+        <Calendar userStudents={userStudents} isLoading={isLoading} />
+        <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
+      </div>
+      <div className={"flex-column justify-between   lg:w-3/12"}>
         <ProgressBar
           earnedThisMonth={earnedThisMonth}
           userTarget={userTarget}
           isLoading={isLoading}
         />
-
         <MeetingsHistory
           meetingHistory={meetingHistory}
           setMeetingHistory={setMeetingHistory}

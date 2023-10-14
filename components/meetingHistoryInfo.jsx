@@ -13,9 +13,7 @@ const MeetingHistoryInfo = ({
   setFiltr,
 }) => {
   const [payment, setPayment] = useState(student.isPaid);
-
-  console.log(filtr);
-
+// sum earned this month when student have paid
   useEffect(() => {
     let counter = 0;
     const unPaid = meetingHistory.filter((student) => student.isPaid === false);
@@ -25,13 +23,11 @@ const MeetingHistoryInfo = ({
         counter = counter + student.price;
       }
     });
-
     setEarnedThisMonth(counter);
   }, [meetingHistory, setEarnedThisMonth]);
-
+//Adding new payment, depends on student isPaid state
   const addPayment = async (student, isPaid) => {
     setPayment((prev) => !prev);
-
 
     if (!payment) {
       const studentIndex = paymentInfo.findIndex(
