@@ -15,7 +15,7 @@ export async function POST(req) {
 
   const meetingHistory = sessionUser.meetingHistory[dayjs().month()];
   if (body.addToHistory) {
-    meetingHistory.allMeetings.push(body.student);
+    meetingHistory.allMeetings.reverse().push(body.student);
     meetingHistory.lastMeetings = meetingHistory.lastMeetings.filter(
       (student) => student._id != body.student._id,
     );

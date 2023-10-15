@@ -61,7 +61,7 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
             </div>
           </div>
         ) : (
-          meetingHistory.slice().map((student, index) => {
+          meetingHistory.slice().reverse().map((student, index) => {
             const isSameDay =
               dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
             prevDay = student.nextMeeting;

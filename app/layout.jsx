@@ -37,10 +37,9 @@ export default async function RootLayout({ children})
                     <main>
                         {children}
                     </main>
-
                 </div>
                 <footer className={"bg-slate-200  flex-center padding-y padding-x text-center" }>
-                    <p className={"text-slate-500"}>Właścicelem strony jest Uczymypl. Wszelkie zapytania prosimy kierować na adres uczymypl@kontakt.pl</p>
+                    <p className={"text-slate-500 text-sm"}>Właścicelem strony jest Uczymypl. Wszelkie zapytania prosimy kierować na adres uczymypl@kontakt.pl</p>
                 </footer>
             </div>
         </Provider>

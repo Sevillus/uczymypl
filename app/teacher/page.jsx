@@ -14,9 +14,7 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState(true); // Dodaj stan do śledzenia ładowania danych
 
   return (
-    <div
-      className={"dashboard__container "}
-    >
+    <div className={"dashboard__container "}>
       <Agenda
         setMeetingHistory={setMeetingHistory}
         setUserTarget={setUserTarget}
@@ -25,15 +23,15 @@ const Page = () => {
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       />
-      <div className={"flex-column justify-between lg:w-4/12 hidden lg:flex"}>
+      <div className={"flex flex-col justify-between lg:w-4/12 hidden lg:flex"}>
         <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
         <Calendar userStudents={userStudents} isLoading={isLoading} />
       </div>
-      <div className={"flex-column justify-between  w-full  lg:hidden"}>
+      <div className={"flex flex-col justify-between  w-full  lg:hidden"}>
         <Calendar userStudents={userStudents} isLoading={isLoading} />
         <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
       </div>
-      <div className={"flex-column justify-between   lg:w-3/12"}>
+      <div className={"flex flex-col justify-between   lg:w-3/12"}>
         <ProgressBar
           earnedThisMonth={earnedThisMonth}
           userTarget={userTarget}

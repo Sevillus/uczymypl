@@ -13,9 +13,11 @@ const MeetingHistoryInfo = ({
   setFiltr,
 }) => {
   const [payment, setPayment] = useState(student.isPaid);
-// sum earned this month when student have paid
+  // sum earned this month when student have paid
   useEffect(() => {
+    setPayment(student.isPaid)
     let counter = 0;
+    // creating new array, contains only unpaid meetings
     const unPaid = meetingHistory.filter((student) => student.isPaid === false);
     setPaymentInfo(unPaid);
     meetingHistory.forEach((student) => {
@@ -25,10 +27,9 @@ const MeetingHistoryInfo = ({
     });
     setEarnedThisMonth(counter);
   }, [meetingHistory, setEarnedThisMonth]);
-//Adding new payment, depends on student isPaid state
+  //Adding new payment, depends on student isPaid state
   const addPayment = async (student, isPaid) => {
     setPayment((prev) => !prev);
-
     if (!payment) {
       const studentIndex = paymentInfo.findIndex(
         (student) => student._id == student._id,
