@@ -14,7 +14,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import cn from "../utils/cn";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { signOut } from "next-auth/react";
+import {signIn, signOut} from "next-auth/react";
 
 const Header = ({ session }) => {
   const name = session?.user.name;
