@@ -13,6 +13,7 @@
 }
 
 /* START: General styles */
+
 .title-h1 {
   @apply font-medium text-xl lg:text-2xl p-2;
 }
@@ -51,10 +52,8 @@
 }
 .Logo {
   font-family: "Damion", cursive;
-  width: 200px;
-  height: 50px;
   padding-left: 10px;
-  @apply text-4xl;
+  @apply text-2xl lg:text-4xl p-2;
 }
 .closeBtn {
   transition: 0.3s;
