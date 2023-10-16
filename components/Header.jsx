@@ -15,12 +15,28 @@ import cn from "../utils/cn";
 const Header = ({ session }) => {
   const name = session?.user.name;
   const img = session?.user.image;
-
+  const [userIsOnTop, setUserIsOnTop] = useState(true)
     const pathname = usePathname()
+    useEffect(() => {
+        function handleScroll() {
+            if (window.scrollY === 0) {
+                setUserIsOnTop(true)
+            } else {
+                setUserIsOnTop(false)
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
 
   return (
-    <header className={"lg:relative z-50 w-full  flex flex-col  lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x  lg:py-4"}>
+    <header className={cn("fixed ease-out duration-300 top-0 lg:relative z-50 w-full h-24 flex flex-col  lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x  lg:py-4",
+        !userIsOnTop? "-top-12" : "")}>
       <div className={"flex-between mt-2 lg:mt-0"}>
         <Logo />
         <MenuIcon className={"lg:hidden"}/>

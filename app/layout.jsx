@@ -33,7 +33,7 @@ export default async function RootLayout({ children})
                 <Header
                     session = {session}
                 />
-                <div className={" padding-x bg-gray-100  "}>
+                <div className={" padding-x bg-gray-100 mt-24 lg:mt-0 "}>
                     <main>
                         {children}
                     </main>
