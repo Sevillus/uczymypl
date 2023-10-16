@@ -20,7 +20,7 @@ const Header = ({ session }) => {
 
 
   return (
-    <header className={"fixed top-0  lg:relative z-50 w-full  flex flex-col  lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x  lg:py-4"}>
+    <header className={"lg:relative z-50 w-full  flex flex-col  lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x  lg:py-4"}>
       <div className={"flex-between mt-2 lg:mt-0"}>
         <Logo />
         <MenuIcon className={"lg:hidden"}/>

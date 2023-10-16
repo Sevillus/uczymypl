@@ -18,7 +18,7 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
   return (
     <div className={"meetingHistory"} style={{ height: "40vh" }}>
       <div className={"w-full flex-between"}>
-        <h1 className={"title"}>Historia płatności</h1>
+        <h1 className={"title-h2"}>Historia płatności</h1>
         {paymentInfo.length ? (
           <div>
             {!filtr ? (

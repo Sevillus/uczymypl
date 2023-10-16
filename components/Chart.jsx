@@ -89,7 +89,7 @@ const Chart = ({ meetingHistory, }) => {
 
     return (
         <div className="chart">
-            <h1 className="title-h1">Zarobek w bieżącym miesiącu</h1>
+            <h1 className="title-h2">Zarobek w bieżącym miesiącu</h1>
             <div className="chart-container h-full">
                 <Line data={data} options={options} height={"250px"} />
             </div>

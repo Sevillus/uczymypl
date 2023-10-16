@@ -23,7 +23,7 @@ const Page = () => {
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       />
-      <div className={"flex flex-col justify-between lg:w-4/12 hidden lg:flex"}>
+      <div className={"flex flex-col justify-between  lg:w-4/12 hidden lg:flex"}>
         <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
         <Calendar userStudents={userStudents} isLoading={isLoading} />
       </div>
@@ -31,7 +31,7 @@ const Page = () => {
         <Calendar userStudents={userStudents} isLoading={isLoading} />
         <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
       </div>
-      <div className={"flex flex-col justify-between   lg:w-3/12"}>
+      <div className={"flex flex-col justify-between items-center  lg:w-3/12"}>
         <ProgressBar
           earnedThisMonth={earnedThisMonth}
           userTarget={userTarget}

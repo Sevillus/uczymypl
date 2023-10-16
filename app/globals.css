@@ -102,7 +102,7 @@
 
 /*Calendar styles*/
 .calendar{
-  @apply w-full flex lg:justify-between flex-col lg:flex-row  h-3/6
+  @apply w-10/12 flex lg:justify-between flex-col lg:flex-row  h-3/6
 }
 .calendar__container{
   @apply shadow-lg rounded-lg border h-fit bg-slate-50 lg:w-9/12
@@ -141,8 +141,8 @@
 
 /*Chart styles*/
 .chart{
-  height: 60%;
-  @apply w-full flex-column gap-10
+  height: 30%;
+  @apply w-9/12 flex-column gap-10
 }
 /*Progress bar styles*/
 .progressBar{
@@ -180,7 +180,7 @@ circle {
   @apply text-rose-600 cursor-pointer
 }
 .meetingHistory__container{
-  @apply h-full w-full border-2 overflow-y-scroll bg-slate-50 p-2
+  @apply h-full w-11/12 border-2 overflow-y-scroll bg-slate-50 p-2
 }
 .meetingHistory__box{
   @apply flex-column gap-2 p-2
