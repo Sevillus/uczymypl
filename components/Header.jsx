@@ -15,14 +15,20 @@ import cn from "../utils/cn";
 const Header = ({ session }) => {
   const name = session?.user.name;
   const img = session?.user.image;
-  const [userIsOnTop, setUserIsOnTop] = useState(true)
+    const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname()
     useEffect(() => {
+        const header = document.querySelector("header");
+
         function handleScroll() {
-            if (window.scrollY === 0) {
-                setUserIsOnTop(true)
-            } else {
-                setUserIsOnTop(false)
+            if (window.scrollY > 0 && !scrolled) {
+                setScrolled(true);
+                header.classList.add("-top-12");
+                header.classList.remove("top-0");
+            } else if (window.scrollY === 0 && scrolled) {
+                setScrolled(false);
+                header.classList.add("top-0");
+                header.classList.remove("-top-12");
             }
         }
 
@@ -31,12 +37,10 @@ const Header = ({ session }) => {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, []);
-
+    }, [scrolled]);
 
   return (
-    <header className={cn("fixed ease-out duration-300 top-0 lg:relative z-50 w-full h-24 flex flex-col  lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x  lg:py-4",
-        !userIsOnTop? "-top-12" : "")}>
+    <header className={"fixed ease-out duration-300 top-0 lg:relative z-50 w-full h-24 flex flex-col  lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x  lg:py-4"}>
       <div className={"flex-between mt-2 lg:mt-0"}>
         <Logo />
         <MenuIcon className={"lg:hidden"}/>
