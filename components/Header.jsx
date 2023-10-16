@@ -8,14 +8,20 @@ import EventNoteIcon from "@mui/icons-material/EventNote";
 import GroupIcon from "@mui/icons-material/Group";
 import HistoryIcon from "@mui/icons-material/History";
 import HomeIcon from "@mui/icons-material/Home";
+import Link from "next/link";
+import {usePathname, useRouter} from "next/navigation";
+import cn from "../utils/cn";
 
 const Header = ({ session }) => {
   const name = session?.user.name;
   const img = session?.user.image;
 
+    const pathname = usePathname()
+
+
   return (
-    <header className={"sticky top-0 lg:relative z-50 w-full h-fit flex flex-col lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x pt-2 lg:py-4"}>
-      <div className={"flex-between"}>
+    <header className={"sticky top-0  lg:relative z-50 w-full  flex flex-col  lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x  lg:py-4"}>
+      <div className={"flex-between mt-2 lg:mt-0"}>
         <Logo />
         <MenuIcon className={"lg:hidden"}/>
       </div>
@@ -26,10 +32,10 @@ const Header = ({ session }) => {
       <div
         className={" lg:hidden w-full flex-between padding-x py-2 border-t-2"}
       >
-        <HomeIcon className={"text-blue-500"} />
-        <EventNoteIcon />
-        <GroupIcon />
-        <HistoryIcon />
+          <Link href={"/teacher"}><HomeIcon className={cn(pathname==="/teacher"?"text-blue-500":"")} /></Link>
+          <Link href={"/teacher/schedule"}><EventNoteIcon className={cn(pathname==="/teacher/schedule"?"text-blue-500":"")} /></Link>
+          <Link href={"/teacher/students"}><GroupIcon className={cn(pathname==="/teacher/students"?"text-blue-500":"")} /></Link>
+          <Link href={"/teacher/history"}><HistoryIcon className={cn(pathname==="/teacher/history"?"text-blue-500":"")} /></Link>
       </div>
     </header>
   );
