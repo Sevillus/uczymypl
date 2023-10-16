@@ -174,7 +174,7 @@ circle {
 /*Meeting history styles*/
 .meetingHistory{
   z-index: 100;
-  @apply flex-column items-center gap-2 w-full
+  @apply flex-column items-center gap-2 w-full my-12 lg:mt-0
 }
 .meetingHistory__alertBtn{
   @apply text-rose-600 cursor-pointer
@@ -185,6 +185,21 @@ circle {
 .meetingHistory__box {
   @apply flex-column gap-2 p-2
 }
+.burgerMenu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 100%;
+  transition: 0.3s;
+  @apply bg-slate-200
+}
+
+.burgerMenu.show {
+  left: 0;
+}
+
+
 /*RWD*/
 @media (min-width: 1900px) {
   .agenda{

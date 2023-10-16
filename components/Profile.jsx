@@ -20,11 +20,11 @@ const Profile = (props) => {
           className={"flex-between gap-3 cursor-pointer"}
           onClick={clickHandler}
         >
-          <Image src={img} width={35} height={35} className={"rounded-full"} />
-          <h1 className={"text-sm lg:text-base"}>{name}</h1>
+          <Image src={img} width={35} height={35} alt={"profile image"} className={"rounded-full"} />
+          <h1 className={" lg:text-base"}>{name}</h1>
         </div>
         {showMenu && (
-          <div className={"absolute flex flex-col items-start gap-3"}>
+          <div className={"absolute  flex-col items-start gap-3 hidden lg:flex"}>
             <button>Ustawienia</button>
             <button
               type="button"
