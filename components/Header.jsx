@@ -14,7 +14,7 @@ const Header = ({ session }) => {
   const img = session?.user.image;
 
   return (
-    <header className={"sticky top-0 lg:relative z-50 w-full flex flex-col lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x pt-2 lg:py-4"}>
+    <header className={"sticky top-0 lg:relative z-50 w-full h-fit flex flex-col lg:flex-row lg:justify-between bg-slate-700  text-white  padding-x pt-2 lg:py-4"}>
       <div className={"flex-between"}>
         <Logo />
         <MenuIcon className={"lg:hidden"}/>
