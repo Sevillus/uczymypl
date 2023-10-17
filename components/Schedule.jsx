@@ -45,7 +45,7 @@ const Schedule = () => {
               key={index}
               className=" w-full h-full lg:border gap-2 bg-slate-50 lg:hidden"
             >
-              <div className=" flex-between title-h2 p-4 bg-cyan-700 text-white text-center lg:shadow-xl rounded-t-lg lg:rounded-none">
+              <div className=" flex-between title-h2 p-4 bg-slate-600 text-white text-center lg:shadow-xl rounded-t-lg lg:rounded-none">
                 <button onClick={moveBack}>
                   <ArrowBackIcon />
                 </button>
