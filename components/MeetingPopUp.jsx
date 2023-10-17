@@ -36,23 +36,25 @@ const MeetingPopUp = ({ user , setMeetingHistory}) => {
 
   if(lastMeetings.length !== 0){
   return (
-    <div className={"w-full h-full absolute flex-center top-0 right-0 backgroundShadow"}>
+    <div className={"w-full h-full absolute flex-center top-0 right-0 backgroundShadow "}>
       <div
         className={
-          "py-6 padding-x border-2 w-2/6 h-5/6 bg-white z-10 drop-shadow-xl flex flex-col gap-4 z-30  "
+          "py-6 px-4  border-2 lg:w-3/12 h-fit bg-white z-10 drop-shadow-xl flex flex-col gap-4 z-30  "
         }
       >
-        <h1>Cześć {session?.user.name.split(" ")[0]} !</h1>
+        <h1 className={"text-xl font-bold"}>Cześć {session?.user.name.split(" ")[0]} !</h1>
         <span>Czy poniższe zajęcia się odbyły?</span>
         {lastMeetings.map((student, index) => (
-          <div key={index} className={"flex-between"}>
-            {student.name} {dayjs(student.nextMeeting).format("MMM D YYYY H m")}
-            <div>
-              <button onClick={() => confirmHandler(student, true)}>
-                <DoneIcon />
-              </button>
+          <div key={index} className={"flex-between w-full"}>
+            <p>
+              {student.name}, {student.day} {dayjs(student.nextMeeting).format("D.MM")} o {student.time}
+            </p>
+            <div className={"w-2/12 flex-between"}>
               <button>
-                <ClearIcon onClick={() => confirmHandler(student, false)}/>
+                <ClearIcon onClick={() => confirmHandler(student, false)} className={"text-rose-600"}/>
+              </button>
+              <button onClick={() => confirmHandler(student, true)} >
+                <DoneIcon className={"text-green-600"}/>
               </button>
             </div>
           </div>

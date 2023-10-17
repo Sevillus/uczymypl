@@ -68,13 +68,7 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
 
             return (
               <div key={index} className={"meetingHistory__box"}>
-                {isSameDay && (
-                  <div className={"border-b-2"}>
-                    <p className={"font-medium"}>
-                      {convertDate(student.nextMeeting).dayConverted}
-                    </p>
-                  </div>
-                )}
+
                 <MeetingHistoryInfo
                   student={student}
                   key={index}
@@ -84,6 +78,7 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
                   paymentInfo={paymentInfo}
                   filtr={filtr}
                   setFiltr={setFiltr}
+                  isSameDay={isSameDay}
                 />
               </div>
             );
