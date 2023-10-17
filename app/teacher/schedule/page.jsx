@@ -4,7 +4,7 @@ import Schedule from "../../../components/Schedule";
 
 const Page = () => {
     return (
-        <div>
+        <div className={"w-full min-h-[80vh] "}>
             <Schedule />
         </div>
     )
