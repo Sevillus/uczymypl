@@ -31,6 +31,8 @@ export async function POST(req, res) {
 
     const newStudent = {
       name: body.name,
+      email: body.email,
+      phone: body.phone,
       price: body.price,
       day: body.day,
       time: body.time,

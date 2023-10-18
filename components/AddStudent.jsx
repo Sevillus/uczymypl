@@ -12,6 +12,8 @@ const AddStudent = (props) => {
   const {student} = props
 
   const [name, setName] = useState(student? student.name : "");
+  const [email, setEmail] = useState(student? student.email : "")
+  const [phone, setPhone] = useState(student? student.phone : "")
   const [price, setPrice] = useState(student? student.price : 70);
   const [day, setDay] = useState(student? student.day : "");
   const [userTime, setUserTime] = useState(student? student.time : "");
@@ -32,6 +34,8 @@ const AddStudent = (props) => {
       method: "POST",
       body: JSON.stringify({
         name: name,
+        email: email,
+        phone: phone,
         price: price,
         day: day,
         time: userTime,
@@ -86,6 +90,23 @@ const AddStudent = (props) => {
           id="standard-basic"
           label="Imię i nazwisko"
           variant="standard"
+          type={"text"}
+        />
+        <TextField
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            id="standard-basic"
+            label="Adres e-mail"
+            variant="standard"
+            type={"email"}
+        />
+        <TextField
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            id="standard-basic"
+            label="Numer telefonu"
+            variant="standard"
+            type={"string"}
         />
         <TextField
             value={price}

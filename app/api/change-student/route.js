@@ -24,6 +24,8 @@ export async function POST(req) {
         (student) => student._id == body.id,
       );
       student.name = body.name;
+      student.email = body.email;
+      student.phone = body.phone;
       student.price = body.price;
       student.day = body.day;
       student.time = body.time;

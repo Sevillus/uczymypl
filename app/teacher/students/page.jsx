@@ -6,15 +6,14 @@ import {InputAdornment, TextField} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {AccountCircle} from "@mui/icons-material";
 import FaceIcon from '@mui/icons-material/Face';
+import StudentsBox from "../../../components/StudentsBox";
+import TuneIcon from '@mui/icons-material/Tune';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Page = () => {
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(true);
-    const colors = ["#a2513f", "#2a6735", "#5733FF", "#388383", ];
-    function getRandomColor() {
-        const randomIndex = Math.floor(Math.random() * colors.length);
-        return colors[randomIndex];
-    }
+    const [search, setSearch] = useState("")
 
     const fetchStudent = async () => {
         try {
@@ -30,14 +29,17 @@ const Page = () => {
         fetchStudent();
     }, []);
 
+    console.log(search)
+
+
     return (
-        <div className={"flex flex-col items-center w-screen h-full"}>
-            <div className={"flex gap-6 text-start w-8/12 mb-4"}>
+        <div className={"flex flex-col items-center w-screen h-[75vh] overflow-y-auto"}>
+            <div className={"flex gap-6 text-start w-10/12 mb-4"}>
                 <h1 className={"title-h1 "}>Uczniowie</h1>
                 <button className={"addBtn"}>Dodaj ucznia</button>
             </div>
 
-            <div className={"bg-slate-50 w-full lg:w-8/12 h-10/12 padding-y px-8"}>
+            <div className={"bg-slate-50 w-full lg:w-10/12 h-10/12 padding-y px-8"}>
                 <TextField
                     id="input-with-icon-textfield"
                     InputProps={{
@@ -47,67 +49,26 @@ const Page = () => {
                             </InputAdornment>
                         ),
                     }}
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
                     variant="standard"
                 />
                 <div className={"flex-between padding-y border-b-2 font-bold pr-10"}>
-                    <p>Avatar</p>
-                    <p>Imię</p>
-                    <p>Nazwisko</p>
-                    <p>Email</p>
-                    <p>Telefon</p>
-                    <p>Data dodania</p>
-                    <p>Akcja</p>
+                    <p className={"w-10"}>Avatar</p>
+                    <p className={"w-16"}>Imię</p>
+                    <p className={"w-28"}>Nazwisko</p>
+                    <p className={"w-56"}>Email</p>
+                    <p className={"w-28"}>Telefon</p>
+                    <p className={"w-28"}>Data dodania</p>
+                    <p className={"w-28"}>
+                        Akcja
+                    </p>
                 </div>
-                <div className={"flex-between padding-y border-b-2  pr-10"}>
-                    <div className={"w-[36px] h-[36px] rounded-full bg-blue-500 text-white flex-center"} style={{background:getRandomColor()}}>M</div>
-                    <p>Rafał</p>
-                    <p>Czarnecki</p>
-                    <p>ravczarencki00@gmail.com</p>
-                    <p>725 515 070</p>
-                    <p>14.10.2023</p>
-                    <p>Dodaj</p>
-                </div>
-                <div className={"flex-between padding-y border-b-2  pr-10"}>
-                    <div className={"w-[36px] h-[36px] rounded-full bg-blue-500 text-white flex-center"} style={{background:getRandomColor()}}>M</div>
-                    <p>Rafał</p>
-                    <p>Czarnecki</p>
-                    <p>ravczarencki00@gmail.com</p>
-                    <p>725 515 070</p>
-                    <p>14.10.2023</p>
-                    <p>Dodaj</p>
-                </div>
-                <div className={"flex-between padding-y border-b-2  pr-10"}>
-                    <div className={"w-[36px] h-[36px] rounded-full bg-blue-500 text-white flex-center"} style={{background:getRandomColor()}}>M</div>
-                    <p>Rafał</p>
-                    <p>Czarnecki</p>
-                    <p>ravczarencki00@gmail.com</p>
-                    <p>725 515 070</p>
-                    <p>14.10.2023</p>
-                    <p>Dodaj</p>
-                </div>
-                <div className={"flex-between padding-y border-b-2  pr-10"}>
-                    <div className={"w-[36px] h-[36px] rounded-full bg-blue-500 text-white flex-center"} style={{background:getRandomColor()}}>M</div>
-                    <p>Rafał</p>
-                    <p>Czarnecki</p>
-                    <p>ravczarencki00@gmail.com</p>
-                    <p>725 515 070</p>
-                    <p>14.10.2023</p>
-                    <p>Dodaj</p>
-                </div>
-                <div className={"flex-between padding-y border-b-2  pr-10"}>
-                    <div className={"w-[36px] h-[36px] rounded-full bg-blue-500 text-white flex-center"} style={{background:getRandomColor()}}>M</div>
-                    <p>Rafał</p>
-                    <p>Czarnecki</p>
-                    <p>ravczarencki00@gmail.com</p>
-                    <p>725 515 070</p>
-                    <p>14.10.2023</p>
-                    <p>Dodaj</p>
-                </div>
-                {/*{students.map((student, index) => (*/}
-                {/*    <div key={index}>*/}
-                {/*        {student.name}*/}
-                {/*    </div>*/}
-                {/*))}*/}
+                {
+                    students.map((student, key) => (
+                        <StudentsBox key={key} student={student}/>
+                    ))
+                }
             </div>
 
         </div>

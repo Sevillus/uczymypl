@@ -5,6 +5,12 @@ const StudentSchema = new Schema({
         type: String,
         required: [true, 'Name is required!'],
     },
+    email: {
+        type:String,
+    },
+    phone: {
+        type:String
+    },
     price: {
         type: Number,
         required: [true, 'School is required!'],
