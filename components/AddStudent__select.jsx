@@ -4,6 +4,7 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 
 const AddStudentSelect = (props) => {
     const title = props.title;
+    const afterClick = props.afterClick
     const [option, setOption] = useState(props.default);
 
     const handleChange = (e) => {
@@ -24,6 +25,7 @@ const AddStudentSelect = (props) => {
                 label="Rodzaj szkoły"
                 value={option}
                 onChange={handleChange}
+                error={option === "" && afterClick}
             >
                 {optionArray.map((option) => (
                     option ? (

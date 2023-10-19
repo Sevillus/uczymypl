@@ -11,7 +11,6 @@ export async function POST(req, res) {
   const session = await getServerSession(authOptions);
   const body = await req.json();
   if (session?.user) {
-    console.log(session.user)
     const sessionUser = await User.findOne({ email: session?.user.email });
 
     if (!sessionUser) {
@@ -40,6 +39,7 @@ export async function POST(req, res) {
       cyclical: body.cyclical,
       nextMeeting: body.nextMeeting,
       isPaid: false,
+      joinDate: dayjs()
     };
 
     if (body) {

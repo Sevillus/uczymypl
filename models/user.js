@@ -37,6 +37,9 @@ const StudentSchema = new Schema({
     },
     isPaid: {
         type: Boolean
+    },
+    joinDate: {
+        type: Date,
     }
 });
 const ScheduleSchema = new Schema ({

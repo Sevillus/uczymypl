@@ -3,14 +3,17 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import {FormControlLabel, Switch, TextField} from "@mui/material";
 import AddStudentSelect from "./AddStudent__select";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import meetingInfo from "../utils/meetingDay";
+import AddStudentError from "./AddStudentError";
+
+
 
 const AddStudent = (props) => {
   const days = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek","Sobota", "Niedziela"];
 
   const {student} = props
-
+  console.log(student)
   const [name, setName] = useState(student? student.name : "");
   const [email, setEmail] = useState(student? student.email : "")
   const [phone, setPhone] = useState(student? student.phone : "")
@@ -20,16 +23,22 @@ const AddStudent = (props) => {
   const [duration, setDuration] = useState( 60)
   const [cyclical, setCyclical] = useState(student? student.cyclical : true)
   const [isDeleting, setIsDeleting] = useState(false);
+  const [afterClick, setAfterClick] = useState(false)
+
+  const required = [name, price, day, userTime, duration]
+
 
   const closeMenu = props.closeMenu
   const fetchStudent = props.fetchStudent
 
   const {apiUrl, studentId} = props
 
+
   const makeApiCall = async (e) => {
+    setAfterClick(true)
     e.preventDefault();
-
-
+    const errors = required.filter(el => el === "")
+    if(errors.length === 0) {
     await fetch(`${apiUrl}`, {
       method: "POST",
       body: JSON.stringify({
@@ -47,9 +56,12 @@ const AddStudent = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-    });
-    props.closeMenu(false);
-    fetchStudent();
+    })
+      setAfterClick(false)
+      props.closeMenu(false);
+      fetchStudent()
+    }
+
   };
 
   const handleDelete = async (e) => {
@@ -67,7 +79,7 @@ const AddStudent = (props) => {
     });
 
     props.closeMenu(false);
-    fetchStudent();
+    fetchStudent()
   };
 
 
@@ -87,10 +99,11 @@ const AddStudent = (props) => {
         <TextField
           value={name}
           onChange={(e) => setName(e.target.value)}
-          id="standard-basic"
-          label="Imię i nazwisko"
+          id="outlined-error"
+          label="Imię i nazwisko*"
           variant="standard"
           type={"text"}
+          error={name === "" && afterClick}
         />
         <TextField
             value={email}
@@ -115,6 +128,7 @@ const AddStudent = (props) => {
             label="Cena zajęć"
             variant="standard"
             type={"number"}
+            error={price <= 0 && afterClick}
         />
         <TextField
             value={duration}
@@ -123,6 +137,7 @@ const AddStudent = (props) => {
             label="Czas trwania (min)"
             variant="standard"
             type={"number"}
+            error={duration <= 0 && afterClick}
         />
         <FormControlLabel
             control={<Switch defaultChecked />}
@@ -135,6 +150,8 @@ const AddStudent = (props) => {
           default ={day}
           array={days}
           onChange={(value) => setDay(value)}
+          error={day === "" && afterClick}
+          afterClick={afterClick}
         />
         <TextField
           id="standard-basic"
@@ -143,15 +160,16 @@ const AddStudent = (props) => {
           onChange={(e) => setUserTime(e.target.value)}
           type="time"
           variant="standard"
+          error={userTime === "" && afterClick}
         />
         {student? (
             <div className={"flex-center gap-10"}>
               {isDeleting ? (
                   <button className={"addBtn"} type="submit">Usuń</button>
               ) : (
-                  <button className={"addBtn"} type="button" onClick={() => setIsDeleting(true)}>Usuń</button>
+                  <button className={"addBtn bg-rose-700 text-white"} type="button" onClick={() => setIsDeleting(true)}>Usuń</button>
               )}
-              <button className={"addBtn"} type="submit">Zatwierdź</button>
+              <button className={"addBtn bg-green-700 text-white"} type="submit">Zatwierdź</button>
             </div>
         ) : (
             <div className={"flex-center"}>
