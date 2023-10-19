@@ -10,17 +10,24 @@ import StudentsBox from "../../../components/StudentsBox";
 import TuneIcon from '@mui/icons-material/Tune';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddStudent from "../../../components/AddStudent";
+import StudentsPageMobileInfo from "../../../components/StudentsPageMoreInfo";
+import StudentsPageMoreInfo from "../../../components/StudentsPageMoreInfo";
+import dayjs from "dayjs";
 
 const Page = () => {
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("")
     const [addNewStudentMenu, setAddNewStudentMenu] = useState(false)
+    // rendered students depend on search bar value and students array, students are fetched
+    const [renderedStudents, setRenderedStudents] = useState([])
+    const [showMoreStudentInfo, setShowMoreStudentInfo] = useState(false)
 
     const fetchStudent = async () => {
         try {
             const res = await axios.get("/api/getUserData");
             setStudents(res.data.students);
+            setRenderedStudents(res.data.students)
             setLoading(false);
         } catch (e) {
             console.log(e);
@@ -31,10 +38,9 @@ const Page = () => {
             const filteredStudents = students.filter((student) =>
                 student.name && student.name.toLowerCase().includes(search)
             );
-            setStudents(filteredStudents);
+            setRenderedStudents(filteredStudents)
         } else {
-            // Reset the student list if the search input is empty
-            fetchStudent();
+            setRenderedStudents(students)
         }
     };
 
@@ -49,12 +55,12 @@ const Page = () => {
 
 
     return (
-        <div className={"flex flex-col items-center w-screen h-[75vh] overflow-hidden"}>
+        <div className={"flex flex-col items-center w-full h-[75vh] overflow-hidden"}>
             <div className={"flex gap-6 text-start w-10/12 mb-4"}>
                 <h1 className={"title-h1 "}>Uczniowie</h1>
                 <button className={"addBtn"} onClick={() => setAddNewStudentMenu(true)}>Dodaj ucznia</button>
             </div>
-            <div className={"bg-slate-50 w-full lg:w-10/12 h-fit padding-y px-8 "}>
+            <div className={" bg-slate-50 w-full lg:w-10/12 h-fit padding-y px-8 "}>
                 <TextField
                     id="input-with-icon-textfield"
                     InputProps={{
@@ -68,20 +74,20 @@ const Page = () => {
                     onChange={(e) => setSearch(e.target.value.toLowerCase())}
                     variant="standard"
                 />
-                <div className={"flex-between padding-y border-b-2 font-bold pr-10"}>
-                    <p className={"w-10"}>Avatar</p>
-                    <p className={"w-16"}>Imię</p>
-                    <p className={"w-28"}>Nazwisko</p>
-                    <p className={"w-56"}>Email</p>
-                    <p className={"w-28"}>Telefon</p>
-                    <p className={"w-28"}>Data dodania</p>
-                    <p className={"w-28 text-center"}>
+                <div className={"flex-between padding-y border-b-2 font-bold pr-10 text-center"}>
+                    <p className={"lg:w-10 hidden lg:block"}>Avatar</p>
+                    <p className={"lg:w-16"}>Imię</p>
+                    <p className={"lg:w-28"}>Nazwisko</p>
+                    <p className={"w-56 hidden lg:block"}>Email</p>
+                    <p className={"w-28 hidden lg:block"}>Telefon</p>
+                    <p className={"w-28 hidden lg:block"}>Data dodania</p>
+                    <p className={"lg:w-28 "}>
                         Akcja
                     </p>
                 </div>
                 <div className={" overflow-y-auto h-[50vh] "}>
                     {
-                        students.map((student, index) => (
+                        renderedStudents.map((student, index) => (
                             <StudentsBox key={index} student={student} addNewStudentMenu={addNewStudentMenu} setAddNewStudentMenu={setAddNewStudentMenu} fetchStudent={fetchStudent}/>
                         ))
                     }
@@ -105,3 +111,4 @@ const Page = () => {
     )
 }
 export default Page
+
