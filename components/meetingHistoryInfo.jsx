@@ -48,7 +48,6 @@ const MeetingHistoryInfo = ({
 
     if (paymentInfo.length === 1) {
       setFiltr(false);
-      console.log("elo");
     }
 
     await fetch(`api/meeting-history`, {
