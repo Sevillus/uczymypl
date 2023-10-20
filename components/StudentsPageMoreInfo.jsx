@@ -19,37 +19,30 @@ const StudentsPageMoreInfo = ({ student,showMoreStudentInfo, setShowMoreStudentI
                             </div>
                             <p className={"text-xl"}>{student.name}</p>
                         </div>
-                        <div className={"w-full h-fit flex-column  gap-2 p-2"}>
-                            <div className={"flex-between "}>
-                                <p className={"font-semibold lg:w-1/2 lg:text-end lg:pr-2"}>E-mail :</p>
-                                <p className={"w-6/12 max-w-6/12 lg:w-1/2  h-fit break-words text-start"}>{student?.email ? student.email : " - "}</p>
+                        <div className={"w-full h-fit flex-center gap-2 p-2"}>
+                            <div className={"w-4/12 font-semibold lg:w-3/12 "}>
+                                <p>E-mail :</p>
+                                <p>Telefon :</p>
+                                <p>Dzień :</p>
+                                <p>Godzina :</p>
+                                <p>Cena :</p>
+                                <p>Dołączono :</p>
                             </div>
-                            <div className={"flex-between "}>
-                                <p className={"font-semibold lg:w-1/2 lg:text-end lg:pr-2"}>Telefon :</p>
-                                <p className={"w-6/12 lg:w-1/2 text-start"}>{student?.phone ? student.phone : " - "}</p> {/* Change student.email to student.phone */}
-                            </div>
-                            <div className={"flex-between "}>
-                                <p className={"font-semibold lg:w-1/2 lg:text-end lg:pr-2"}>Dzień :</p>
-                                <p className={"w-6/12 lg:w-1/2 text-start"}>{student?.day}</p>
-                            </div>
-                            <div className={"flex-between "}>
-                                <p className={"font-semibold lg:w-1/2 lg:text-end lg:pr-2"}>Godzina :</p>
-                                <p className={"w-6/12  lg:w-1/2 text-start"}>{student?.time} - {student?.duration}</p>
-                            </div>
-                            <div className={"flex-between "}>
-                                <p className={"font-semibold lg:w-1/2 lg:text-end lg:pr-2"}>Cena :</p>
-                                <p className={"w-6/12 lg:w-1/2 text-start"}>{student?.price}.00 PLN</p>
-                            </div>
-                            <div className={"flex-between "}>
-                                <p className={"font-semibold lg:w-1/2 lg:text-end lg:pr-2"}>Dołączono :</p>
-                                <p className={"w-6/12 lg:w-1/2 text-start"}>{dayjs(student?.joinDate).format("DD.MM.YYYY")}</p>
-                            </div>
-                            <div className={"flex-center py-2"}>
-                                <button className={"w-1/2 addBtn"} onClick={() => setShowMoreStudentInfo(false)}>
-                                    Zamknij
-                                </button>
+                            <div className={" w-5/12   h-fit break-words text-start\""}>
+                                <p>{student?.email ? student.email : " - "}</p>
+                                <p>{student?.phone ? student.phone : " - "}</p>
+                                <p>{student?.day}</p>
+                                <p>{student?.time} - {student?.duration}</p>
+                                <p>{student?.price}.00 PLN</p>
+                                <p>{dayjs(student?.joinDate).format("DD.MM.YYYY")}</p>
                             </div>
                         </div>
+                        <div className={"w-full flex-center"}>
+                            <button className={"w-1/2 addBtn"} onClick={() => setShowMoreStudentInfo(false)}>
+                                Zamknij
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>

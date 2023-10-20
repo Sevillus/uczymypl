@@ -55,8 +55,8 @@ const Page = () => {
 
 
     return (
-        <div className={"flex flex-col items-center w-full h-[75vh] overflow-hidden"}>
-            <div className={"flex gap-6 text-start w-10/12 mb-4"}>
+        <div className={"flex flex-col items-center w-full h-screen lg:h-[75vh] lg:overflow-hidden"}>
+            <div className={"flex gap-6 text-start w-10/12 mb-4 mt-4"}>
                 <h1 className={"title-h1 "}>Uczniowie</h1>
                 <button className={"addBtn"} onClick={() => setAddNewStudentMenu(true)}>Dodaj ucznia</button>
             </div>
@@ -81,14 +81,15 @@ const Page = () => {
                     <p className={"w-56 hidden lg:block"}>Email</p>
                     <p className={"w-28 hidden lg:block"}>Telefon</p>
                     <p className={"w-28 hidden lg:block"}>Data dodania</p>
-                    <p className={"lg:w-28 "}>
-                        Akcja
-                    </p>
+                    <p className={"lg:w-28 "}> Opcje</p>
                 </div>
                 <div className={" overflow-y-auto h-[50vh] "}>
-                    {
-                        renderedStudents.map((student, index) => (
-                            <StudentsBox key={index} student={student} addNewStudentMenu={addNewStudentMenu} setAddNewStudentMenu={setAddNewStudentMenu} fetchStudent={fetchStudent}/>
+                    {   loading ?
+                        [1,2,3,4,5,].map(key => (
+                            <StudentsBox key={key} loading={loading} />
+                        ))
+                         :renderedStudents.map((student, index) => (
+                            <StudentsBox key={index} loading={loading} student={student} fetchStudent={fetchStudent}/>
                         ))
                     }
                 </div>

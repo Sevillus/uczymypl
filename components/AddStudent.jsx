@@ -86,7 +86,7 @@ const AddStudent = (props) => {
   return (
     <div
       className={
-        "py-10 padding-x border-2 w-10/12 lg:w-2/6 h-fit  bg-white z-10 drop-shadow-xl flex flex-col gap-4"
+        "py-4 mt-20 lg:mt-2 lg:py-10 padding-x  w-10/12 lg:w-2/6 h-fit  bg-slate-50 z-10 rounded-md flex flex-col gap-4"
       }
     >
       <div className={"flex-between"}>
@@ -95,7 +95,7 @@ const AddStudent = (props) => {
           <CloseIcon className={"closeBtn"} />
         </button>
       </div>
-      <form onSubmit={isDeleting ? handleDelete : makeApiCall} className={"flex flex-col gap-10"}>
+      <form onSubmit={isDeleting ? handleDelete : makeApiCall} className={"flex flex-col gap-4 max-[376px]:gap-2  lg:gap-10 text-sm"}>
         <TextField
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -167,9 +167,9 @@ const AddStudent = (props) => {
               {isDeleting ? (
                   <button className={"addBtn"} type="submit">Usuń</button>
               ) : (
-                  <button className={"addBtn bg-rose-700 text-white"} type="button" onClick={() => setIsDeleting(true)}>Usuń</button>
+                  <button className={"addBtn bg-rose-500 text-white"} type="button" onClick={() => setIsDeleting(true)}>Usuń</button>
               )}
-              <button className={"addBtn bg-green-700 text-white"} type="submit">Zatwierdź</button>
+              <button className={"addBtn bg-green-600 text-white"} type="submit">Zatwierdź</button>
             </div>
         ) : (
             <div className={"flex-center"}>

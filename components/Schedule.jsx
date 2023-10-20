@@ -54,7 +54,7 @@ const Schedule = () => {
                   <ArrowForwardIcon />
                 </button>
               </div>
-              <div className="p-2 flex-column gap-4 h-96">
+              <div className="p-2 flex-column gap-4 h-96 overflow-y-auto">
                 {day.studentsThisDay.map((student, studentIndex) => (
                   <div key={studentIndex} className="flex-column items-center">
                     {loading ? (
