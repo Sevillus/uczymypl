@@ -37,12 +37,15 @@ const Page = () => {
           userTarget={userTarget}
           isLoading={isLoading}
         />
-        <MeetingsHistory
-          meetingHistory={meetingHistory}
-          setMeetingHistory={setMeetingHistory}
-          setEarnedThisMonth={setEarnedThisMonth}
-          isLoading={isLoading}
-        />
+          <div className={"h-[50v] lg:h-[40vh] w-full mt-10"}>
+              <MeetingsHistory
+                  meetingHistory={meetingHistory}
+                  setMeetingHistory={setMeetingHistory}
+                  setEarnedThisMonth={setEarnedThisMonth}
+                  isLoading={isLoading}
+              />
+          </div>
+
       </div>
     </div>
   );

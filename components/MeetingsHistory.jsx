@@ -16,7 +16,7 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
   };
 
   return (
-    <div className={"meetingHistory"} style={{ height: "40vh" }}>
+    <div className={"meetingHistory h-full"} >
       <div className={"w-full flex-between"}>
         <h1 className={"title-h2"}>Historia płatności</h1>
         {paymentInfo.length ? (
@@ -61,28 +61,39 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
             </div>
           </div>
         ) : (
-          meetingHistory.slice().reverse().map((student, index) => {
-            const isSameDay =
-              dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
-            prevDay = student.nextMeeting;
+            meetingHistory ? (
+                meetingHistory.slice().reverse().map((student, index) => {
+                    const isSameDay =
+                        dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
+                    prevDay = student.nextMeeting;
 
-            return (
-              <div key={index} className={"meetingHistory__box"}>
+                    return (
+                        <div key={index} className={"meetingHistory__box"}>
 
-                <MeetingHistoryInfo
-                  student={student}
-                  key={index}
-                  meetingHistory={meetingHistory}
-                  setEarnedThisMonth={setEarnedThisMonth}
-                  setPaymentInfo={setPaymentInfo}
-                  paymentInfo={paymentInfo}
-                  filtr={filtr}
-                  setFiltr={setFiltr}
-                  isSameDay={isSameDay}
-                />
-              </div>
-            );
-          })
+                            <MeetingHistoryInfo
+                                student={student}
+                                key={index}
+                                meetingHistory={meetingHistory}
+                                setEarnedThisMonth={setEarnedThisMonth}
+                                setPaymentInfo={setPaymentInfo}
+                                paymentInfo={paymentInfo}
+                                filtr={filtr}
+                                setFiltr={setFiltr}
+                                isSameDay={isSameDay}
+                            />
+                        </div>
+                    );
+                })
+            ) : (
+                <div className={"flex-center h-full text-slate-400"}>
+                <em>
+                    Brak spotkań w tym miesiacu..
+                </em>
+            </div>)
+
+
+
+
         )}
       </div>
       <GeneratePdfButton meetingHistory={meetingHistory} />

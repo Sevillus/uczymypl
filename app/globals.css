@@ -174,16 +174,16 @@ circle {
 /*Meeting history styles*/
 .meetingHistory{
   z-index: 100;
-  @apply flex-column items-center gap-2 w-full my-12 lg:mt-0
+  @apply flex-column items-center gap-2 w-full h-full lg:my-12 lg:mt-0
 }
 .meetingHistory__alertBtn{
   @apply text-rose-600 cursor-pointer
 }
 .meetingHistory__container{
-  @apply h-full w-full lg:w-11/12 border-2 overflow-y-scroll bg-slate-50 p-2 rounded-lg
+  @apply h-full w-full lg:w-11/12 overflow-y-scroll bg-slate-50 p-2 rounded-lg
 }
 .meetingHistory__box {
-  @apply flex-column gap-2 p-2
+  @apply flex-column gap-2 p-2 text-sm lg:text-base
 }
 .burgerMenu {
   position: fixed;
