@@ -152,7 +152,7 @@ circle {
   fill: none;
   stroke: url(#GradientColor);
   stroke-width: 25px;
-  stroke-dasharray: 900;
+  stroke-dasharray: 800;
   stroke-dashoffset: 900;
   transition: stroke-dashoffset 1s linear;
 }
@@ -183,7 +183,7 @@ circle {
   @apply h-full w-full lg:w-11/12 overflow-y-scroll bg-slate-50 p-2 rounded-lg
 }
 .meetingHistory__box {
-  @apply flex-column gap-2 p-2 text-sm lg:text-base
+  @apply flex-column gap-2  text-sm lg:text-base
 }
 .burgerMenu {
   position: fixed;

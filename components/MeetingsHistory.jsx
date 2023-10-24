@@ -23,7 +23,7 @@ const MeetingsHistory = ({ meetingHistory, setEarnedThisMonth, isLoading }) => {
           <div>
             {!filtr ? (
               <div
-                className={"meetingHistory__alertBtn"}
+                className={"meetingHistory__alertBtn text-sm"}
                 onClick={() => filtrHandler(true)}
               >
                 <p>Brak płatności!</p>

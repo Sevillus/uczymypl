@@ -40,12 +40,12 @@ function ProgressBar({ earnedThisMonth, userTarget, isLoading }) {
             </linearGradient>
           </defs>
           <circle
-            ref={circleRef}
-            cx="200"
-            cy="200"
-            r="116"
-            strokeLinecap="round"
-            transform={`rotate(${rotation} 200 200)`} // Obrót elementu SVG
+              ref={circleRef}
+              cx="200"
+              cy="200"
+              r="116"
+              strokeLinecap="round"
+              transform={isLoading ? `rotate(${rotation} 200 200)` : ''}
           />
         </svg>
         <div className="progressBar__innerCircle" />

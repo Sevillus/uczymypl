@@ -65,7 +65,7 @@ const MeetingHistoryInfo = ({
   return (
       <div>
         {!filtr ? (
-            <>
+            <div className={"p-2"}>
               {isSameDay && (
                   <div className="border-b-2">
                     <p className="font-medium">
@@ -92,9 +92,9 @@ const MeetingHistoryInfo = ({
                   )}
                 </div>
               </div>
-            </>
+            </div>
         ) : !payment ? (
-            <div>
+            <div className={"p-2"}>
               {isSameDay && (
                   <div className="border-b-2">
                     <p className="font-medium">

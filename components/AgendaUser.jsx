@@ -42,7 +42,7 @@ const AgendaUser = (props) => {
 
       {isActive && (
         // change user info menu
-        <div className={"addStudent"}>
+        <div className={"addStudent backgroundShadow"}>
           <AddStudent
             fetchStudent={props.fetchStudent}
             studentId={student._id}
