@@ -3,11 +3,11 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Provider from "../components/globals/Provider";
-import Profile from "../components/pages/teacher/header/Profile";
 import {getServerSession} from "next-auth";
 import {authOptions} from "./api/auth/[...nextauth]/route";
-import Header from "../components/pages/teacher/header/Header";
+
 import React from "react";
+import Header from "../components/globals/header/Header";
 
 
 
@@ -15,19 +15,19 @@ import React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "UczymyPL",
-  description: "Ucz i bądź nauczany",
+    title: "UczymyPL",
+    description: "Ucz i bądź nauczany",
 };
 
 export default async function RootLayout({ children})
- {
+{
 
-     const session = await getServerSession(authOptions)
+    const session = await getServerSession(authOptions)
 
 
-  return (
-    <html lang="en">
-      <body className={inter.className}>
+    return (
+        <html lang="en">
+        <body className={inter.className}>
         <Provider>
             <div className={"bg-gray-100 w-full  flex flex-col justify-between lg:h-screen lg:overflow-hidden overflow-hidden "}>
                 <Header
@@ -43,7 +43,7 @@ export default async function RootLayout({ children})
                 </footer>
             </div>
         </Provider>
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }

@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import Profile from "./Profile";
@@ -9,60 +8,22 @@ import GroupIcon from "@mui/icons-material/Group";
 import HistoryIcon from "@mui/icons-material/History";
 import HomeIcon from "@mui/icons-material/Home";
 import CloseIcon from "@mui/icons-material/Close";
-import LoginIcon from '@mui/icons-material/Login';
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import cn from "../../../../utils/cn";
+import { usePathname } from "next/navigation";
+import cn from "../../../utils/cn";
 import LogoutIcon from "@mui/icons-material/Logout";
-import {signIn, signOut} from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
+import useBurgerMenu from "../../../hooks/useBurgerMenu";
+import useScroll from "../../../hooks/useScroll";
 
 const Header = ({ session }) => {
   const name = session?.user.name;
   const img = session?.user.image;
   const target = session?.user.target;
-  const [scrolled, setScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Rozpoczynamy z zamkniętym menu
 
+  const { toggleMenu } = useBurgerMenu();
   const pathname = usePathname();
-
-  useEffect(() => {
-    const header = document.querySelector("globals");
-
-    function handleScroll() {
-      if (window.scrollY > 0 && !scrolled) {
-        setScrolled(true);
-        header.classList.add("-top-12");
-        header.classList.remove("top-0");
-      } else if (window.scrollY === 0 && scrolled) {
-        setScrolled(false);
-        header.classList.add("top-0");
-        header.classList.remove("-top-12");
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrolled]);
-
-  // Funkcja obsługująca kliknięcie w ikonę menu
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  // Zmiana klasy "show" w zależności od wartości isMenuOpen
-  useEffect(() => {
-    const menu = document.querySelector(".burgerMenu");
-
-    if (isMenuOpen) {
-      menu.classList.add("show");
-    } else {
-      menu.classList.remove("show");
-    }
-  }, [isMenuOpen]);
-
+  useScroll();
   return (
     <header
       className={
@@ -72,12 +33,12 @@ const Header = ({ session }) => {
       <div className={"flex-between mt-2 lg:mt-0"}>
         <Logo />
         {name ? (
-          <MenuIcon className={"lg:hidden "} onClick={handleMenuClick} />
+          <MenuIcon className={"lg:hidden "} onClick={toggleMenu} />
         ) : (
           <button
             type="button"
             onClick={() => {
-              signIn("google", {  callbackUrl: `/teacher` } );
+              signIn("google", { callbackUrl: `/teacher` });
             }}
             className="outline_btn text-white text-sm flex items-center gap-4 pointer p-1 border-slate-400 w-fit rounded-lg border lg:hidden"
           >
@@ -90,10 +51,10 @@ const Header = ({ session }) => {
           >
             <CloseIcon
               className={"text-black absolute right-2"}
-              onClick={handleMenuClick}
+              onClick={toggleMenu}
             />
             <div className={"w-9/12 text-black "}>
-              <Profile name={name} img={img} target={target}/>
+              <Profile name={name} img={img} target={target} />
             </div>
             <button
               type="button"

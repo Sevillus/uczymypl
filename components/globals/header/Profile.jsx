@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import AddStudent from "../AddStudent";
+import AddStudent from "../../pages/teacher/AddStudent";
 
 const Profile = (props) => {
   const { name, img, target } = props;

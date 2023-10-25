@@ -1,16 +1,10 @@
-const HomePage = async () => {
-
-
+const HomePage = () => {
 
     return (
-          <div>
-              Siema
-
-          </div>
-
-
+        <div>
+            Siema
+        </div>
     );
-
 };
 
 export default HomePage;

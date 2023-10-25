@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Agenda from "../../components/pages/teacher/dashboard/agenda/Agenda";
-import ProgressBar from "../../components/pages/teacher/dashboard/progressBar/ProgressBar";
+import ProgressBar from "../../components/pages/teacher/dashboard/ProgressBar";
 import MeetingsHistory from "../../components/pages/teacher/meetingHistory/MeetingsHistory";
 import Calendar from "../../components/pages/teacher/dashboard/calendar/Calendar";
-import Chart from "../../components/pages/teacher/dashboard/chart/Chart";
+import Chart from "../../components/pages/teacher/dashboard/Chart";
 
 const Dashboard = ({userData}) => {
     const [meetingHistory, setMeetingHistory] = useState([]);
