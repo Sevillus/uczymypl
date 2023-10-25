@@ -1,12 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import AgendaUser from "./AgendaUser";
-import AgendaCalendar from "./AgendaCalendar";
 import axios from "axios";
-import meetingInfo from "../utils/meetingDay";
-import AddStudent from "./AddStudent";
-import MeetingPopUp from "./MeetingPopUp";
-import dayjs from "dayjs";
+import AddStudent from "../../AddStudent";
+import MeetingPopUp from "../MeetingPopUp";
+
 
 const Agenda = ({
   setMeetingHistory,

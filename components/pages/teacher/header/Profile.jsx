@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import AddStudent from "./AddStudent";
+import AddStudent from "../AddStudent";
 
 const Profile = (props) => {
-  const { name, img } = props;
+  const { name, img, target } = props;
+
   const [showMenu, setShowMenu] = useState(false);
 
   const clickHandler = () => {
@@ -44,7 +45,7 @@ const Profile = (props) => {
       <button
         type="button"
         onClick={() => {
-          signIn("google", { callbackUrl: `/teacher` });
+            signIn("google", {  callbackUrl: `/teacher` });
         }}
       >
         Zaloguj się

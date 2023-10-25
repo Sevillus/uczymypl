@@ -1,6 +1,5 @@
 "use client";
 import React, {useState } from "react";
-import convertDate from "../utils/convertDate";
 import dayjs from "dayjs";
 import MeetingHistoryInfo from "./meetingHistoryInfo";
 import CloseIcon from "@mui/icons-material/Close";

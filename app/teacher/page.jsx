@@ -1,53 +1,58 @@
 "use client";
-import Agenda from "../../components/Agenda";
-import ProgressBar from "../../components/ProgressBar";
-import MeetingsHistory from "../../components/MeetingsHistory";
 import React, { useState } from "react";
-import Calendar from "../../components/Calendar";
-import Chart from "../../components/Chart";
+import Agenda from "../../components/pages/teacher/dashboard/agenda/Agenda";
+import ProgressBar from "../../components/pages/teacher/dashboard/progressBar/ProgressBar";
+import MeetingsHistory from "../../components/pages/teacher/meetingHistory/MeetingsHistory";
+import Calendar from "../../components/pages/teacher/dashboard/calendar/Calendar";
+import Chart from "../../components/pages/teacher/dashboard/chart/Chart";
 
-const Page = () => {
-  const [meetingHistory, setMeetingHistory] = useState([]);
-  const [earnedThisMonth, setEarnedThisMonth] = useState(0);
-  const [userTarget, setUserTarget] = useState(0);
-  const [userStudents, setUserStudents] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Dodaj stan do śledzenia ładowania danych
+const Dashboard = ({userData}) => {
+    const [meetingHistory, setMeetingHistory] = useState([]);
+    const [earnedThisMonth, setEarnedThisMonth] = useState(0);
+    const [userTarget, setUserTarget] = useState(0);
+    const [userStudents, setUserStudents] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-  return (
-    <div className={"dashboard__container "}>
-      <Agenda
-        setMeetingHistory={setMeetingHistory}
-        setUserTarget={setUserTarget}
-        userStudents={userStudents}
-        setUserStudents={setUserStudents}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-      />
-      <div className={"flex flex-col justify-between  lg:w-4/12 hidden lg:flex"}>
-        <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
-        <Calendar userStudents={userStudents} isLoading={isLoading} />
-      </div>
-      <div className={"flex flex-col justify-between  w-full  lg:hidden"}>
-        <Calendar userStudents={userStudents} isLoading={isLoading} />
-        <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
-      </div>
-      <div className={"flex flex-col justify-between items-center  lg:w-3/12"}>
-        <ProgressBar
-          earnedThisMonth={earnedThisMonth}
-          userTarget={userTarget}
-          isLoading={isLoading}
-        />
-          <div className={"h-[50v] lg:h-[40vh] w-full mt-10"}>
-              <MeetingsHistory
-                  meetingHistory={meetingHistory}
-                  setMeetingHistory={setMeetingHistory}
-                  setEarnedThisMonth={setEarnedThisMonth}
-                  isLoading={isLoading}
-              />
-          </div>
 
-      </div>
-    </div>
-  );
+    return (
+        <div className="flex-column  lg:flex-row  lg:justify-between gap-10 p-2">
+            <Agenda
+                setMeetingHistory={setMeetingHistory}
+                setUserTarget={setUserTarget}
+                userStudents={userStudents}
+                setUserStudents={setUserStudents}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+            />
+            {/*Desktop version*/}
+            <div className="lg:w-4/12 hidden lg:flex flex flex-col justify-between">
+                <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
+                <Calendar userStudents={userStudents} isLoading={isLoading} />
+            </div>
+            {/*Mobile version*/}
+            <div className="w-full lg:hidden flex flex-col justify-between">
+                <Calendar userStudents={userStudents} isLoading={isLoading} />
+                <Chart earned={earnedThisMonth} meetingHistory={meetingHistory} />
+            </div>
+
+            <div className="lg:w-3/12 flex flex-col justify-between items-center">
+                <ProgressBar
+                    earnedThisMonth={earnedThisMonth}
+                    userTarget={userTarget}
+                    isLoading={isLoading}
+                />
+                <div className="w-full mt-10 h-[50v] lg:h-[40vh]">
+                    <MeetingsHistory
+                        meetingHistory={meetingHistory}
+                        setMeetingHistory={setMeetingHistory}
+                        setEarnedThisMonth={setEarnedThisMonth}
+                        isLoading={isLoading}
+                    />
+                </div>
+            </div>
+
+        </div>
+    );
 };
-export default Page;
+
+export default Dashboard;

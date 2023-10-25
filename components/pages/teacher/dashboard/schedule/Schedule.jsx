@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { loadingUser } from "../constants/loadingUser";
+import { loadingUser } from "../../../../../constants/loadingUser";
 import {jsPDF} from "jspdf";
 import autoTable from "jspdf-autotable";
 import dayjs from "dayjs";
-import {daysOfWeek} from "../constants/months";
+import {daysOfWeek} from "../../../../../constants/months";
 
 const Schedule = () => {
   const [user, setUser] = useState(loadingUser);

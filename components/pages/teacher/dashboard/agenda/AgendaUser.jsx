@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import AddStudent from "./AddStudent";
-import convertDate from "../utils/convertDate";
+import AddStudent from "../../AddStudent";
+import convertDate from "../../../../../utils/convertDate";
 
 // each element rendered in the Agenda, contains information about meeting
 const AgendaUser = (props) => {

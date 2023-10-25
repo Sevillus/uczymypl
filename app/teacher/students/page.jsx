@@ -6,12 +6,12 @@ import {InputAdornment, TextField} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {AccountCircle} from "@mui/icons-material";
 import FaceIcon from '@mui/icons-material/Face';
-import StudentsBox from "../../../components/StudentsBox";
+import StudentsBox from "../../../components/pages/teacher/students/StudentsBox";
 import TuneIcon from '@mui/icons-material/Tune';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddStudent from "../../../components/AddStudent";
-import StudentsPageMobileInfo from "../../../components/StudentsPageMoreInfo";
-import StudentsPageMoreInfo from "../../../components/StudentsPageMoreInfo";
+import AddStudent from "../../../components/pages/teacher/AddStudent";
+import StudentsPageMobileInfo from "../../../components/pages/teacher/students/StudentsPageMoreInfo";
+import StudentsPageMoreInfo from "../../../components/pages/teacher/students/StudentsPageMoreInfo";
 import dayjs from "dayjs";
 
 const Page = () => {

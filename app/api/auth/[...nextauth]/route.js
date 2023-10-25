@@ -35,8 +35,8 @@ export const authOptions = {
             email: profile.email,
             username: profile.name.replace(" ", "").toLowerCase(),
             image: profile.picture,
-            role: "teacher",
-            target:3000,
+            role: "dashboard",
+            target:0,
             meetingHistory: [[]],
             schedule: [[]],
           });

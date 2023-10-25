@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import DoneIcon from "@mui/icons-material/Done";
-import convertDate from "../utils/convertDate";
+import convertDate from "../../../../utils/convertDate";
 
 const MeetingHistoryInfo = ({
                               student,

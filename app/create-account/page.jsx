@@ -23,7 +23,7 @@ const NewAccount = () => {
 
   return (
     <div>
-      <h1>Podaj swoją rolę</h1>
+      <h1>Dokończ rejestrację</h1>
       <form onSubmit={() =>makeApiCall}>
         <label>
           <input
@@ -38,13 +38,13 @@ const NewAccount = () => {
           <input
             type="radio"
             value="teacher"
-            checked={selectedRole === "teacher"}
+            checked={selectedRole === "dashboard"}
             onChange={handleRoleChange}
           />
           Teacher
         </label>
         <button type="submit">Submit</button>
-        {selectedRole === "teacher" && (
+        {selectedRole === "dashboard" && (
           <div>
             <p>Podaj swój target</p>
             <input

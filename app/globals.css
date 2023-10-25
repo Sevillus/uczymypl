@@ -81,10 +81,7 @@
   @apply absolute w-full h-full right-0 top-0 z-10 flex-center;
 }
 
-/*Dashboard styles*/
-.dashboard__container{
-  @apply flex-column gap-10 lg:flex-row  lg:justify-between p-2
-}
+
 /*Agenda styles*/
 .agenda{
   height: 60vh;

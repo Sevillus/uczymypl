@@ -2,10 +2,9 @@
 import CloseIcon from "@mui/icons-material/Close";
 
 import {FormControlLabel, Switch, TextField} from "@mui/material";
-import AddStudentSelect from "./AddStudent__select";
+import AddStudentSelect from "./AddStudentSelect";
 import {useEffect, useState} from "react";
-import meetingInfo from "../utils/meetingDay";
-import AddStudentError from "./AddStudentError";
+import meetingInfo from "../../../utils/meetingDay";
 
 
 

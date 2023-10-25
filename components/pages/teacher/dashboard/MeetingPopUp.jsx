@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import dayjs from "dayjs";
 import DoneIcon from "@mui/icons-material/Done";
 import ClearIcon from "@mui/icons-material/Clear";
-import fetchStudent from "../utils/fetchStudent";
+import fetchStudent from "../../../../utils/fetchStudent";
 
 const MeetingPopUp = ({ user , setMeetingHistory}) => {
   const { data: session, status } = useSession();

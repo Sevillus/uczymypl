@@ -1,6 +1,6 @@
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import {months} from "../constants/months";
+import {months} from "../../../../../constants/months";
 
 const CalendarHeader = ({today, setToday} ) => {
     return (

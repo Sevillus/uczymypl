@@ -1,6 +1,6 @@
 import React from "react";
-import { generateDate } from "../utils/calendar";
-import cn from "../utils/cn";
+import { generateDate } from "../../../../../utils/calendar";
+import cn from "../../../../../utils/cn";
 
 const CalendarDates = ({ selectedDay, setSelectedDay, today }) => {
   return (

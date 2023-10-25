@@ -1,21 +1,5 @@
-import {useSession} from "next-auth/react";
-import {getServerSession} from "next-auth";
-import {authOptions} from "./api/auth/[...nextauth]/route";
-import {redirect} from "next/navigation";
-import dayjs from "dayjs";
-
-
 const HomePage = async () => {
 
-    const session = await getServerSession(authOptions)
-    const userRole = session?.user.role
-
-    if(userRole === "student" || userRole === "teacher"){
-
-    }
-    if(session && !userRole){
-
-    }
 
 
     return (

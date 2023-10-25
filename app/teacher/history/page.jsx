@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import MeetingHistoryInfo from "../../../components/meetingHistoryInfo";
+import MeetingHistoryInfo from "../../../components/pages/teacher/meetingHistory/meetingHistoryInfo";
 import axios from "axios";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import MeetingsHistory from "../../../components/MeetingsHistory";
+import MeetingsHistory from "../../../components/pages/teacher/meetingHistory/MeetingsHistory";
 import dayjs from "dayjs";
 import { months } from "../../../constants/months";
 

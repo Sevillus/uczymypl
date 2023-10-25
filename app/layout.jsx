@@ -2,11 +2,11 @@
 
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Provider from "../components/Provider";
-import Profile from "../components/Profile";
+import Provider from "../components/globals/Provider";
+import Profile from "../components/pages/teacher/header/Profile";
 import {getServerSession} from "next-auth";
 import {authOptions} from "./api/auth/[...nextauth]/route";
-import Header from "../components/Header";
+import Header from "../components/pages/teacher/header/Header";
 import React from "react";
 
 

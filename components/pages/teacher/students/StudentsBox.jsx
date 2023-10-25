@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import TuneIcon from "@mui/icons-material/Tune";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import AddStudent from "./AddStudent";
+import AddStudent from "../AddStudent";
 import dayjs from "dayjs";
 import StudentsPageMoreInfo from "./StudentsPageMoreInfo";
 

@@ -1,4 +1,4 @@
-import { daysOfWeek } from "../constants/months";
+import { daysOfWeek } from "../../../../../constants/months";
 
 const CalendarInfo = ({ selectedDay, userStudents, isLoading }) => {
   return (
