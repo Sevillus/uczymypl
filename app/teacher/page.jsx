@@ -6,7 +6,7 @@ import MeetingsHistory from "../../components/pages/teacher/meetingHistory/Meeti
 import Calendar from "../../components/pages/teacher/dashboard/calendar/Calendar";
 import Chart from "../../components/pages/teacher/dashboard/Chart";
 
-const Dashboard = ({userData}) => {
+const Dashboard = () => {
     const [meetingHistory, setMeetingHistory] = useState([]);
     const [earnedThisMonth, setEarnedThisMonth] = useState(0);
     const [userTarget, setUserTarget] = useState(0);
