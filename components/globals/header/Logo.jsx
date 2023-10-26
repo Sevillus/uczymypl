@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Logo = () => {
     return (
-        <Link className={"Logo navbar__btn"} href={"/dashboard"}>Uczymy.pl</Link>
+        <Link className={"Logo navbar__btn"} href={"/"}>Uczymy.pl</Link>
     )
 }
 export default Logo

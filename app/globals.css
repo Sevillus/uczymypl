@@ -195,6 +195,9 @@ circle {
 .burgerMenu.show {
   left: 0;
 }
+.header {
+  @apply flex flex-col lg:flex-row lg:justify-between fixed lg:relative top-0 w-full h-24 lg:h-fit padding-x lg:py-4 bg-slate-700 text-white ease-out duration-300 z-50
+}
 
 
 /*RWD*/

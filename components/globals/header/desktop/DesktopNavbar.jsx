@@ -1,8 +1,7 @@
-import MenuIcon from '@mui/icons-material/Menu';
 import Link from "next/link";
-import MobileMenu from "./MobileMenu";
 
-const Navbar = () => {
+
+const DesktopNavbar = () => {
     return (
         <div>
             <div className={"hidden lg:flex gap-7"}>
@@ -14,4 +13,4 @@ const Navbar = () => {
         </div>
     )
 }
-export default Navbar
+export default DesktopNavbar
