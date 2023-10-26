@@ -6,32 +6,12 @@ import AddStudent from "../../AddStudent";
 import MeetingPopUp from "../MeetingPopUp";
 
 
-const Agenda = ({
-                    setMeetingHistory,
-                    setUserTarget,
-                    setUserStudents,
+const Agenda = ({fetchData,
                     userStudents,
                     isLoading,
-                    setIsLoading,
                 }) => {
     const [addNewStudentMenu, setAddNewStudentMenu] = useState(false);
-    const [user, setUser] = useState(null);
 
-    const fetchStudent = async () => {
-        try {
-            const res = await axios.get("/api/getUserData");
-            setUserStudents(res.data.students);
-            setUser(res.data);
-            setUserTarget(res.data.target);
-            setIsLoading(false);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-    useEffect(() => {
-        fetchStudent();
-    }, []);
 
     return (
         <div className={"flex-column lg:w-4/12 w-full"}>
@@ -53,7 +33,7 @@ const Agenda = ({
                     <div className={"agenda__container"}>
                         {userStudents.map((student) => (
                             <AgendaUser
-                                fetchStudent={fetchStudent}
+                                fetchStudent={fetchData}
                                 student={student}
                                 key={student._id}
                             />
@@ -65,14 +45,14 @@ const Agenda = ({
                     addNewStudentMenu && (
                         <div className={"addStudent"}>
                             <AddStudent
-                                fetchStudent={fetchStudent}
+                                fetchStudent={fetchData}
                                 apiUrl={"/api/add-student"}
                                 closeMenu={setAddNewStudentMenu}
                             />
                         </div>
                     )
                 }
-                <MeetingPopUp user={user} setMeetingHistory={setMeetingHistory} />
+
             </div>
         </div>
     );
