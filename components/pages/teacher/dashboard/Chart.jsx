@@ -1,63 +1,30 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
-import dayjs from 'dayjs';
-import {
-    Chart as ChartJS,
-    LineElement,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-} from 'chart.js';
 
-const Chart = ({ meetingHistory, }) => {
+import { Line } from "react-chartjs-2";
+import dayjs from "dayjs";
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from "chart.js";
+import useChart from "../../../../hooks/useChart";
+
+const Chart = ({ meetingHistory }) => {
     ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
-    const today = dayjs();
-    const lastDayOfMonth = dayjs().date();
+    const earningsByDay = useChart(meetingHistory);
 
-    const [earningsByDay, setEarningsByDay] = useState([]);
+    const generateDateLabels = () => {
+        const today = dayjs();
+        const lastDayOfMonth = today.date();
+        return Array.from({ length: lastDayOfMonth }, (_, i) => today.date(i + 1).format("D.M"));
+    };
 
-    useEffect(() => {
-        const calculateEarningsByDay = () => {
-            const newEarningsByDay = [];
-            let totalEarnings = 0;
-
-            for (let i = 1; i <= lastDayOfMonth; i++) {
-                const date = today.date(i);
-
-                let earnings = 0;
-                meetingHistory.forEach((student) => {
-                    if (
-                        dayjs(student.nextMeeting).format('D.M') === date.format('D.M') &&
-                        student.isPaid
-                    ) {
-                        earnings += student.price;
-                    }
-                });
-
-                totalEarnings += earnings;
-                newEarningsByDay.push(totalEarnings);
-            }
-
-            setEarningsByDay(newEarningsByDay);
-        };
-        console.log("historia się zmieniła")
-        calculateEarningsByDay();
-    }, [meetingHistory]);
-
-    const labels = Array.from({ length: lastDayOfMonth }, (_, i) =>
-        today.date(i + 1).format('D.M')
-    );
+    const labels = generateDateLabels();
 
     const data = {
         labels,
         datasets: [
             {
                 data: earningsByDay,
-                backgroundColor: 'transparent',
-                borderColor: 'rgb(59 130 246)',
-                pointBorderColor: 'transparent',
+                backgroundColor: "transparent",
+                borderColor: "rgb(59 130 246)",
+                pointBorderColor: "transparent",
                 pointBorderWidth: 4,
                 tension: 0.5,
             },
@@ -81,7 +48,7 @@ const Chart = ({ meetingHistory, }) => {
                 },
                 ticks: {
                     stepSize: 500,
-                    callbacks: (value) => value + ' zł',
+                    callbacks: (value) => value + " zł",
                 },
             },
         },
@@ -96,5 +63,4 @@ const Chart = ({ meetingHistory, }) => {
         </div>
     );
 };
-
 export default Chart;
