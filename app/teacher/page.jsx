@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Agenda from "../../components/pages/teacher/dashboard/agenda/Agenda";
 import ProgressBar from "../../components/pages/teacher/dashboard/ProgressBar";
-import MeetingsHistory from "../../components/pages/teacher/meetingHistory/MeetingsHistory";
+import MeetingsHistory from "../../components/pages/teacher/history/meetingHistory/MeetingsHistory";
 import Calendar from "../../components/pages/teacher/dashboard/calendar/Calendar";
 import Chart from "../../components/pages/teacher/dashboard/Chart";
 import axios from "axios";

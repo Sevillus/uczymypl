@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import AddStudent from "../../AddStudent";
+import AddStudent from "../AddStudent";
 import AgendaHeader from "./AgendaHeader";
 import AgendaLoading from "./AgendaLoading";
 import AgendaContainer from "./AgendaContainer";

@@ -1,5 +1,5 @@
 "use client";
-import useUserData from "../../../hooks/useUserData";
+import useUserData from "../../../../hooks/useUserData";
 import ScheduleMobile from "./ScheduleMobile";
 import ScheduleDesktop from "./ScheduleDesktop";
 

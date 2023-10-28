@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import AddStudent from "../../AddStudent";
+import AddStudent from "../AddStudent";
 import convertDate from "../../../../../utils/convertDate";
 
 const AgendaUser = ({ student, fetchStudent }) => {

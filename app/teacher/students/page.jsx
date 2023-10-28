@@ -9,7 +9,7 @@ import FaceIcon from '@mui/icons-material/Face';
 import StudentsBox from "../../../components/pages/teacher/students/StudentsBox";
 import TuneIcon from '@mui/icons-material/Tune';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddStudent from "../../../components/pages/teacher/AddStudent";
+import AddStudent from "../../../components/pages/teacher/dashboard/AddStudent";
 import StudentsPageMobileInfo from "../../../components/pages/teacher/students/StudentsPageMoreInfo";
 import StudentsPageMoreInfo from "../../../components/pages/teacher/students/StudentsPageMoreInfo";
 import dayjs from "dayjs";
