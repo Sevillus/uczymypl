@@ -1,4 +1,4 @@
-import schedule from "../components/pages/teacher/schedule/Schedule";
+import schedule from "../components/pages/schedule/Schedule";
 
 const student = {
     name: "",

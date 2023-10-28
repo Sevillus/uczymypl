@@ -1,5 +1,5 @@
 import React from 'react'
-import Schedule from "../../../components/pages/teacher/schedule/Schedule";
+import Schedule from "../../../components/pages/schedule/Schedule";
 
 
 const Page = () => {

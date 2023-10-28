@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import {loadingUser} from "../constants/loadingUser";
 
 const useUserData = () => {
     const [meetingHistory, setMeetingHistory] = useState([]);
@@ -7,7 +8,7 @@ const useUserData = () => {
     const [userTarget, setUserTarget] = useState(0);
     const [userStudents, setUserStudents] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(loadingUser);
 
     const fetchData = async () => {
         try {
@@ -17,6 +18,7 @@ const useUserData = () => {
             setUserTarget(res.data.target);
             setIsLoading(false);
         } catch (e) {
+            setIsLoading(false);
             console.log(e);
         }
     };
