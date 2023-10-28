@@ -8,17 +8,11 @@ const MeetingHistoryFiltr = ({paymentInfo, filtr, filtrHandler}) => {
             {paymentInfo.length ? (
                 <div>
                     {!filtr ? (
-                        <div
-                            className={"meetingHistory__alertBtn text-sm"}
-                            onClick={() => filtrHandler(true)}
-                        >
+                        <div className={"meetingHistory__alertBtn text-sm"} onClick={() => filtrHandler(true)} >
                             <p>Brak płatności!</p>
                         </div>
                     ) : (
-                        <div
-                            className={"flex gap-2  cursor-pointer"}
-                            onClick={() => filtrHandler(false)}
-                        >
+                        <div className={"flex gap-2  cursor-pointer"} onClick={() => filtrHandler(false)}>
                             <p>Wyłącz filtr</p>
                             <CloseIcon />
                         </div>

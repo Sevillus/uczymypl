@@ -24,8 +24,6 @@ export async function POST(req) {
   }
   //changing student's payment information, only if body contains student id
    if (body.id) {
-    // const studentIndex = meetingHistory.allMeetings.findIndex((student) => (student._id == body.id && dayjs(student.nextMeeting) == dayjs(body.nextMeeting)));
-    //  console.log(studentIndex)
         meetingHistory.allMeetings.forEach(student => {
             if(student._id == body.id && dayjs(student.nextMeeting).format("DD.MM.YYYY") == dayjs(body.nextMeeting).format("DD.MM.YYYY")){
                student.isPaid = body.isPaid
