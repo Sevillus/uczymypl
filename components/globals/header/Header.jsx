@@ -11,7 +11,7 @@ const Header = ({ session }) => {
   useScroll();
 
   return (
-    <header className={"header"} >
+    <header className={"flex flex-col lg:flex-row lg:justify-between fixed lg:sticky top-0 w-full h-24 lg:h-fit padding-x lg:py-4 bg-slate-700 text-white ease-out duration-300 z-50 "} >
       <MobileHeader toggleMenu={toggleMenu} name={name} img={img}/>
       <DesktopHeader name={name} img={img}/>
     </header>
