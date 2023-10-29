@@ -55,6 +55,9 @@
   padding-left: 10px;
   @apply text-2xl lg:text-4xl p-2;
 }
+.font-damion{
+  font-family: "Damion", cursive;
+}
 .closeBtn {
   transition: 0.3s;
 }
@@ -71,10 +74,10 @@
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 6px;
-  @apply bg-blue-500;
+  @apply bg-slate-500;
 }
 ::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Kolor tła */
+  background-color: #c0c6e0; /* Kolor tła */
 }
 
 .addStudent {
@@ -188,10 +191,30 @@ circle {
 .header {
   @apply flex flex-col lg:flex-row lg:justify-between fixed lg:relative top-0 w-full h-24 lg:h-fit padding-x lg:py-4 bg-slate-700 text-white ease-out duration-300 z-50
 }
+.bg-gradient{
+  background: linear-gradient(#334155, #7782e3, #334155);
+}
 .schedule__header{
   @apply flex-between title-h2 p-4 bg-slate-600 text-white text-center lg:shadow-xl rounded-t-lg lg:rounded-none
 }
+.custom-shape-divider-top-1698576054 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
 
+.custom-shape-divider-top-1698576054 svg {
+  position: relative;
+  display: block;
+  width: calc(116% + 1.3px);
+  height: 113px;
+}
+
+.custom-shape-divider-top-1698576054 .shape-fill {
+  fill: #334155;
+}
 
 /*RWD*/
 @media (min-width: 1900px) {

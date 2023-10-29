@@ -21,9 +21,9 @@ export default async function RootLayout({ children})
         <html lang="en">
         <body className={inter.className}>
         <Provider>
-            <div className={"bg-gray-100 w-full  flex flex-col justify-between lg:h-screen lg:overflow-hidden overflow-hidden "}>
+            <div className={"bg-gray-100 w-full  flex flex-col justify-between lg:h-screen  "}>
                 <Header session = {session}/>
-                <div className={"padding-x bg-gray-100 mt-24 lg:mt-0 "}>
+                <div className={" bg-gray-100 mt-24 lg:mt-0 "}>
                     <main>
                         {children}
                     </main>
