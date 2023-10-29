@@ -1,20 +1,13 @@
 import React from 'react'
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import TuneIcon from "@mui/icons-material/Tune";
+import StudentsBoxIcon from "./StudentsBoxIcon";
 
 const StudentsBoxLoading = () => {
-    const colors = ["#a2513f", "#2a6735", "#5733FF", "#388383"];
-    function getRandomColor() {
-        const randomIndex = Math.floor(Math.random() * colors.length);
-        return colors[randomIndex];
-    }
+
     return (
         <div className={"flex-between padding-y border-b-2  lg:pr-10 "}>
-            <div
-                className={"w-[36px] h-[36px] rounded-full bg-blue-500 text-white lg:flex justify-center items-center hidden"}
-                style={{ background: getRandomColor() }}
-            >
-            </div>
+            <StudentsBoxIcon />
             <p className={"loading-slate-200 w-16 "}></p>
             <p className={"loading-slate-200 w-28"}></p>
             <p className={"loading-slate-200 w-56 lg:flex  hidden"}></p>

@@ -14,7 +14,7 @@ export async function POST(req) {
             return new Response("User not found", { status: 404 });
         }
 
-        // Dodawanie nowej roli do użytkownika
+        // register new user
         if (body.role) {
             sessionUser.role = body.role;
             sessionUser.target = Number(body.target);

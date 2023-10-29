@@ -22,10 +22,12 @@ export async function POST(req) {
     await sessionUser.save();
     return new Response("Meeting added to history", { status: 200 });
   }
-  //changing student's payment information, only if body contains student id
+  //changing student's payment information, only if body contains student id and meeting dates matched with student date
    if (body.id) {
         meetingHistory.allMeetings.forEach(student => {
-            if(student._id == body.id && dayjs(student.nextMeeting).format("DD.MM.YYYY") == dayjs(body.nextMeeting).format("DD.MM.YYYY")){
+            if(student._id == body.id &&
+                dayjs(student.nextMeeting).format("DD.MM.YYYY") == dayjs(body.nextMeeting).format("DD.MM.YYYY"))
+            {
                student.isPaid = body.isPaid
             }
         })

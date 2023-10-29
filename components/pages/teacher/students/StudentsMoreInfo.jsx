@@ -1,7 +1,7 @@
 import React from 'react'
 import dayjs from "dayjs";
 
-const StudentsPageMoreInfo = ({ student,showMoreStudentInfo, setShowMoreStudentInfo }) => {
+const StudentsMoreInfo = ({ student,showMoreStudentInfo, setShowMoreStudentInfo }) => {
 
 
     return (
@@ -50,4 +50,4 @@ const StudentsPageMoreInfo = ({ student,showMoreStudentInfo, setShowMoreStudentI
     )
 }
 
-export default StudentsPageMoreInfo;
+export default StudentsMoreInfo;

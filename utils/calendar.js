@@ -12,7 +12,7 @@ export const generateDate = (month = dayjs().month(), year = dayjs().year()) => 
 
     let startIndex = startDay === 0 ? 6 : startDay - 1;
 
-    // Wypełniamy dni przed rozpoczęciem miesiąca
+    // days before current month
     for (let i = 0; i < startIndex; i++) {
         const previousMonthDate = firstDateOfMonth.subtract(startIndex - i, "day");
         arrayOfDate.push({
@@ -21,7 +21,7 @@ export const generateDate = (month = dayjs().month(), year = dayjs().year()) => 
         });
     }
 
-    // Wypełniamy dni aktualnego miesiąca
+    // current month
     for (let i = 1; i <= daysInMonth; i++) {
         const currentDate = firstDateOfMonth.date(i);
         arrayOfDate.push({
@@ -31,7 +31,7 @@ export const generateDate = (month = dayjs().month(), year = dayjs().year()) => 
         });
     }
 
-    // Uzupełniamy resztę kalendarza
+    // days of next month
     const remainingDays = 42 - arrayOfDate.length;
     for (let i = 1; i <= remainingDays; i++) {
         const nextMonthDate = lastDateOfMonth.add(i, "day");

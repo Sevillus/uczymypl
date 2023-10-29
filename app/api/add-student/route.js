@@ -1,11 +1,9 @@
 import User from "../../../models/user";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
-import meetingInfo from "../../../utils/meetingDay";
 import { sortByDate } from "../../../utils/sortByDate";
 import dayjs from "dayjs";
 import {formatTime} from "../../../utils/formatDurationTime";
-import {utcToZonedTime} from "date-fns-tz";
 
 export async function POST(req, res) {
   const session = await getServerSession(authOptions);
@@ -17,16 +15,15 @@ export async function POST(req, res) {
       return new Response("User not found", { status: 404 });
     }
 
-
-    let er = []
-    const studentsThisDay = sessionUser.students.filter(student =>  student.day === body.day )
-    studentsThisDay.map(student => {
-        if((student.time < body.time && body.time < student.duration ) || (formatTime(body) > student.time) ) {
-          er.push(student)
-          // return new Response("błąd", { status: 403 });
-        }
-    })
-    console.log(er)
+  // check if lessons do not overlap
+  //   let er = []
+  //   const studentsThisDay = sessionUser.students.filter(student =>  student.day === body.day )
+  //   studentsThisDay.map(student => {
+  //       if((student.time < body.time && body.time < student.duration ) || (formatTime(body) > student.time) ) {
+  //         er.push(student)
+  //         // return new Response("błąd", { status: 403 });
+  //       }
+  //   })
 
     const newStudent = {
       name: body.name,

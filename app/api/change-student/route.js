@@ -1,7 +1,6 @@
 import User from "../../../models/user";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
-import meetingInfo from "../../../utils/meetingDay";
 import { sortByDate } from "../../../utils/sortByDate";
 import {formatTime} from "../../../utils/formatDurationTime";
 
@@ -9,17 +8,14 @@ export async function POST(req) {
   const session = await getServerSession(authOptions);
   const body = await req.json();
 
-
-
   if (session?.user) {
     const sessionUser = await User.findOne({ email: session?.user.email });
 
     if (!sessionUser) {
       return new Response("User not found", { status: 404 });
     }
-
+    // changing student data
     if (body && !body.delete ) {
-
       const student = sessionUser.students.find(
         (student) => student._id == body.id,
       );
@@ -37,7 +33,8 @@ export async function POST(req) {
       await sessionUser.save();
 
       return new Response("Student added to user", { status: 200 });
-    }//deleting student
+    }
+    //deleting student
     else if (body && body.delete) {
       const studentIndex = sessionUser.students.findIndex(
         (student) => student._id == body.id,
