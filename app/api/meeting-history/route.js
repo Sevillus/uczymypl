@@ -8,30 +8,29 @@ export async function POST(req) {
   const body = await req.json();
   const sessionUser = await User.findOne({ email: session?.user.email });
 
-  if (!sessionUser) {
-    return new Response("User not found", { status: 404 });
-  }
-
-  const meetingHistory = sessionUser.meetingHistory[dayjs().month()];
-  //Deleting student from last sessions history (used in meetingPopUp)
-  meetingHistory.lastMeetings = meetingHistory.lastMeetings.filter(
-      (student) => student._id != body.student._id )
-
-  if (body.addToHistory) {
-    meetingHistory.allMeetings.reverse().push(body.student);
-    await sessionUser.save();
-    return new Response("Meeting added to history", { status: 200 });
-  }
-  //changing student's payment information, only if body contains student id and meeting dates matched with student date
-   if (body.id) {
+    const meetingHistory = sessionUser.meetingHistory[dayjs().month()];
+    if (body.addToHistory) {
+        meetingHistory.allMeetings.reverse().push(body.student);
+        meetingHistory.lastMeetings = meetingHistory.lastMeetings.filter(
+            (student) => student._id != body.student._id,
+        );
+        await sessionUser.save();
+        return new Response("Meeting added to history", { status: 200 });
+    } else if (body.id) {
         meetingHistory.allMeetings.forEach(student => {
             if(student._id == body.id &&
                 dayjs(student.nextMeeting).format("DD.MM.YYYY") == dayjs(body.nextMeeting).format("DD.MM.YYYY"))
             {
-               student.isPaid = body.isPaid
+                student.isPaid = body.isPaid
             }
         })
-    await sessionUser.save();
-    return new Response("Student has paid", { status: 200 });
-  }
+        await sessionUser.save();
+        return new Response("Student has paid", { status: 200 });
+    } else {
+        meetingHistory.lastMeetings = meetingHistory.lastMeetings.filter(
+            (student) => student._id != body.student._id,
+        );
+        await sessionUser.save();
+        return new Response("Meeting added to history", { status: 200 });
+    }
 }

@@ -19,7 +19,7 @@ const MeetingPopUp = ({ user, setMeetingHistory }) => {
     setLastMeetings((prevLastMeetings) =>
         prevLastMeetings.filter((prevStudent) => prevStudent._id !== student._id)
     );
-    setMeetingHistory((prev) => [...prev, student]);
+    option ? setMeetingHistory((prev) => [...prev, student]) : null;
   };
 
   if (lastMeetings.length !== 0) {
