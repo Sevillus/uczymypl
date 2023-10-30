@@ -27,7 +27,7 @@
   @apply border-2 bg-blue-500 text-slate-100 p-2  lg:px-3 rounded-2xl  hover:bg-blue-600 ease-in-out duration-300;
 }
 .loading-slate-300{
-  @apply bg-slate-300 h-8  rounded-md mb-2
+  @apply bg-slate-300  rounded-md mb-2
 }
 .loading-slate-200{
   @apply bg-slate-200 h-4  rounded-md
@@ -142,9 +142,8 @@ circle {
   fill: none;
   stroke: url(#GradientColor);
   stroke-width: 25px;
-  stroke-dasharray: 800;
   stroke-dashoffset: 900;
-  transition: stroke-dashoffset 1s linear;
+  transition: stroke-dashoffset 2s linear;
 }
 .progressBar__outerCircle {
   box-shadow:
@@ -192,28 +191,14 @@ circle {
   @apply flex flex-col lg:flex-row lg:justify-between fixed lg:sticky top-0 w-full h-24 lg:h-fit padding-x lg:py-4 bg-slate-700 text-white ease-out duration-300 z-50 
 }
 .bg-gradient{
-  background: linear-gradient(#334155, #7782e3, #334155);
+  background: linear-gradient(#334155, #414caf, #334155);
+}
+.box__bg-gradient{
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
 }
 .schedule__header{
   @apply flex-between title-h2 p-4 bg-slate-600 text-white text-center lg:shadow-xl rounded-t-lg lg:rounded-none
-}
-.custom-shape-divider-top-1698576054 {
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.custom-shape-divider-top-1698576054 svg {
-  position: relative;
-  display: block;
-  width: calc(116% + 1.3px);
-  height: 113px;
-}
-
-.custom-shape-divider-top-1698576054 .shape-fill {
-  fill: #334155;
 }
 
 /*RWD*/
@@ -224,4 +209,43 @@ circle {
 }
 @media (min-width: 1536px) {
 
+}
+
+.custom-shape-divider-top-1698653878 {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1698653878 svg {
+  position: relative;
+  display: block;
+  width: calc(126% + 1.3px);
+  height: 92px;
+}
+
+.custom-shape-divider-top-1698653878 .shape-fill {
+  fill: rgb(248 250 252);
+}
+.custom-shape-divider-bottom-1698653926 {
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1698653926 svg {
+  position: relative;
+  display: block;
+  width: calc(103% + 1.3px);
+  height: 75px;
+}
+
+.custom-shape-divider-bottom-1698653926 .shape-fill {
+  fill: rgb(248 250 252);
 }

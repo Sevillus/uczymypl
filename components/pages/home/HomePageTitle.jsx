@@ -3,7 +3,7 @@ import LoginIcon from "@mui/icons-material/Login";
 
 const HomePageTitle = () => {
     return (
-        <section className={"w-full flex-center  h-[700px] "}>
+        <section className={"w-full flex-center px-6 lg:px-56 lg:py-44"}>
             <div className={"w-12/12 flex-center"}>
                 <div className={"w-full lg:w-5/12 flex-column  items-center gap-6"}>
                     <h1 className={"font-damion text-6xl lg:text-8xl font-normal"}>Uczymy.pl</h1>

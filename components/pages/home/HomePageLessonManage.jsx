@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const HomePageLessonManage = () => {
     return (
-        <section className={"w-full h-[700px]"}>
+        <section className={"w-full h-[700px] px-6 lg:px-56"}>
             <h2 className={"text-2xl lg:text-4xl font-semibold my-10 border-b-2 py-4"}>Zarządzaj swoimi zajęciami</h2>
-            <div className={"flex flex-column lg:flex-row lg:justify-between gap-10"}>
+            <div className={"flex flex-column lg:flex-row lg:justify-between gap- z-10"}>
                 <div className={"w-full lg:w-4/12 flex-column gap-10"}>
                     <p className={"text-lg lg:text-2xl lg:leading-10 text-slate-200 pl-4"}>
                         Dzięki naszej stronie internetowej,

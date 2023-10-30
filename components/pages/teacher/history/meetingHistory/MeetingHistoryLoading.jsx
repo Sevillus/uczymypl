@@ -3,8 +3,8 @@ import React from 'react'
 const MeetingHistoryLoading = () => {
     return (
         <div className="p-2 meetingHistory__container">
-            <div className="w-full h-8 border-b-2 ">
-                <div className="loading-slate-300 w-32 h-6" />
+            <div className="w-full h-6 border-b-2 py ">
+                <div className="loading-slate-300 w-32 h-6 my-2" />
             </div>
             <div className={"flex-column"}>
                 {[1, 2, 3, 4, 5].map((key) => (
