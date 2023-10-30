@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ScheduleBox = ({ day, isLoading}) => {
+
     return (
         <div className="p-2 flex-column gap-4 h-96 overflow-y-auto">
             {day.studentsThisDay.map((student, studentIndex) => (

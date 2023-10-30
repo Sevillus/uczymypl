@@ -1,3 +1,4 @@
+
 import User from "../../../models/user";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
@@ -15,7 +16,7 @@ export async function GET(req, res) {
       const sessionUser = await User.findOne({ email: session?.user.email });
 
       const currentMonthIndex = dayjs().month();
-      // creating meetingHistory arrays
+
       if (!sessionUser.meetingHistory[currentMonthIndex]) {
         sessionUser.meetingHistory[currentMonthIndex] = {
           month: dayjs().format("MMM"),
@@ -24,27 +25,29 @@ export async function GET(req, res) {
         };
       }
 
+
+      sessionUser.schedule = daysOfWeekNames.map(dayName => ({
+        dayName: dayName,
+        studentsThisDay: []
+      }));
+
       sessionUser.students.map((student, index) => {
-        // Adding student into last history if lesson date is smaller than today
+        //dodawanie ucznia do last history
         if (dayjs(sessionUser.students[index].nextMeeting) <= dayjs()) {
           sessionUser.meetingHistory[currentMonthIndex].lastMeetings.push(student);
-          // delete student if lesson is not cyclical
+          //usuwanie studenta, gdy nie ma zaznaczonych zajęć cyklicznych
           !student.cyclical ? sessionUser.students.splice(index, 1) : ""
         }
-        // counting next meeting date
         student.nextMeeting = meetingInfo(student.day, student.time);
         const studentDay = student.day.toLowerCase()
 
-        // creating empty schedule
-        sessionUser.schedule = daysOfWeekNames.map(dayName => ({
-          dayName: dayName,
-          studentsThisDay: []
-        }));
-        // sorting students by lesson day of the week
         sessionUser.schedule.map(day => {
           if (day.dayName.toLowerCase() === studentDay ) {
+            // Sprawdź, czy student o danym ID nie istnieje w studentsThisDay
             const existingStudent = day.studentsThisDay.find(existingStudent => existingStudent.id == student.id);
 
+
+            // Jeśli nie istnieje, dodaj go do studentsThisDay
             if (!existingStudent) {
               day.studentsThisDay.push(student);
             }
@@ -59,6 +62,8 @@ export async function GET(req, res) {
       if (!sessionUser) {
         return new Response("Nie znaleziono użytkownika", { status: 404 });
       }
+
+      // Zwróć dane użytkownika jako odpowiedź JSON
       return new Response(JSON.stringify(sessionUser), {
         status: 200,
         headers: { "Content-Type": "application/json" },

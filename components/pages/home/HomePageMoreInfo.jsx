@@ -4,7 +4,7 @@ import HomePageMoreInfoBox from "./HomePageMoreInfoBox";
 
 const HomePageMoreInfo = () => {
     return (
-        <section className={ "w-full px-6 lg:px-56 "}>
+        <section className={ "w-full px-6 lg:px-56 py-20"}>
             <h2 className={"text-2xl lg:text-4xl font-semibold my-10 border-b-2 py-4 flex gap-4 items-center"}>Osiągaj więcej z Uczymy.pl</h2>
             <p className={"lg:w-5/12 lg:leading-10 text-slate-200 text-lg lg:text-2xl"}>
                 Intuicyjne funkcje Uczymy.pl zapewniają każdemu możliwość szybkiego konfigurowania i dostosowania przepływu pracy.
