@@ -46,12 +46,19 @@ export async function GET(req, res) {
             // Sprawdź, czy student o danym ID nie istnieje w studentsThisDay
             const existingStudent = day.studentsThisDay.find(existingStudent => existingStudent.id == student.id);
 
-
             // Jeśli nie istnieje, dodaj go do studentsThisDay
             if (!existingStudent) {
               day.studentsThisDay.push(student);
             }
           }
+          day.studentsThisDay.sort((a, b) => {
+            const timeA = a.time.split(':');
+            const timeB = b.time.split(':');
+            const timeAInMinutes = parseInt(timeA[0]) * 60 + parseInt(timeA[1]);
+            const timeBInMinutes = parseInt(timeB[0]) * 60 + parseInt(timeB[1]);
+
+            return timeAInMinutes - timeBInMinutes;
+          });
         });
       });
 

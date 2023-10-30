@@ -6,7 +6,6 @@ import ScheduleDesktop from "./ScheduleDesktop";
 
 const Schedule = () => {
   const {user, isLoading} = useUserData()
-    console.log(user.schedule)
   return (
     <div className="flex-center min-h-[60vh]  py-6">
        <ScheduleMobile user={user} isLoading={isLoading}/>
