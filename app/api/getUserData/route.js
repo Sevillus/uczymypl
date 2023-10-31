@@ -32,8 +32,10 @@ export async function GET(req, res) {
       }));
 
       sessionUser.students.map((student, index) => {
-        //dodawanie ucznia do last history
-        if (dayjs(sessionUser.students[index].nextMeeting) <= dayjs()) {
+        console.log(dayjs(sessionUser.students[index].nextMeeting))
+        console.log(dayjs(sessionUser.students[index].nextMeeting).subtract(2, 'hour'))
+        const meeting = dayjs(sessionUser.students[index].nextMeeting)
+        if (meeting.subtract(2, 'hour') <= dayjs()) {
           sessionUser.meetingHistory[currentMonthIndex].lastMeetings.push(student);
           //usuwanie studenta, gdy nie ma zaznaczonych zajęć cyklicznych
           !student.cyclical ? sessionUser.students.splice(index, 1) : ""
