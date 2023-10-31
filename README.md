@@ -19,5 +19,5 @@ NextJs, ReactJs, Tailwind, mongoDb.
 ![Students](public/Students.jpg)
 
 ## Responsive web design
-# Website is adapted any device
+# Website is adapted for any device
 ![Mobile](public/mobile.jpg)
