@@ -5,7 +5,7 @@ import AgendaHeader from "./AgendaHeader";
 import AgendaLoading from "./AgendaLoading";
 import AgendaContainer from "./AgendaContainer";
 
-const Agenda = ({ fetchData, userStudents, isLoading }) => {
+const Agenda = ({ fetchData, userStudents, isLoading, user }) => {
   const [addNewStudentMenu, setAddNewStudentMenu] = useState(false);
 
   return (
@@ -22,6 +22,7 @@ const Agenda = ({ fetchData, userStudents, isLoading }) => {
             fetchStudent={fetchData}
             apiUrl={"/api/add-student"}
             closeMenu={setAddNewStudentMenu}
+            user={user}
           />
         )}
       </div>

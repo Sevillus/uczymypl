@@ -1,5 +1,3 @@
-import React from 'react'
-import AgendaUser from "./AgendaUser";
 
 const AgendaLoading = () => {
     return (

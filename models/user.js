@@ -76,6 +76,9 @@ const UserSchema = new Schema({
     target: {
         type: Number,
     },
+    lessonPrice: {
+        type: Number,
+    },
     students: [StudentSchema],
     schedule: [ScheduleSchema],
     meetingHistory: [MonthsSchema]

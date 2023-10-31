@@ -14,8 +14,8 @@ const DesktopUserProfile = ({ name, img }) => {
     <div>
       {name ? (
         <div>
-          <UserProfile name={name} img={img} clickHandler={clickHandler} />
-          {showMenu && <DesktopMenu />}
+          <UserProfile name={name} img={img} clickHandler={clickHandler}  />
+          {showMenu && <DesktopMenu setShowMenu={setShowMenu} />}
         </div>
       ) : (
         <SignInOutBtn variation={"signIn"} />

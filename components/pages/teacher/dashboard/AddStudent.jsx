@@ -11,12 +11,11 @@ import meetingInfo from "../../../../utils/meetingDay";
 const AddStudent = (props) => {
   const days = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek","Sobota", "Niedziela"];
 
-  const {student} = props
-  console.log(student)
+  const {student, user} = props
   const [name, setName] = useState(student? student.name : "");
   const [email, setEmail] = useState(student? student.email : "")
   const [phone, setPhone] = useState(student? student.phone : "")
-  const [price, setPrice] = useState(student? student.price : 70);
+  const [price, setPrice] = useState(student? student.price : user?.lessonPrice);
   const [day, setDay] = useState(student? student.day : "");
   const [userTime, setUserTime] = useState(student? student.time : "");
   const [duration, setDuration] = useState( 60)
@@ -125,7 +124,7 @@ const AddStudent = (props) => {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 id="standard-basic"
-                label="Cena zajęć"
+                label="Cena zajęć*"
                 variant="standard"
                 type={"number"}
                 error={price <= 0 && afterClick}
@@ -134,19 +133,19 @@ const AddStudent = (props) => {
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
                 id="standard-basic"
-                label="Czas trwania (min)"
+                label="Czas trwania (min)*"
                 variant="standard"
                 type={"number"}
                 error={duration <= 0 && afterClick}
             />
             <FormControlLabel
                 control={<Switch defaultChecked />}
-                label="Zajęcia cykliczne"
+                label="Zajęcia cykliczne*"
                 checked={cyclical}
                 onChange={() => setCyclical(prev => !prev)}
             />
             <AddStudentSelect
-                title="Dzień zajęć"
+                title="Dzień zajęć*"
                 default ={day}
                 array={days}
                 onChange={(value) => setDay(value)}
@@ -155,7 +154,7 @@ const AddStudent = (props) => {
             />
             <TextField
                 id="standard-basic"
-                label="Godzina zajęć"
+                label="Godzina zajęć*"
                 value={userTime}
                 onChange={(e) => setUserTime(e.target.value)}
                 type="time"

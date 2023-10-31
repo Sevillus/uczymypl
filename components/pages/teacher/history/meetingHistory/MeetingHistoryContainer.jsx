@@ -14,7 +14,7 @@ const MeetingHistoryContainer = ({
   let prevDay=null
   return (
     <div className={"meetingHistory__container"}>
-      { meetingHistory ? (
+      { meetingHistory[0] ? (
         meetingHistory.slice().reverse().map((student, index) => {
           //Checking if prev rendered student has the same meeting day, if true display one date
           const isSameDay = dayjs(student.nextMeeting).day() !== dayjs(prevDay).day();
@@ -35,7 +35,7 @@ const MeetingHistoryContainer = ({
       })
       ) : (
         <div className={"flex-center h-full text-slate-400"}>
-          <em>Brak spotkań w tym miesiacu..</em>
+          <em>Brak spotkań w tym miesiacu...</em>
         </div>
       )}
     </div>

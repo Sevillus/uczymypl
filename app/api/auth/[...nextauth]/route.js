@@ -15,7 +15,6 @@ export const authOptions = {
   },
   callbacks: {
     async session({session, token, user}){
-
       try {
         const { isConnected } = await connectToDB();
         session.isConnectedToDB = isConnected
@@ -35,8 +34,9 @@ export const authOptions = {
             email: profile.email,
             username: profile.name.replace(" ", "").toLowerCase(),
             image: profile.picture,
-            role: "dashboard",
+            role: "teacher",
             target:0,
+            lessonPrice:0,
             meetingHistory: [[]],
             schedule: [[]],
           });

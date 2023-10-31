@@ -3,6 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import DesktopUserProfile from "../desktop/DesktopUserProfile";
 import SignInOutBtn from "../SignInOutBtn";
 import UserProfile from "../UserProfile";
+import Link from "next/link";
 
 const MobileMenu = ({ toggleMenu, name, img}) => {
   return (
@@ -15,10 +16,8 @@ const MobileMenu = ({ toggleMenu, name, img}) => {
         <div className={"w-9/12"}>
           <UserProfile name={name} img={img}/>
         </div>
-        <div>
-            Options...
-        </div>
-        <SignInOutBtn variation={"signOut"} />
+          <Link href={"/teacher/settings"}>Ustawienia</Link>
+          <SignInOutBtn variation={"signOut"} />
       </div>
     </div>
   );
