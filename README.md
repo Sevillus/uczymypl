@@ -10,7 +10,7 @@ NextJs, ReactJs, Tailwind, mongoDb.
 ![Dashboard](public/dashboard__readme.jpg)
 
 **Schedule**- Application generates schedule thanks to students base
-![Schedule](public/Schedule.jpg)
+![Schedule](public/schedule.jpg)
 
 **Payments**- User is able to monitor lesson payment status
 ![Payments](public/payments.jpg)
@@ -19,5 +19,5 @@ NextJs, ReactJs, Tailwind, mongoDb.
 ![Students](public/Students.jpg)
 
 ## Responsive web design
-Website is adapted any device
+# Website is adapted any device
 ![Mobile](public/mobile.jpg)
