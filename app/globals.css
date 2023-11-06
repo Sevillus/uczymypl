@@ -81,7 +81,7 @@
 }
 
 .addStudent {
-  @apply absolute w-full h-full right-0 top-0 z-10 flex-center;
+  @apply absolute w-full h-full right-0 top-0 z-10 flex justify-center lg:items-center mt-10 lg:mt-0;
 }
 
 

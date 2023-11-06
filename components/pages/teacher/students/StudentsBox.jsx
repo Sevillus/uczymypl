@@ -15,7 +15,7 @@ const StudentsBox = ({ student, fetchStudent, loading }) => {
 
 
   return (
-    <div className={"flex-between padding-y border-b-2  lg:pr-10"}>
+    <div className={"flex-between padding-y border-b-2   lg:pr-10"}>
       <StudentsBoxIcon student={student}/>
       <StudentsBoxStudentInfo student={student}/>
       <StudentsBoxOptions
