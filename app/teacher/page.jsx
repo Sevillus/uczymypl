@@ -21,7 +21,7 @@ const Dashboard = () => {
     user,
     fetchData,
   } = useUserData();
-    if(!isLoading && userTarget === 0){
+    if(!isLoading && userTarget === null  ){
         redirect("/teacher/settings")
     }
 

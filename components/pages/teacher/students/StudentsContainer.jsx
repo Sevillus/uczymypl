@@ -10,7 +10,7 @@ const StudentsContainer = ({loading, renderedStudents, fetchStudent}) => {
                     <StudentsBoxLoading key={key} />
                 ))
                 :renderedStudents.map((student, index) => (
-                    <StudentsBox key={index} loading={loading} student={student} fetchStudent={fetchStudent}/>
+                    <StudentsBox key={index}  loading={loading} student={student} fetchStudent={fetchStudent}/>
                 ))
             }
         </div>

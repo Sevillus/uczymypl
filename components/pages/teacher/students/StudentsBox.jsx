@@ -9,7 +9,7 @@ import StudentsBoxOptions from "./StudentsBoxOptions";
 import StudentsBoxStudentInfo from "./StudentsBoxStudentInfo";
 import StudentsBoxIcon from "./StudentsBoxIcon";
 
-const StudentsBox = ({ student, fetchStudent, loading }) => {
+const StudentsBox = ({ student, fetchStudent }) => {
   const [isActive, setIsActive] = useState(false);
   const [showMoreStudentInfo, setShowMoreStudentInfo] = useState(false);
 
